@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { SiLinkedin, SiGithub, SiGmail, SiX } from "react-icons/si";
 
 export default function Footer() {
     const year = new Date().getFullYear();
@@ -12,13 +12,13 @@ export default function Footer() {
 
         <div className="flex gap-4">
           <a href="https://github.com/serdararici" target="_blank">
-            <Github className="h-5 w-5 text-gray-400 hover:text-white transition" />
+            <SiGithub className="h-5 w-5 text-gray-400 hover:text-white transition" />
           </a>
           <a href="https://linkedin.com/in/serdar" target="_blank">
-            <Linkedin className="h-5 w-5 text-gray-400 hover:text-white transition" />
+            <SiLinkedin className="h-5 w-5 text-gray-400 hover:text-white transition" />
           </a>
           <a href="mailto:serdararici3@gmail.com">
-            <Mail className="h-5 w-5 text-gray-400 hover:text-white transition" />
+            <SiGmail className="h-5 w-5 text-gray-400 hover:text-white transition" />
           </a>
         </div>
       </div>

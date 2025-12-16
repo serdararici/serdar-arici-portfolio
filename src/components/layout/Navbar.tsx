@@ -1,7 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
+import HamburgerMenu from "./HamburgerMenu";
+import { Menu } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -12,6 +15,7 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -22,23 +26,31 @@ export default function Navbar() {
           Serdar Arıcı
         </Link>
 
-        {/* Menu */}
-        <ul className="hidden gap-8 md:flex">
+         {/* Desktop Menu */}
+         <ul className="hidden md:flex gap-8">
           {navItems.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className={`transition ${
-                  pathname === item.href
-                    ? "text-blue-400"
-                    : "text-gray-300 hover:text-white"
-                }`}
+                className={`${pathname === item.href ? 
+                    "text-blue-400" : "text-gray-300 hover:text-white"} transition`}
               >
                 {item.name}
               </Link>
             </li>
           ))}
         </ul>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden"
+          onClick={() => setIsOpen(true)}
+        >
+          <Menu className="w-6 h-6 text-gray-300 hover:text-white" />
+        </button>
+
+        {/* Hamburger Menu Component */}
+      <HamburgerMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
       </nav>
     </header>
   );
