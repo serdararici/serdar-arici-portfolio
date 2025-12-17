@@ -15,7 +15,7 @@ export default function ClientLayout({
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className="pt-12 md:pt-20">{children}</main>
       {!isHome && <Footer />}
     </>
   );

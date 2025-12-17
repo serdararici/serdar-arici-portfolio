@@ -1,14 +1,30 @@
 @import "tailwindcss";
 
-html,
-body {
-  background-color: #121212;
-  color: #ffffff;
+
+/* :root'a özel renk değişkenlerini ekliyoruz. Bu renkleri Tailwind.config.js'te kullanacağız. */
+:root {
+  /* Tasarımdaki çok koyu, lacivert arka plan rengi */
+  --color-background: #0B0E18; 
+  --color-background2: #141A2E; 
+  /* Temel metin rengi */
+  --color-foreground: #FFFFFF;
+  /* Birincil vurgu rengi (Butonlar, linkler vb.) */
+  --color-primary: #3B82F6; 
+  /* İkincil vurgu rengi veya hover için açık ton */
+  --color-secondary: #00A3FF; 
+  /* Kart/Bölüm Arka Plan rengi (Arka plandan biraz daha açık) */
+  --color-card: #151928; 
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body {
+  /* Arka planı, tanımladığımız özel değişkenden alıyoruz */
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  scroll-behavior: smooth; /* Yumuşak kaydırma */
 }
+
+/* Kaydırma Çubuğu Stilleri (Mevcut Stiliniz) */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -18,8 +34,22 @@ html {
   background: #1e1e2f;
 }
 
-
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
+  background: var(--color-primary); /* Vurgu rengini kullandık */
   border-radius: 4px;
 }
+
+/* Başlık Stilleri (Opsiyonel, daha belirgin olması için) */
+h1, h2, h3 {
+  font-weight: 700; /* Bold */
+  line-height: 1.2;
+}
+
+/* Link Stilleri */
+/*
+a {
+  transition: color 0.2s ease-in-out;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+  */
