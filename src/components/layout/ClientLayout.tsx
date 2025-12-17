@@ -13,10 +13,10 @@ export default function ClientLayout({
   const isHome = pathname === "/";
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="pt-12 md:pt-20">{children}</main>
+      <main className="pt-16 md:pt-16 flex-1">{children}</main>
       {!isHome && <Footer />}
-    </>
+    </div>
   );
 }

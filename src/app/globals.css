@@ -1,7 +1,17 @@
 @import "tailwindcss";
 
 
-/* :root'a özel renk değişkenlerini ekliyoruz. Bu renkleri Tailwind.config.js'te kullanacağız. */
+@theme {
+  --color-background: #0B0E18; 
+  --color-background2: #141A2E; 
+  --color-foreground: #FFFFFF;
+  --color-primary: #3B82F6; 
+  --color-secondary: #00A3FF; 
+  --color-card: #151928;
+  --color-menu-bg: #141A2E;
+}
+
+
 :root {
   /* Tasarımdaki çok koyu, lacivert arka plan rengi */
   --color-background: #0B0E18; 
@@ -14,6 +24,7 @@
   --color-secondary: #00A3FF; 
   /* Kart/Bölüm Arka Plan rengi (Arka plandan biraz daha açık) */
   --color-card: #151928; 
+  --color-menu-bg: #141A2E
 }
 
 html,
