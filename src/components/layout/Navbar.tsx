@@ -22,7 +22,10 @@ export default function Navbar() {
     <header className="fixed top-0 z-50 w-full bg-[#121212]/80 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="text-lg font-semibold text-white">
+        <Link href="/" 
+          className="text-xl font-semibold text-white
+          transition-transform transition-colors duration-600
+          hover:scale-103">
           Serdar Arıcı
         </Link>
 
