@@ -22,7 +22,7 @@ const HeroSection = () => {
   const name = "Serdar Arıcı";
   const title = "Computer Engineer | Full-Stack Developer";
 
-  const shortDescription = "Sakarya Üniversitesi Bilgisayar Mühendisliği mezunuyum. Backend (Java, Kotlin, Golang) ve Frontend (React) teknolojilerinde üretime odaklanmış, çözüm odaklı bir yazılım geliştiricisiyim.";
+  const shortDescription = "Sakarya Üniversitesi Bilgisayar Mühendisliği mezunuyum. Backend ve Frontend teknolojilerinde (Java, Kotlin, Flutter, React, Next.js) üretime odaklanan, çözüm odaklı bir yazılım geliştiricisiyim. Mobil ve web platformlarında kullanıcı deneyimi, performans ve sürdürülebilirliği ön planda tutuyorum.";
 
   // Sosyal medya bağlantıları Sizin Si ikonlarınızla güncellendi
   const socialLinks = [
@@ -70,7 +70,7 @@ const HeroSection = () => {
           
           {/* About Me Butonu */}
           <Link
-            href="#about"
+            href="/about"
             className="flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-[var(--color-card)] border border-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-[var(--color-primary)] hover:text-[var(--color-foreground)] transition duration-300 transform hover:scale-[1.06] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)]"
           >
             <BsPerson className="text-xl" /> Hakkımda
