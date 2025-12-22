@@ -7,7 +7,10 @@ import {
   MapPin,
   ExternalLink,
 } from "lucide-react";
+import { FiEye } from "react-icons/fi";
 import { experiences, education, skills, certifications } from "@/data/aboutData";
+
+const CV_HREF = "/Serdar_Arici_Resume.pdf"; 
 
 const About = () => {
   return (
@@ -30,19 +33,33 @@ const About = () => {
             {/* Info Section */}
             <div className="flex-1 text-center md:text-left">
               <h1 className="text-4xl md:text-5xl font-bold mb-2">Serdar Arıcı</h1>
-              <p className="text-xl md:text-2xl text-gray-400 mb-4">Computer Engineer | Full-Stack Developer</p>
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                <p className="text-xl md:text-2xl text-gray-400">
+                  Computer Engineer | Full-Stack Developer
+                </p>
+                <a
+                  href={CV_HREF} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-blue-600 transition duration-300 transform hover:scale-[1.05] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+                >
+                  <FiEye className="text-xl" /> Özgeçmiş Görüntüle
+                </a>
+              </div>
               <div className="flex items-center justify-center md:justify-start gap-2 text-gray-300 mb-6">
                 <MapPin className="w-5 h-5" />
                 <span>Sakarya, Türkiye</span>
               </div>
-              <p className="text-gray-300 leading-relaxed max-w-2xl">
-                I am passionate about building scalable and efficient software solutions. 
-                With a background in computer engineering and full-stack development, I focus on 
-                creating clean, maintainable code that solves real-world problems. I specialize in 
-                backend development with Java, Kotlin, and Golang, as well as frontend development 
-                with React and Next.js. I'm always eager to learn new technologies and contribute 
-                to innovative projects.
-              </p>
+              <div className="mt-2">
+                <p className="text-gray-300 leading-relaxed max-w-2xl md:max-w-xl">
+                  I am passionate about building scalable and efficient software solutions. With a
+                  background in computer engineering and full-stack development, I focus on
+                  creating clean, maintainable code that solves real-world problems. I specialize in
+                  backend development with Java, Kotlin, and Golang, as well as frontend development
+                  with React and Next.js. I'm always eager to learn new technologies and contribute
+                  to innovative projects.
+                </p>
+              </div>
             </div>
           </div>
         </div>

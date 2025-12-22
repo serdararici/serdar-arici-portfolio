@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 // Sizin tercih ettiğiniz ikonlar:
 import { BsPerson } from 'react-icons/bs';
-import { FiDownload } from 'react-icons/fi';
+import { FiEye } from 'react-icons/fi';
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si"; 
 
 // CV dosyanızın public klasöründeki adı:
@@ -66,7 +66,7 @@ const HeroSection = () => {
         </p>
 
         {/* 6. CTA Butonları (Yan Yana) */}
-        <div className="flex flex-col sm:flex-row justify-center gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 mb-6 md:pl-20">
           
           {/* About Me Butonu */}
           <Link
@@ -79,12 +79,11 @@ const HeroSection = () => {
           {/* Download CV Butonu */}
           <a 
             href={CV_HREF} 
-            download 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-[var(--color-card)] border border-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-[var(--color-primary)] hover:text-[var(--color-foreground)] transition duration-300 transform hover:scale-[1.06] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)]"
           >
-            <FiDownload className="text-xl" /> CV İndir
+            <FiEye className="text-xl" /> Özgeçmiş Görüntüle
           </a>
         </div>
 
