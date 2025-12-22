@@ -8,6 +8,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { FiEye } from "react-icons/fi";
+import ProjectCarousel from "@/components/about/ProjectCarousel";
 import { experiences, education, skills, certifications } from "@/data/aboutData";
 
 const CV_HREF = "/Serdar_Arici_Resume.pdf"; 
@@ -41,7 +42,7 @@ const About = () => {
                   href={CV_HREF} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-blue-600 transition duration-300 transform hover:scale-[1.05] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-secondary transition duration-300 transform hover:scale-[1.05] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
                 >
                   <FiEye className="text-xl" /> Özgeçmiş Görüntüle
                 </a>
@@ -176,6 +177,9 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Featured Projects */}
+      <ProjectCarousel />
 
       {/* Certifications Section */}
       <section className="py-12 px-6 pb-20">

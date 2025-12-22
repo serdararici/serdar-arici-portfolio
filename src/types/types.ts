@@ -9,7 +9,10 @@ export type Project = {
   githubUrl?: string;
   liveUrl?: string;
   image: string;
-};
+  date: string;
+  featured: boolean; 
+  category: 'Backend' | 'Frontend' | 'Full-Stack' | 'Mobile' | 'Desktop' | 'System' | 'Other';
+}
 
 export type Experience = {
   title: string;
