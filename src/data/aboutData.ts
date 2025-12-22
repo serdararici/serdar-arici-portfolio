@@ -115,25 +115,33 @@ export const certifications: Certification[] = [
   {
     title: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
+    month: "October",
     year: "2024",
+    credentialUrl: "https://www.example.com/aws-certified-cloud-practitioner",
     icon: Cloud,
   },
   {
     title: "Certified Kubernetes Administrator",
     issuer: "CNCF",
+    month: "June",
     year: "2023",
+    credentialUrl: "https://www.example.com/certified-kubernetes-administrator",
     icon: Container,
   },
   {
     title: "Professional Scrum Master I",
     issuer: "Scrum.org",
+    month: "March",
     year: "2023",
+    credentialUrl: "https://www.example.com/professional-scrum-master-i",
     icon: Award,
   },
   {
     title: "Google Cloud Platform Fundamentals",
     issuer: "Google Cloud",
+    month: "January",
     year: "2022",
+    credentialUrl: "https://www.example.com/google-cloud-platform-fundamentals",
     icon: Cloud,
   },
 ];

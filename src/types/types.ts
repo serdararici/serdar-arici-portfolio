@@ -33,7 +33,9 @@ export type SkillCategory = {
 export type Certification = {
   title: string;
   issuer: string;
+  month: string;
   year: string;
+  credentialUrl: string;
   icon: LucideIcon;
 };
 

@@ -1,5 +1,12 @@
 import Image from "next/image";
-import { Briefcase, GraduationCap, Code, Award, MapPin } from "lucide-react";
+import {
+  Briefcase,
+  GraduationCap,
+  Code,
+  Award,
+  MapPin,
+  ExternalLink,
+} from "lucide-react";
 import { experiences, education, skills, certifications } from "@/data/aboutData";
 
 const About = () => {
@@ -163,23 +170,33 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
-              <div
+              <a
                 key={index}
-                className="bg-[var(--color-card)] border border-gray-800 rounded-lg p-6 hover:border-[var(--color-primary)]/50 transition-colors"
+                href={cert.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block bg-[var(--color-card)] border border-gray-800 rounded-lg p-6 hover:border-[var(--color-primary)]/60 hover:bg-[var(--color-card)]/90 transition-colors"
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-[var(--color-primary)]/10 rounded-lg">
                     <cert.icon className="w-6 h-6 text-[var(--color-primary)]" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[var(--color-foreground)] mb-1">
-                      {cert.title}
-                    </h3>
-                    <p className="text-sm text-gray-400">{cert.issuer}</p>
-                    <p className="text-xs text-gray-500 mt-1">Issued {cert.year}</p>
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-lg font-semibold text-[var(--color-foreground)] mb-1">
+                          {cert.title}
+                        </h3>
+                        <p className="text-sm text-gray-400">{cert.issuer}</p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Issued {cert.month} {cert.year}
+                        </p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-[var(--color-primary)] transition-colors" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
