@@ -9,7 +9,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SiGithub, } from "react-icons/si"; 
-import { useMemo, useRef, useEffect } from "react";
+import { useMemo, useRef, useEffect, useState } from "react";
 import { projects } from "@/data/projectsData";
 
 const ProjectCarousel = () => {
@@ -44,21 +44,36 @@ const ProjectCarousel = () => {
     });
   };
 
+  const getVisibleTechCount = () => {
+    if (typeof window === "undefined") return 3;
+    if (window.innerWidth < 640) return 5;      // mobile
+    if (window.innerWidth < 1024) return 4;     // tablet
+    return 3;                                   // desktop
+  };
+
+  const [visibleTechs, setVisibleTechs] = useState(3);
+  useEffect(() => {
+    const update = () => setVisibleTechs(getVisibleTechCount());
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
     <section className="py-16">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-[var(--color-primary)]/10 rounded-lg">
-              <ExternalLink className="w-6 h-6 text-[var(--color-primary)]" />
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <ExternalLink className="w-6 h-6 text-primary" />
             </div>
             <h2 className="text-3xl font-bold">Featured Projects</h2>
           </div>
           
           <Link 
             href="/projects" 
-            className="group flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)] hover:opacity-80 transition-all"
+            className="group flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-all"
           >
             View All Projects
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -71,7 +86,7 @@ const ProjectCarousel = () => {
           <button
             type="button"
             onClick={() => scrollByCards("prev")}
-            className="z-10 flex items-center justify-center rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-card)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-30"
+            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-30"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -87,12 +102,12 @@ const ProjectCarousel = () => {
                 <div
                   key={project.slug}
                   data-card
-                  className="flex-shrink-0 snap-start transition-all duration-300
+                  className="shrink-0 snap-start transition-all duration-300
                              w-[calc(100%-40px)] 
                              sm:w-[calc(50%-16px)] 
                              lg:w-[calc(33.33%-20px)]"
                 >
-                  <div className="group card h-full bg-[var(--color-card)] border border-gray-800 hover:border-[var(--color-primary)]/40 shadow-xl rounded-2xl overflow-hidden transition-all hover:scale-[1.01]">
+                  <div className="group card h-full bg-card border border-gray-800 hover:border-primary/40 shadow-xl rounded-2xl overflow-hidden transition-all hover:scale-[1.01]">
                     {/* Project Image */}
                     <figure className="relative w-full h-48 overflow-hidden">
                       <Image
@@ -103,7 +118,7 @@ const ProjectCarousel = () => {
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-[var(--color-primary)] border border-[var(--color-primary)]/30">
+                        <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-primary border border-primary/30">
                           {project.category}
                         </span>
                       </div>
@@ -112,7 +127,7 @@ const ProjectCarousel = () => {
                     {/* Card Content */}
                     <div className="card-body p-6 space-y-4">
                       <div>
-                        <h3 className="text-xl font-bold text-[var(--color-foreground)] truncate">
+                        <h3 className="text-xl font-bold text-foreground truncate">
                           {project.title}
                         </h3>
                         <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">
@@ -121,24 +136,30 @@ const ProjectCarousel = () => {
                       </div>
 
                       {/* Description - Fixed 3 lines */}
-                      <p className="text-sm text-gray-400 line-clamp-3 min-h-[4.5rem] leading-relaxed">
+                      <p className="text-sm text-gray-400 line-clamp-3 min-h-18 leading-relaxed">
                         {project.shortDescription}
                       </p>
 
                       {/* Tech Stack - Single Line */}
                       <div className="flex items-center gap-2 overflow-hidden flex-nowrap py-1">
-                        {project.techStack.slice(0, 4).map((tech) => (
+                        {project.techStack.slice(0, visibleTechs).map((t) => (
                           <span
-                            key={tech}
-                            className="flex-shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md border border-gray-800 text-gray-300 bg-gray-900/50"
+                            key={t}
+                            className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md 
+                                      border border-gray-800 text-gray-300 bg-gray-900/50"
                           >
-                            {tech}
+                            {t}
                           </span>
                         ))}
-                        {project.techStack.length > 4 && (
-                          <span className="text-xs text-gray-600">...</span>
+
+                        {project.techStack.length > visibleTechs && (
+                          <span className="text-xs text-gray-500">
+                            +{project.techStack.length - visibleTechs}
+                          </span>
                         )}
                       </div>
+
+
 
                       {/* Action Buttons */}
                       <div className="card-actions pt-2 flex gap-3">
@@ -146,7 +167,7 @@ const ProjectCarousel = () => {
                           href={project.githubUrl ?? "#"}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-[var(--color-foreground)] hover:bg-white hover:text-black transition-all"
+                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition-all"
                         >
                           <SiGithub className="w-4 h-4" />
                           GitHub
@@ -156,7 +177,7 @@ const ProjectCarousel = () => {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-[var(--color-primary)] text-white hover:opacity-90 transition-all shadow-lg shadow-[var(--color-primary)]/20"
+                            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-(--color-primary)/20"
                           >
                             <ExternalLink className="w-4 h-4" />
                             Live Demo
@@ -174,7 +195,7 @@ const ProjectCarousel = () => {
           <button
             type="button"
             onClick={() => scrollByCards("next")}
-            className="z-10 flex items-center justify-center rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-card)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-30"
+            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-30"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

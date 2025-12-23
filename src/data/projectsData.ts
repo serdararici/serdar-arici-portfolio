@@ -34,7 +34,7 @@ export const projects: Project[] = [
     title: "Spring Security JWT API",
     description:
       "Secure REST API with Spring Boot, JWT authentication, role-based access control, and extensive tests.",
-    shortDescription: "Secure Spring Boot API with JWT and role-based access. kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+    shortDescription: "Secure Spring Boot API with JWT and role-based access. kkkkkkkkkk kkkkkkkkkkk kkkkkkkkk  kkkkkkkkkk  kkkkkkkkkk kkkkkkkkkk kkkkkkkkk kkkkkkkkk kkkkkkkkk kkkkkkkkkk kkkkkkkkkk kkkkkkkkkk kkkkkkkk kkkkkk kkkkkkkkkk kkkkkkkkkkk kkkkkkkkk  kkkkkkkkkk  kkkkkkkkkk kkkkkkkkkk kkkkkkkkk kkkkkkkkk kkkkkkkkk kkkkkkkkkk kkkkkkkkkk kkkkkkkkkk kkkkkkkk kkkkkk kkkkkkkkkk kkkkkkkkkkk kkkkkkkkk  kkkkkkkkkk  kkkkkkkkkk kkkkkkkkkk kkkkkkkkk kkkkkkkkk kkkkkkkkk kkkkkkkkkk kkkkkkkkkk kkkkkkkkkk kkkkkkkk kkkkkk",
     techStack: ["Java", "Spring Boot", "Spring Security JWT", "PostgreSQL", "JUnit", "Docker"],
     githubUrl: "https://github.com/example/spring-security-jwt-api",
     liveUrl: "",
