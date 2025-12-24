@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function ProjectDetailClient({ project }: Props) {
-  const gallery = project.gallery ?? [project.image];
+  const gallery = project.gallery ?? [project.image_url];
 
   return (
     <div className="min-h-screen bg-background text-foreground py-12 px-4">
@@ -37,7 +37,7 @@ export default function ProjectDetailClient({ project }: Props) {
         <div className="rounded-2xl overflow-hidden mb-8">
           <div className="relative w-full h-112.5 rounded-2xl overflow-hidden shadow-lg border border-gray-800">
             <Image
-              src={project.image}
+              src={project.image_url}
               alt={project.title}
               fill
               className="object-cover"
@@ -75,14 +75,14 @@ export default function ProjectDetailClient({ project }: Props) {
 
                 <div className="flex justify-between">
                   <dt className="text-gray-400">Date</dt>
-                  <dd>{project.date}</dd>
+                  <dd>{project.project_date}</dd>
                 </div>
               </dl>
 
               <div className="mt-4 flex gap-3">
-                {project.liveUrl ? (
+                {project.live_url ? (
                   <Link
-                    href={project.liveUrl}
+                    href={project.live_url}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:opacity-90 transition"
@@ -92,9 +92,9 @@ export default function ProjectDetailClient({ project }: Props) {
                   </Link>
                 ) : null}
 
-                {project.githubUrl ? (
+                {project.github_url ? (
                   <Link
-                    href={project.githubUrl}
+                    href={project.github_url}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-700 text-sm text-foreground hover:bg-white hover:text-black transition"
@@ -110,7 +110,7 @@ export default function ProjectDetailClient({ project }: Props) {
             <div className="bg-card border border-gray-800 rounded-xl p-5 shadow-sm">
               <h3 className="text-sm font-semibold text-gray-400 mb-3">Technologies</h3>
               <div className="flex flex-wrap gap-2">
-                {project.techStack.map((t) => (
+                {project.tech_stack.map((t) => (
                   <span key={t} className="px-3 py-1 rounded-full bg-gray-900/40 border border-gray-800 text-sm text-gray-200">
                     {t}
                   </span>

@@ -14,7 +14,7 @@ import { projects } from "@/data/projectsData";
 
 const ProjectCarousel = () => {
   const featuredProjects = useMemo(
-    () => projects.filter((p) => p.featured),
+    () => projects.filter((p) => p.is_featured),
     []
   );
 
@@ -111,7 +111,7 @@ const ProjectCarousel = () => {
                     {/* Project Image */}
                     <figure className="relative w-full h-48 overflow-hidden">
                       <Image
-                        src={project.image}
+                        src={project.image_url ?? "/image_not_found.jpg"}
                         alt={project.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -131,18 +131,18 @@ const ProjectCarousel = () => {
                           {project.title}
                         </h3>
                         <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">
-                          {project.date}
+                          {project.project_date}
                         </p>
                       </div>
 
                       {/* Description - Fixed 3 lines */}
                       <p className="text-sm text-gray-400 line-clamp-3 min-h-18 leading-relaxed">
-                        {project.shortDescription}
+                        {project.short_description}
                       </p>
 
                       {/* Tech Stack - Single Line */}
                       <div className="flex items-center gap-2 overflow-hidden flex-nowrap py-1">
-                        {project.techStack.slice(0, visibleTechs).map((t) => (
+                        {project.tech_stack.slice(0, visibleTechs).map((t) => (
                           <span
                             key={t}
                             className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md 
@@ -152,9 +152,9 @@ const ProjectCarousel = () => {
                           </span>
                         ))}
 
-                        {project.techStack.length > visibleTechs && (
+                        {project.tech_stack.length > visibleTechs && (
                           <span className="text-xs text-gray-500">
-                            +{project.techStack.length - visibleTechs}
+                            +{project.tech_stack.length - visibleTechs}
                           </span>
                         )}
                       </div>
@@ -164,7 +164,7 @@ const ProjectCarousel = () => {
                       {/* Action Buttons */}
                       <div className="card-actions pt-2 flex gap-3">
                         <Link
-                          href={project.githubUrl ?? "#"}
+                          href={project.github_url ?? "#"}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition-all"
@@ -172,9 +172,9 @@ const ProjectCarousel = () => {
                           <SiGithub className="w-4 h-4" />
                           GitHub
                         </Link>
-                        {project.liveUrl && (
+                        {project.live_url && (
                           <Link
-                            href={project.liveUrl}
+                            href={project.live_url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-(--color-primary)/20"

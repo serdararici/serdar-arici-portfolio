@@ -16,7 +16,7 @@ export default async function ProjectPage({ params }: Props) {
 
   if (!project) return notFound();
 
-  const gallery = (project as Partial<Project> & { gallery?: string[] }).gallery ?? [project.image];
+  const gallery = (project as Partial<Project> & { gallery?: string[] }).gallery ?? [project.image_url];
 
   return <ProjectDetailClient project={{ ...project, gallery }} />;
 }

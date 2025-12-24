@@ -1,17 +1,19 @@
 import { LucideIcon } from "lucide-react";
 
 export type Project = {
-  slug: string;
+  id?: number; // Automatic ID from Supabase
+  created_at?: string;
   title: string;
-  description: string;
-  shortDescription: string;
-  techStack: string[];
-  githubUrl?: string;
-  liveUrl?: string;
-  image: string;
-  date: string;
-  featured: boolean; 
+  slug: string;
   category: 'Backend' | 'Frontend' | 'Full-Stack' | 'Mobile' | 'Desktop' | 'System' | 'Other';
+  description: string | null;
+  short_description: string | null;
+  tech_stack: string[];
+  github_url?: string | null;
+  live_url?: string | null;
+  image_url: string | null;
+  project_date: string | null;
+  is_featured: boolean; 
 }
 
 export type Experience = {
