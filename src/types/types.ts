@@ -14,6 +14,7 @@ export type Project = {
   image_url: string | null;
   project_date: string | null;
   is_featured: boolean; 
+  gallery: string[] | null;
 }
 
 export type Experience = {

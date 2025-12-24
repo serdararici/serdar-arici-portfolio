@@ -8,18 +8,19 @@ import {
   ChevronRight,
   ArrowRight,
 } from "lucide-react";
-import { SiGithub, } from "react-icons/si"; 
-import { useMemo, useRef, useEffect, useState } from "react";
-import { projects } from "@/data/projectsData";
+import { SiGithub } from "react-icons/si";
+import { useRef, useEffect, useState } from "react";
+import { Project } from "@/types/types";
+import { formatProjectDate } from "@/lib/utils";
 
-const ProjectCarousel = () => {
-  const featuredProjects = useMemo(
-    () => projects.filter((p) => p.is_featured),
-    []
-  );
+interface ProjectCarouselProps {
+  initialProjects: Project[];
+}
 
+const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
+  // Scroll navigation logic
   const scrollByCards = (direction: "next" | "prev") => {
     const container = sliderRef.current;
     if (!container) return;
@@ -32,7 +33,6 @@ const ProjectCarousel = () => {
 
     if (cards.length > 1) {
       const second = cards[1];
-      // Kart genişliği + aradaki gap (boşluk) mesafesini hesaplar
       step = second.offsetLeft - first.offsetLeft;
     }
 
@@ -46,12 +46,13 @@ const ProjectCarousel = () => {
 
   const getVisibleTechCount = () => {
     if (typeof window === "undefined") return 3;
-    if (window.innerWidth < 640) return 5;      // mobile
-    if (window.innerWidth < 1024) return 4;     // tablet
-    return 3;                                   // desktop
+    if (window.innerWidth < 640) return 5;
+    if (window.innerWidth < 1024) return 4;
+    return 3;
   };
 
   const [visibleTechs, setVisibleTechs] = useState(3);
+
   useEffect(() => {
     const update = () => setVisibleTechs(getVisibleTechCount());
     update();
@@ -68,7 +69,7 @@ const ProjectCarousel = () => {
             <div className="p-2 bg-primary/10 rounded-lg">
               <ExternalLink className="w-6 h-6 text-primary" />
             </div>
-            <h2 className="text-3xl font-bold">Featured Projects</h2>
+            <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
           </div>
           
           <Link 
@@ -80,9 +81,7 @@ const ProjectCarousel = () => {
           </Link>
         </div>
 
-        {/* Carousel Grid Layout */}
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-6">
-          {/* Left Button */}
           <button
             type="button"
             onClick={() => scrollByCards("prev")}
@@ -91,14 +90,13 @@ const ProjectCarousel = () => {
             <ChevronLeft className="w-5 h-5" />
           </button>
 
-          {/* Slider Container */}
           <div className="overflow-hidden">
             <div
               ref={sliderRef}
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              {featuredProjects.map((project) => (
+              {initialProjects.map((project) => (
                 <div
                   key={project.slug}
                   data-card
@@ -107,91 +105,94 @@ const ProjectCarousel = () => {
                              sm:w-[calc(50%-16px)] 
                              lg:w-[calc(33.33%-20px)]"
                 >
-                  <div className="group card h-full bg-card border border-gray-800 hover:border-primary/40 shadow-xl rounded-2xl overflow-hidden transition-all hover:scale-[1.01]">
-                    {/* Project Image */}
-                    <figure className="relative w-full h-48 overflow-hidden">
-                      <Image
-                        src={project.image_url ?? "/image_not_found.jpg"}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-primary border border-primary/30">
-                          {project.category}
-                        </span>
-                      </div>
-                    </figure>
+                  {/* Clickable Card Link */}
+                  <Link href={`/projects/${project.slug}`} className="block h-full group">
+                    <div className="h-full bg-card border border-gray-800 group-hover:border-primary/40 shadow-xl rounded-2xl overflow-hidden transition-all group-hover:scale-[1.01]">
+                      {/* Project Visual Section */}
+                      <figure className="relative w-full h-48 overflow-hidden">
+                        <Image
+                          src={project.image_url ?? "/image_not_found.jpg"}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-primary border border-primary/30">
+                            {project.category}
+                          </span>
+                        </div>
+                      </figure>
 
-                    {/* Card Content */}
-                    <div className="card-body p-6 space-y-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-foreground truncate">
-                          {project.title}
-                        </h3>
-                        <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">
-                          {project.project_date}
+                      {/* Project Information Body */}
+                      <div className="card-body p-6 space-y-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-foreground truncate">
+                            {project.title}
+                          </h3>
+                          <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">
+                            {formatProjectDate(project.project_date)}
+                          </p>
+                        </div>
+
+                        <p className="text-sm text-gray-400 line-clamp-3 min-h-18 leading-relaxed">
+                          {project.short_description}
                         </p>
-                      </div>
 
-                      {/* Description - Fixed 3 lines */}
-                      <p className="text-sm text-gray-400 line-clamp-3 min-h-18 leading-relaxed">
-                        {project.short_description}
-                      </p>
+                        <div className="flex items-center gap-2 overflow-hidden flex-nowrap py-1">
+                          {project.tech_stack.slice(0, visibleTechs).map((t) => (
+                            <span
+                              key={t}
+                              className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md 
+                                        border border-gray-800 text-gray-300 bg-gray-900/50"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                          {project.tech_stack.length > visibleTechs && (
+                            <span className="text-xs text-gray-500">
+                              +{project.tech_stack.length - visibleTechs}
+                            </span>
+                          )}
+                        </div>
 
-                      {/* Tech Stack - Single Line */}
-                      <div className="flex items-center gap-2 overflow-hidden flex-nowrap py-1">
-                        {project.tech_stack.slice(0, visibleTechs).map((t) => (
-                          <span
-                            key={t}
-                            className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md 
-                                      border border-gray-800 text-gray-300 bg-gray-900/50"
+                        {/* Link buttons - Note: stopPropagation is handled by placing them outside main Link if needed, 
+                            but in Next.js nested Links can be tricky. Here they are simple UI elements or separate triggers. */}
+                        <div className="card-actions pt-2 flex gap-3 relative z-20">
+                          {/* We use div instead of Link here if we want the whole card to be the main link, 
+                              or keep them as is and user clicks will bubble up. */}
+                          <div
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                window.open(project.github_url ?? "#", "_blank");
+                            }}
+                            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition-all"
                           >
-                            {t}
-                          </span>
-                        ))}
-
-                        {project.tech_stack.length > visibleTechs && (
-                          <span className="text-xs text-gray-500">
-                            +{project.tech_stack.length - visibleTechs}
-                          </span>
-                        )}
-                      </div>
-
-
-
-                      {/* Action Buttons */}
-                      <div className="card-actions pt-2 flex gap-3">
-                        <Link
-                          href={project.github_url ?? "#"}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition-all"
-                        >
-                          <SiGithub className="w-4 h-4" />
-                          GitHub
-                        </Link>
-                        {project.live_url && (
-                          <Link
-                            href={project.live_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-(--color-primary)/20"
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                            Live Demo
-                          </Link>
-                        )}
+                            <SiGithub className="w-4 h-4" /> GitHub
+                          </div>
+                          
+                          {project.live_url && (
+                            <div
+                              onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  window.open(project.live_url!, "_blank");
+                              }}
+                              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg"
+                            >
+                              <ExternalLink className="w-4 h-4" /> Live
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Button */}
           <button
             type="button"
             onClick={() => scrollByCards("next")}

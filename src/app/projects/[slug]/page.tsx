@@ -1,22 +1,29 @@
 // src/app/projects/[slug]/page.tsx
-
+import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
-import type { Project } from "@/types/types";
-import { projects } from "@/data/projectsData";
 import ProjectDetailClient from "@/components/projects/ProjectDetailClient";
-
-interface Props {
-  params: Promise<{ slug: string }>; 
-}
+// 1. Define the props type where params is a Promise
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
 export default async function ProjectPage({ params }: Props) {
-  const { slug } = await params; 
+  // 2. Await the params before using them (Crucial for Next.js 15+)
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
 
-  const project = projects.find((p) => p.slug === slug);
+  // 3. Fetch from Supabase with the resolved slug
+  const { data: project, error } = await supabase
+    .from('projects')
+    .select('*')
+    .eq('slug', slug)
+    .single();
 
-  if (!project) return notFound();
+  // 4. Check for errors or empty results
+  if (error || !project) {
+    console.error("Project fetch error:", error?.message || "Project not found");
+    return notFound();
+  }
 
-  const gallery = (project as Partial<Project> & { gallery?: string[] }).gallery ?? [project.image_url];
-
-  return <ProjectDetailClient project={{ ...project, gallery }} />;
+  return <ProjectDetailClient project={project} />;
 }

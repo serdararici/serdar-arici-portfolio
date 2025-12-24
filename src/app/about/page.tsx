@@ -10,10 +10,22 @@ import {
 import { FiEye } from "react-icons/fi";
 import ProjectCarousel from "@/components/about/ProjectCarousel";
 import { experiences, education, skills, certifications } from "@/data/aboutData";
+import { supabase } from "@/lib/supabase"; // Import supabase client
 
 const CV_HREF = "/Serdar_Arici_Resume.pdf"; 
 
-const About = () => {
+const About = async () => {
+  // Fetch featured projects from Supabase on the server side
+  const { data: featuredProjects, error } = await supabase
+    .from('projects')
+    .select('*')
+    .eq('is_featured', true)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error("Error fetching featured projects:", error.message);
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
@@ -44,7 +56,7 @@ const About = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-primary text-foreground hover:bg-secondary transition duration-300 transform hover:scale-[1.05] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
-                  <FiEye className="text-xl" /> Özgeçmiş Görüntüle
+                  <FiEye className="text-xl" /> View Resume
                 </a>
               </div>
               <div className="flex items-center justify-center md:justify-start gap-2 text-gray-300 mb-6">
@@ -57,7 +69,7 @@ const About = () => {
                   background in computer engineering and full-stack development, I focus on
                   creating clean, maintainable code that solves real-world problems. I specialize in
                   backend development with Java, Kotlin, and Golang, as well as frontend development
-                  with React and Next.js. I'm always eager to learn new technologies and contribute
+                  with React and Next.js. I&apos;m always eager to learn new technologies and contribute
                   to innovative projects.
                 </p>
               </div>
@@ -178,8 +190,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Featured Projects */}
-      <ProjectCarousel />
+      {/* Featured Projects Carousel with fetched data */}
+      <ProjectCarousel initialProjects={featuredProjects || []} />
 
       {/* Certifications Section */}
       <section className="py-12 px-6 pb-20">
