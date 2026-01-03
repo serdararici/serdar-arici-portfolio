@@ -45,9 +45,9 @@ const HeroSection = () => {
         <div className="mb-4 relative mx-auto w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl transition-all duration-500 hover:scale-105">
           <Image
             src="/profile_ai.png"
-            alt="Serdar Arıcı - Profesyonel Profil Fotoğrafı"
-            layout="fill" 
-            objectFit="cover"
+            alt="Serdar Arıcı - Professional Profile Photo"
+            fill 
+            className="object-cover"
             priority 
           />
         </div>

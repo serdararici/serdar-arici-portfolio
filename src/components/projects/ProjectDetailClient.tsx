@@ -1,19 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink as ExtIcon } from "lucide-react";
-import { SiGithub } from "react-icons/si";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ExternalLink as ExtIcon, Play, X } from "lucide-react";
+import { SiGithub, SiYoutube } from "react-icons/si";
 import type { Project } from "@/types/types";
 import { formatProjectDate } from "@/lib/utils";
+import ProjectGallery from "./ProjectGallery";
 
 type Props = {
   project: Project; // We use our main Project type
 };
 
 export default function ProjectDetailClient({ project }: Props) {
+
   // Use gallery array if exists, otherwise fallback to main image_url
   const gallery = (project.gallery && project.gallery.length > 0) 
     ? project.gallery 
@@ -28,7 +30,7 @@ export default function ProjectDetailClient({ project }: Props) {
       >
         <div className="max-w-6xl mx-auto">
           {/* Navigation Back */}
-          <div className="mb-6">
+          <div className="mb-4">
             <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-primary transition">
               <ArrowLeft className="w-4 h-4" />
               Back to Projects
@@ -36,15 +38,17 @@ export default function ProjectDetailClient({ project }: Props) {
           </div>
 
           {/* Hero Image Section */}
-          <div className="rounded-2xl overflow-hidden mb-12 shadow-2xl border border-gray-800">
-            <div className="relative w-full h-75 md:h-125">
-              <Image
-                src={project.image_url ?? "/image_not_found.jpg"}
-                alt={project.title}
-                fill
-                className="object-cover"
-                priority
-              />
+          <div className="max-w-4xl mx-auto mb-12"> 
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm">
+              <div className="relative w-full h-64 md:h-112.5">
+                <Image
+                  src={project.image_url ?? "/image_not_found.jpg"}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
 
@@ -56,11 +60,13 @@ export default function ProjectDetailClient({ project }: Props) {
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
                 {project.title}
               </h1>
-
-              <section className="prose prose-invert max-w-none">
-                <h2 className="text-2xl font-semibold text-primary mb-4">About Project</h2>
-                <div className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
-                  {project.description}
+              
+              <section className="max-w-none">
+                <h2 className="text-2xl font-semibold text-primary mb-4 border-b border-gray-800 pb-2">
+                  About Project
+                </h2>
+                <div className="text-gray-300 text-lg leading-relaxed whitespace-pre-line">
+                  {project.description || "No description provided."}
                 </div>
               </section>
             </article>
@@ -99,6 +105,18 @@ export default function ProjectDetailClient({ project }: Props) {
                     </Link>
                   )}
 
+                  {/* YouTube Video Button - */}
+                  {project.video_url && (
+                    <Link
+                      href={project.video_url}
+                      target="_blank"
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#FF0000] text-white font-bold hover:bg-[#CC0000] transition shadow-lg shadow-red-900/20"
+                    >
+                      <SiYoutube className="w-4 h-4 fill-current" />
+                      Watch Demo
+                    </Link>
+                  )}
+
                   {project.github_url && (
                     <Link
                       href={project.github_url}
@@ -109,6 +127,7 @@ export default function ProjectDetailClient({ project }: Props) {
                       View Source
                     </Link>
                   )}
+
                 </div>
               </div>
 
@@ -127,28 +146,11 @@ export default function ProjectDetailClient({ project }: Props) {
           </div>
 
           {/* Project Gallery Section */}
-          <section className="mt-20">
-            <h3 className="text-2xl font-bold mb-8 text-white">Project Gallery</h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {gallery.map((src, i) => (
-                // check if src is valid
-                src && (
-                  <div key={i} className="group rounded-2xl overflow-hidden border border-gray-800 bg-card hover:border-primary/50 transition-all duration-300 shadow-lg">
-                    <div className="relative w-full h-56">
-                      <Image 
-                        src={src} 
-                        alt={`${project.title} screenshot ${i + 1}`} 
-                        fill 
-                        className="object-cover transition-transform duration-500 group-hover:scale-110" 
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </div>
-                  </div>
-                )
-              ))}
-            </div>
-          </section>
+          <ProjectGallery 
+            gallery={gallery} 
+            projectTitle={project.title} 
+          />
+          
         </div>
       </motion.div>
     </div>

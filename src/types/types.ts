@@ -12,6 +12,7 @@ export type Project = {
   github_url?: string | null;
   live_url?: string | null;
   image_url: string | null;
+  video_url?: string | null;
   project_date: string | null;
   is_featured: boolean; 
   gallery: string[] | null;

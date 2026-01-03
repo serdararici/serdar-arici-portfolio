@@ -22,6 +22,9 @@ export default {
       },
     },
   },
-  plugins: [daisyui, lineClamp], 
+  plugins: [
+    daisyui,
+    lineClamp,
+  ],
 };
 
