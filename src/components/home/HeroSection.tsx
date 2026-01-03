@@ -1,30 +1,69 @@
+'use client';
+
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-// Sizin tercih ettiğiniz ikonlar:
+import { motion, Variants } from 'framer-motion'; // Animation engine
 import { BsPerson } from 'react-icons/bs';
 import { FiEye } from 'react-icons/fi';
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si"; 
+import TypewriterText from "@/components/ui/TypewriterText";
 
-// CV dosyanızın public klasöründeki adı:
+// Resume file path in the public folder
 const CV_HREF = "/Serdar_Arici_Resume.pdf"; 
 
-
-// Tasarımdaki arka planı simgeleyen bileşen (Custom Tailwind Renkleri Kullanıldı)
+/**
+ * Background decoration with animated glowing orbs
+ */
 const BackgroundEffect = () => (
   <div className="absolute inset-0 z-0 overflow-hidden">
-    {/* Tasarımdaki soyut parlama/ışık efektini simgeler */}
-    <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/10 rounded-full mix-blend-lighten filter blur-3xl opacity-50 animate-pulse"></div>
-    <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-secondary/10 rounded-full mix-blend-lighten filter blur-3xl opacity-50 animate-pulse delay-1000"></div>
+    {/* Left top glowing orb */}
+    <motion.div 
+      animate={{ 
+        scale: [1, 1.2, 1],
+        opacity: [0.3, 0.5, 0.3] 
+      }}
+      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute -top-40 -left-40 w-96 h-96 bg-primary/20 rounded-full mix-blend-lighten filter blur-3xl"
+    />
+    {/* Right bottom glowing orb */}
+    <motion.div 
+      animate={{ 
+        scale: [1.2, 1, 1.2],
+        opacity: [0.3, 0.5, 0.3] 
+      }}
+      transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      className="absolute -bottom-20 -right-20 w-80 h-80 bg-secondary/20 rounded-full mix-blend-lighten filter blur-3xl"
+    />
   </div>
 );
 
 const HeroSection = () => {
   const name = "Serdar Arıcı";
   const title = "Computer Engineer | Full-Stack Developer";
+  const shortDescription = "Computer Engineering graduate with a strong foundation in algorithms and software development. Currently focused on backend development with Java and Spring Boot, while also building experience in frontend and mobile technologies. A fast learner and collaborative problem-solver, eager to contribute to real-world projects and grow through continuous learning.";
 
-  const shortDescription = "Sakarya Üniversitesi Bilgisayar Mühendisliği mezunuyum. Backend ve Frontend teknolojilerinde (Java, Kotlin, Flutter, React, Next.js) üretime odaklanan, çözüm odaklı bir yazılım geliştiricisiyim. Mobil ve web platformlarında kullanıcı deneyimi, performans ve sürdürülebilirliği ön planda tutuyorum.";
+  // Animation variants for staggered entrance
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15, // Delay between each child's animation
+      }
+    }
+  } as Variants;
 
-  // Sosyal medya bağlantıları Sizin Si ikonlarınızla güncellendi
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  } as Variants;
+
+  // Social Media Links
   const socialLinks = [
     { icon: SiGithub, href: "https://github.com/serdararici", label: "GitHub" },
     { icon: SiLinkedin, href: "https://linkedin.com/in/serdararici", label: "LinkedIn" },
@@ -32,63 +71,84 @@ const HeroSection = () => {
   ];
 
   return (
-    <section 
-      className="relative flex flex-col items-center justify-center h-[calc(100vh-4rem)] md:h-[calc(100vh-6rem)] text-foreground px-6 py-6"
-    >
-      {/* 1. Arka Plan Efektleri */}
+    <section className="relative flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-6rem)] text-foreground px-6 py-6 overflow-hidden">
+      {/* 1. Dynamic Background Decoration */}
       <BackgroundEffect />
 
-      {/* 2. Ana İçerik Konteyneri */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      {/* 2. Main Content Wrapper */}
+      <motion.div 
+        className="relative z-10 text-center max-w-4xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         
-        {/* 3. Profil Fotoğrafı */}
-        <div className="mb-4 relative mx-auto w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl transition-all duration-500 hover:scale-105">
-          <Image
-            src="/profile_ai.png"
-            alt="Serdar Arıcı - Professional Profile Photo"
-            fill 
-            className="object-cover"
-            priority 
-          />
-        </div>
+        {/* 3. Profile Image with hover and entrance effects */}
+        <motion.div 
+          variants={itemVariants}
+          className="mb-2 relative mx-auto w-40 h-40 sm:w-52 sm:h-52 rounded-full p-1 bg-gradient-to-tr from-primary to-secondary/40 shadow-2xl transition-all duration-500 hover:scale-105"
+        >
+          <div className="relative w-full h-full rounded-full overflow-hidden bg-background">
+            <Image
+              src="/profile_ai.png"
+              alt="Serdar Arıcı"
+              fill 
+              className="object-cover"
+              priority 
+            />
+          </div>
+        </motion.div>
 
-        {/* 4. İsim ve Unvan */}
-        <h1 className="text-4xl sm:text-6xl font-extrabold mb-2 bg-clip-text text-foreground">
+        {/* 4. Name & Professional Title */}
+        <motion.h1 
+          variants={itemVariants}
+          className="text-5xl sm:text-7xl font-extrabold mb-2 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent tracking-tight"
+        >
           {name}
-        </h1>
-        <p className="text-lg sm:text-2xl text-gray-400 mb-4 font-light tracking-wide">
-          {title}
-        </p>
+        </motion.h1>
+        
+        <motion.div 
+          variants={itemVariants}
+          className="text-xl sm:text-2xl mb-6 font-medium tracking-wide min-h-[1.5em] flex justify-center items-center" 
+        >
+          <TypewriterText text={title} delay={1} />
+        </motion.div>
 
-        {/* 5. Kısa Açıklama */}
-        <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto mb-6 leading-relaxed">
+        {/* 5. About Summary */}
+        <motion.p 
+          variants={itemVariants}
+          className="text-sm sm:text-base text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed font-light"
+        >
           {shortDescription}
-        </p>
+        </motion.p>
 
-        {/* 6. CTA Butonları (Yan Yana) */}
-        <div className="flex flex-col sm:flex-row justify-center gap-3 mb-6 md:pl-20">
-          
-          {/* About Me Butonu */}
+        {/* 6. Call To Action Buttons */}
+        <motion.div 
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6"
+        >
           <Link
             href="/about"
-            className="flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-[var(--color-card)] border border-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-[var(--color-primary)] hover:text-[var(--color-foreground)] transition duration-300 transform hover:scale-[1.06] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)]"
+            className="group flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-all duration-300 shadow-[0_0_20px_-5px_rgba(var(--primary),0.4)] active:scale-95"
           >
-            <BsPerson className="text-xl" /> Hakkımda
+            <BsPerson className="text-xl group-hover:scale-110 transition-transform" /> About Me
           </Link>
 
-          {/* Download CV Butonu */}
           <a 
             href={CV_HREF} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-[var(--color-card)] border border-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-[var(--color-primary)] hover:text-[var(--color-foreground)] transition duration-300 transform hover:scale-[1.06] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)]"
+            className="group flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto font-semibold rounded-full bg-transparent border border-gray-700 text-gray-300 hover:border-primary hover:text-white transition-all duration-300 active:scale-95"
           >
-            <FiEye className="text-xl" /> Özgeçmiş Görüntüle
+            <FiEye className="text-xl group-hover:scale-110 transition-transform" /> View Resume
           </a>
-        </div>
+        </motion.div>
 
-        {/* 7. Sosyal Medya İkonları */}
-        <div className="flex justify-center gap-4 mt-2">
+        {/* 7. Social Connection Links */}
+        <motion.div 
+          variants={itemVariants}
+          className="flex justify-center gap-5 mt-2"
+        >
           {socialLinks.map((item) => (
             <a
               key={item.label}
@@ -96,15 +156,14 @@ const HeroSection = () => {
               target="_blank"
               rel="noopener noreferrer"
               title={item.label}
-              className="p-2 border border-primary/40 rounded-full text-gray-400 hover:bg-primary/20 transition duration-200 
-              hover:scale-110"
+              className="p-3 border border-gray-800 rounded-full text-gray-500 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 hover:-translate-y-1"
             >
-              <item.icon className="text-lg sm:text-xl" />
+              <item.icon className="text-xl" />
             </a>
           ))}
-        </div>
+        </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };
