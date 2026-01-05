@@ -90,10 +90,10 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
             <ChevronLeft className="w-5 h-5" />
           </button>
 
-          <div className="overflow-hidden">
+          <div className="overflow-hidden -mx-2 px-2">
             <div
               ref={sliderRef}
-              className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar"
+              className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar py-4"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {initialProjects.map((project) => (
