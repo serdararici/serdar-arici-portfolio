@@ -2,10 +2,11 @@ import { Award, Cloud, Container } from "lucide-react";
 import type {
   Experience,
   Education,
-  SkillCategory,
+  Skill,
   Certification,
 } from "@/types/types";
 
+/*
 export const experiences: Experience[] = [
   {
     title: "Full-Stack Developer",
@@ -146,3 +147,4 @@ export const certifications: Certification[] = [
   },
 ];
 
+*/

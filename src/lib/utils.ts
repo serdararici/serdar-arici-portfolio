@@ -1,18 +1,21 @@
-// src/lib/utils.ts veya bileşenin içinde
+/**
+ * Formats a date string into a readable 'Month Year' format.
+ * Includes safety checks for null values and invalid dates.
+ * @param dateString - ISO date string or null
+ * @returns Formatted date or "Present"
+ */
 export const formatDate = (dateString: string | null | undefined) => {
-  if (!dateString) return "Present"; // Veya "Devam Ediyor"
+  if (!dateString) return "Present"; 
 
   const date = new Date(dateString);
   
-  // Geçersiz tarih kontrolü (isNaN kontrolü)
+  // Check for invalid date objects
   if (isNaN(date.getTime())) return "Invalid Date";
 
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'long',
+    month: 'long', // Use 'short' for Dec, 'long' for December
   });
 };
 
-// Alias kept for clarity: used by project components as requested
 export const formatProjectDate = formatDate;
-
