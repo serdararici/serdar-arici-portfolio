@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, Variants } from "framer-motion"; // Scroll-triggered animations
-import { Briefcase } from "lucide-react";
+import { Briefcase, MapPin } from "lucide-react";
 import { Experience } from "@/types/types";
 import { formatDate } from "@/lib/utils";
 
@@ -31,7 +31,7 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
   } as Variants;
 
   return (
-    <section className="py-12 px-6">
+    <section className="py-6 px-6">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header with Icon */}
@@ -76,17 +76,24 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
                 <div className="bg-card p-6 rounded-2xl border border-gray-800 hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="text-xl font-bold text-foreground  transition-colors">
                         {item.position}
                       </h3>
                       <p className="text-primary font-medium text-lg mt-1">{item.company_name}</p>
-                      {item.location && (
-                         <span className="text-xs text-gray-500 block mt-1 uppercase tracking-wider">{item.location}</span>
-                      )}
+                    
                     </div>
-                    {/* Date Formatting */}
-                    <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
-                    {formatDate(item.start_date)} — {formatDate(item.end_date)}
+                    
+                    <div className='flex flex-col md:items-end md:text-right'>
+                      {/* Date Formatting */}
+                        <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
+                        {formatDate(item.start_date)} — {formatDate(item.end_date)}
+                      </div>
+                      {item.location && (
+                        <div className="flex items-center gap-1 text-gray-500 text-sm italic mt-2 mr-3">
+                            <MapPin className="w-3.5 h-3.5" />
+                            <span>{item.location}</span>
+                          </div>
+                      )}
                     </div>
                   </div>
 

@@ -29,7 +29,7 @@ const EducationSection = ({ education }: EducationSectionProps) => {
   } as Variants;
 
   return (
-    <section className="py-12 px-6">
+    <section className="py-6 px-6">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Title with Icon */}
@@ -74,7 +74,7 @@ const EducationSection = ({ education }: EducationSectionProps) => {
                 <div className="bg-card p-6 rounded-2xl border border-gray-800 hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="text-xl font-bold text-foreground  transition-colors">
                         {item.degree ? `${item.degree} - ${item.department}` : item.title}
                       </h3>
                       
@@ -89,17 +89,17 @@ const EducationSection = ({ education }: EducationSectionProps) => {
                       )}
                     </div>
                     
-                    {/* Date Formatting */}
-                    <div className="text-gray-400 text-sm font-medium mt-3 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800 h-fit">
-                      {formatDate(item.start_date)} — {formatDate(item.end_date)}
-
-                      {/* Location Section */}
-                        {item.location && (
-                          <div className="flex items-center gap-1 text-gray-500 text-sm italic mt-2">
+                    <div className='flex flex-col md:items-end md:text-right'>
+                      {/* Date Formatting */}
+                        <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
+                        {formatDate(item.start_date)} — {formatDate(item.end_date)}
+                      </div>
+                      {item.location && (
+                        <div className="flex items-center gap-1 text-gray-500 text-sm italic mt-2 mr-3">
                             <MapPin className="w-3.5 h-3.5" />
                             <span>{item.location}</span>
                           </div>
-                        )}
+                      )}
                     </div>
                   </div>
 

@@ -61,7 +61,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
   }, []);
 
   return (
-    <section className="py-16">
+    <section className="py-12">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex items-center justify-between mb-8">

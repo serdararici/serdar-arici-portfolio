@@ -30,7 +30,7 @@ export default async function AboutPage() {
       <AboutHero />
       
       {/* Content wrapper with vertical spacing */}
-      <div className="max-w-6xl mx-auto space-y-24 pb-20">
+      <div className="max-w-6xl mx-auto space-y-12 pb-10">
         
         {/* 2. Professional Experience */}
         <ExperienceSection experiences={experiences} />
