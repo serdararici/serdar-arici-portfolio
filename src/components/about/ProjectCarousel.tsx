@@ -118,7 +118,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                         <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-primary border border-primary/30">
+                          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-white border border-primary/30">
                             {project.category}
                           </span>
                         </div>
@@ -127,7 +127,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                       {/* Project Information Body */}
                       <div className="card-body p-6 space-y-4">
                         <div>
-                          <h3 className="text-xl font-bold text-foreground truncate">
+                          <h3 className="text-xl md:text-lg font-bold text-foreground truncate">
                             {project.title}
                           </h3>
                           <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">

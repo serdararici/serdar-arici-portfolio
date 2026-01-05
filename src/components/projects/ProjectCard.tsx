@@ -62,14 +62,14 @@ export default function ProjectCard({ project }: Props) {
         </figure>
 
         {/* Right: Content */}
-        <div className="p-6 flex flex-col gap-3 flex-1 md:pl-6">
+        <div className="p-6 flex flex-col gap-3 flex-1 md:pl-6 min-w-0">
           {/* Title */}
-          <div className="pr-8">
+          <div className="pr-8 w-full overflow-hidden">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground truncate">{project.title}</h3>
           </div>
 
           {/* Description */}
-          <p className="text-sm text-gray-300 line-clamp-5 leading-relaxed pr-4 md:pr-6 overflow-hidden">
+          <p className="text-sm text-gray-300 line-clamp-3 leading-relaxed pr-4 md:pr-6 overflow-hidden w-full">
             {project.short_description || project.description}
           </p>
 

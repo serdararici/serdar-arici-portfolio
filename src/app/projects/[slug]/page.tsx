@@ -17,7 +17,7 @@ export default async function ProjectPage({ params }: Props) {
     .from('projects')
     .select('*')
     .eq('slug', slug)
-    .single();
+    .maybeSingle();
 
   // 4. Check for errors or empty results
   if (error || !project) {

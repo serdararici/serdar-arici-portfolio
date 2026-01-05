@@ -63,7 +63,7 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
                 src={src}
                 alt={`${projectTitle} screenshot ${i + 1}`}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="object-aspectratio object-center transition-transform duration-500 group-hover:scale-110"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>

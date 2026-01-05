@@ -45,7 +45,7 @@ export default function ProjectDetailClient({ project }: Props) {
                   src={project.image_url ?? "/image_not_found.jpg"}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  className="object-aspectratio object-center"
                   priority
                 />
               </div>
