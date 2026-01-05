@@ -12,9 +12,9 @@ export type Project = {
   live_url?: string | null;
   image_url: string | null;
   video_url?: string | null;
-  project_date: string | null;
-  is_featured: boolean; 
-  gallery: string[] | null;
+  project_date?: string | null;
+  is_featured?: boolean; 
+  gallery?: string[] | null;
 }
 
 export type Experience = {
