@@ -70,7 +70,7 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
                 initial="hidden"
                 animate="visible"
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="group relative bg-card border border-gray-800 rounded-2xl p-4 sm:p-6 hover:border-primary/50 hover:bg-primary/[0.02] transition-all duration-300"
+                className="group relative bg-card border border-gray-800 rounded-2xl p-4 sm:p-6 hover:border-primary/50 hover:bg-primary/2 transition-all duration-300"
               >
                 {/* Arrow Icon - Hidden on small mobile for cleaner look, shown on sm+ */}
                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
