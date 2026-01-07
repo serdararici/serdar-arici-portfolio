@@ -1,0 +1,30 @@
+{
+    "navigation": {
+        "home": "Home",
+        "about": "About Me",
+        "projects": "Projects",
+        "blogs": "Blogs",
+        "contact": "Contact"
+    },
+    "home": {
+        "hero": {
+            "title": "Computer Engineer | Full-Stack Developer",
+            "shortDescription": "Computer Engineering graduate with a strong foundation in algorithms and software development. Currently focused on backend development with Java and Spring Boot, while also building experience in frontend and mobile technologies. A fast learner and collaborative problem-solver, eager to contribute to real-world projects and grow through continuous learning."
+        }
+    },
+    "about":{
+        "certifications": "Certifications"
+    },
+    "projects": {
+        "title": "Projects",
+        "viewAll": "View All Projects"
+    },
+    "blogs": {
+        "title": "Blogs",
+        "viewAll": "View All Blogs"
+    },
+    "contact": {
+        "title": "Get in Touch",
+        "description": "Feel free to reach out for collaborations or just a friendly hello!"
+    }
+}

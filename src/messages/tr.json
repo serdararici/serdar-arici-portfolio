@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "projects": "Projeler",
+    "blogs": "Blog",
+    "contact": "İletişim"
+  },
+  "home": {
+    "hero": {
+      "title": "Bilgisayar Mühendisi | Full-Stack Developer",
+      "shortDescription": "Bilgisayar Mühendisliği mezunuyum ve algoritmalar ile yazılım geliştirme alanlarında güçlü bir teknik altyapıya sahibim. Ağırlıklı olarak Java ve Spring Boot kullanarak backend geliştirme üzerine çalışıyor; bunun yanında frontend ve mobil teknolojilerde de aktif olarak projeler geliştiriyorum. Hızlı öğrenen, ekip çalışmasına uyumlu ve analitik düşünme becerileri gelişmiş bir yazılımcı olarak, gerçek dünya problemlerine etkili çözümler üretmeyi ve sürekli öğrenerek kendimi geliştirmeyi hedefliyorum."
+    }
+  }
+}

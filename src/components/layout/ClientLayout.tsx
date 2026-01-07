@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -10,7 +11,10 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const params = useParams();
+  
+  // locale'i dahil et
+  const isHome = pathname === `/${params.locale}` || pathname === "/";
 
   return (
     <div className="flex min-h-screen flex-col">

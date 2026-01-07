@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Send, MapPin, ArrowUpRight } from "lucide-react";
 import { SiLinkedin, SiGithub } from "react-icons/si";
-import { sendEmail } from "../actions/sendEmail";
+import { sendEmail } from "../../actions/sendEmail";
 
 const ContactPage = () => {
   const [isSending, setIsSending] = useState(false);

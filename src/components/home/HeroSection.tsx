@@ -8,9 +8,11 @@ import { BsPerson } from 'react-icons/bs';
 import { FiEye } from 'react-icons/fi';
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si"; 
 import TypewriterText from "@/components/ui/TypewriterText";
+import { useTranslations } from 'next-intl';
 
 // Resume file path in the public folder
 const CV_HREF = "/Serdar_Arici_Resume.pdf"; 
+
 
 /**
  * Background decoration with animated glowing orbs
@@ -39,9 +41,10 @@ const BackgroundEffect = () => (
 );
 
 const HeroSection = () => {
+  const t = useTranslations('home');
   const name = "Serdar Arıcı";
-  const title = "Computer Engineer | Full-Stack Developer";
-  const shortDescription = "Computer Engineering graduate with a strong foundation in algorithms and software development. Currently focused on backend development with Java and Spring Boot, while also building experience in frontend and mobile technologies. A fast learner and collaborative problem-solver, eager to contribute to real-world projects and grow through continuous learning.";
+  const title = t('hero.title');
+  const shortDescription = t('hero.shortDescription');
 
   // Animation variants for staggered entrance
   const containerVariants = {
@@ -111,7 +114,7 @@ const HeroSection = () => {
           variants={itemVariants}
           className="text-xl sm:text-2xl mb-6 font-medium tracking-wide min-h-[1.5em] flex justify-center items-center" 
         >
-          <TypewriterText text={title} delay={1} />
+          <TypewriterText key={title} text={title} delay={1} />
         </motion.div>
 
         {/* 5. About Summary */}
