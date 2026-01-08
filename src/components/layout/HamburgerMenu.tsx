@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from '@/i18n/routing';
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si";
 import { HiX } from "react-icons/hi";
 

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from '@/i18n/routing';
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ExternalLink as ExtIcon, Play, X } from "lucide-react";
 import { SiGithub, SiYoutube } from "react-icons/si";

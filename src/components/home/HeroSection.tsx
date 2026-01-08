@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { motion, Variants } from 'framer-motion'; // Animation engine
 import { BsPerson } from 'react-icons/bs';
 import { FiEye } from 'react-icons/fi';
