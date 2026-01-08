@@ -6,6 +6,9 @@
         "blogs": "Blogs",
         "contact": "Contact"
     },
+    "footer": {
+        "rights": "All rights reserved."
+    },
     "home": {
         "hero": {
             "title": "Computer Engineer | Full-Stack Developer",
@@ -13,18 +16,17 @@
         }
     },
     "about":{
-        "certifications": "Certifications"
+        
     },
     "projects": {
-        "title": "Projects",
-        "viewAll": "View All Projects"
+        
     },
     "blogs": {
-        "title": "Blogs",
-        "viewAll": "View All Blogs"
+        
     },
     "contact": {
-        "title": "Get in Touch",
-        "description": "Feel free to reach out for collaborations or just a friendly hello!"
+    "title": "Get in Touch",
+    "description": "Feel free to reach out for collaborations or just a friendly hello!",
+    "button": "Send Message"
     }
 }

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from '@/i18n/routing';
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si";
 import { HiX } from "react-icons/hi";
+import { useTranslations } from "next-intl";
 
 type Props = {
   isOpen: boolean;
@@ -11,14 +12,15 @@ type Props = {
 };
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About Me", href: "/about" },
-  { name: "Projects", href: "/projects" },
-  { name: "Blogs", href: "/blogs" },
-  { name: "Contact", href: "/contact" },
+  { name: "home", href: "/" },
+  { name: "about", href: "/about" },
+  { name: "projects", href: "/projects" },
+  { name: "blogs", href: "/blogs" },
+  { name: "contact", href: "/contact" },
 ];
 
 export default function HamburgerMenu({ isOpen, onClose }: Props) {
+  const t = useTranslations('navigation');
   return (
     <AnimatePresence>
       {isOpen && (
@@ -56,7 +58,7 @@ export default function HamburgerMenu({ isOpen, onClose }: Props) {
                     onClick={onClose}
                     className="text-gray-300 hover:text-white text-lg transition-colors block py-1 hover:pl-2 hover:border-l-2 hover:border-blue-500"
                   >
-                    {item.name}
+                    {t(item.name)}
                   </Link>
                 </li>
               ))}
