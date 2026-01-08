@@ -5,17 +5,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Search } from "lucide-react";
 import type { Project } from "@/types/types";
 import ProjectCard from "@/components/projects/ProjectCard";
+import { useTranslations } from "next-intl";
 
 type Props = {
   initialProjects: Project[];
 };
 
 export default function ProjectsClient({ initialProjects }: Props) {
+  const t = useTranslations('projects.client');
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
   const categories = useMemo(() => {
     const cats = Array.from(new Set(initialProjects.map((p) => p.category)));
+    // We keep "All" as technical state, but display translated label in UI
     return ["All", ...cats];
   }, [initialProjects]);
 
@@ -42,7 +45,7 @@ export default function ProjectsClient({ initialProjects }: Props) {
             aria-label="Search projects"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by title or tech (e.g. React, Golang)"
+            placeholder={t('searchPlaceholder')}
             className="bg-transparent outline-none placeholder:text-gray-500 text-sm w-full"
           />
           {query && (
@@ -50,13 +53,13 @@ export default function ProjectsClient({ initialProjects }: Props) {
               onClick={() => setQuery("")}
               className="text-xs px-3 py-1 rounded-md bg-gray-800 text-gray-300 hover:bg-gray-700 transition"
             >
-              Clear
+              {t('clear')}
             </button>
           )}
         </div>
 
         {/* Category Tabs */}
-        <nav className="flex gap-3 overflow-x-auto py-1 px-1">
+        <nav className="flex gap-3 overflow-x-auto py-1 px-1 no-scrollbar">
           {categories.map((cat) => {
             const active = cat === activeCategory;
             return (
@@ -68,7 +71,8 @@ export default function ProjectsClient({ initialProjects }: Props) {
                 }`}
                 style={active ? { backgroundColor: "var(--color-primary)", borderColor: "transparent" } : {}}
               >
-                {cat}
+                {/* Translate "All" while keeping others as they come from DB */}
+                {cat === "All" ? t('all') : cat}
               </button>
             );
           })}
@@ -77,13 +81,13 @@ export default function ProjectsClient({ initialProjects }: Props) {
 
       <section>
         {filtered.length === 0 ? (
-          <div className="bg-card border border-gray-800 rounded-[2.5rem] p-8 text-center">
-            <p className="text-gray-400 text-lg">No projects found.</p>
-            <p className="mt-2 text-sm text-gray-500">Try adjusting your search or category filters.</p>
+          <div className="bg-card border border-gray-800 rounded-[2.5rem] p-12 text-center">
+            <p className="text-gray-400 text-lg font-semibold">{t('noResults')}</p>
+            <p className="mt-2 text-sm text-gray-500">{t('tryAgain')}</p>
           </div>
         ) : (
           <motion.div layout className="flex flex-col gap-8">
-            <AnimatePresence>
+            <AnimatePresence mode="popLayout">
               {filtered.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}

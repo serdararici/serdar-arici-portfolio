@@ -1,22 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { Link } from '@/i18n/routing';
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ExternalLink as ExtIcon, Play, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowLeft, ExternalLink as ExtIcon } from "lucide-react";
 import { SiGithub, SiYoutube } from "react-icons/si";
 import type { Project } from "@/types/types";
-import { formatProjectDate } from "@/lib/utils";
+import { formatDate } from "@/lib/utils";
 import ProjectGallery from "./ProjectGallery";
+import { useTranslations, useLocale } from "next-intl";
 
 type Props = {
-  project: Project; // We use our main Project type
+  project: Project;
 };
 
 export default function ProjectDetailClient({ project }: Props) {
+  const t = useTranslations('projects.detail');
+  const locale = useLocale();
 
-  // Use gallery array if exists, otherwise fallback to main image_url
   const gallery = (project.gallery && project.gallery.length > 0) 
     ? project.gallery 
     : (project.image_url ? [project.image_url] : []);
@@ -33,11 +35,11 @@ export default function ProjectDetailClient({ project }: Props) {
           <div className="mb-4">
             <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-primary transition">
               <ArrowLeft className="w-4 h-4" />
-              Back to Projects
+              {t('back')}
             </Link>
           </div>
 
-          {/* Hero Image Section */}
+          {/* Hero Image */}
           <div className="max-w-4xl mx-auto mb-12"> 
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm">
               <div className="relative w-full h-64 md:h-112.5">
@@ -45,17 +47,15 @@ export default function ProjectDetailClient({ project }: Props) {
                   src={project.image_url ?? "/image_not_found.jpg"}
                   alt={project.title}
                   fill
-                  className="object-aspectratio object-center"
+                  className="object-cover object-center"
                   priority
                 />
               </div>
             </div>
           </div>
 
-          {/* Project Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            
-            {/* Main Content Column */}
+            {/* Left: Main Content */}
             <article className="lg:col-span-2 space-y-8">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
                 {project.title}
@@ -63,32 +63,31 @@ export default function ProjectDetailClient({ project }: Props) {
               
               <section className="max-w-none">
                 <h2 className="text-2xl font-semibold text-primary mb-4 border-b border-gray-800 pb-2">
-                  About Project
+                  {t('about')}
                 </h2>
                 <div className="text-gray-300 text-lg leading-relaxed whitespace-pre-line">
-                  {project.description || "No description provided."}
+                  {project.description || t('noDescription')}
                 </div>
               </section>
             </article>
 
-            {/* Sidebar Column */}
+            {/* Right: Sidebar */}
             <aside className="space-y-6 sticky top-24 self-start">
-              {/* Project Info Box */}
               <div className="bg-card border border-gray-800 rounded-2xl p-6 shadow-xl">
-                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Project Details</h3>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">{t('sidebarTitle')}</h3>
 
                 <dl className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <dt className="text-gray-400 text-sm">Category</dt>
+                    <dt className="text-gray-400 text-sm">{t('category')}</dt>
                     <dd className="text-white font-medium px-3 py-1 bg-gray-900 rounded-full text-xs">
                       {project.category}
                     </dd>
                   </div>
 
                   <div className="flex justify-between items-center">
-                    <dt className="text-gray-400 text-sm">Completed</dt>
+                    <dt className="text-gray-400 text-sm">{t('completed')}</dt>
                     <dd className="text-gray-200 font-medium">
-                      {formatProjectDate(project.project_date)}
+                      {formatDate(project.project_date, locale)}
                     </dd>
                   </div>
                 </dl>
@@ -101,11 +100,10 @@ export default function ProjectDetailClient({ project }: Props) {
                       className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-white font-bold hover:opacity-90 transition shadow-lg shadow-primary/20"
                     >
                       <ExtIcon className="w-4 h-4" />
-                      Live Preview
+                      {t('live')}
                     </Link>
                   )}
 
-                  {/* YouTube Video Button - */}
                   {project.video_url && (
                     <Link
                       href={project.video_url}
@@ -113,7 +111,7 @@ export default function ProjectDetailClient({ project }: Props) {
                       className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#FF0000] text-white font-bold hover:bg-[#CC0000] transition shadow-lg shadow-red-900/20"
                     >
                       <SiYoutube className="w-4 h-4 fill-current" />
-                      Watch Demo
+                      {t('watch')}
                     </Link>
                   )}
 
@@ -124,16 +122,15 @@ export default function ProjectDetailClient({ project }: Props) {
                       className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-700 text-white font-bold hover:bg-white hover:text-black transition"
                     >
                       <SiGithub className="w-4 h-4" />
-                      View Source
+                      {t('source')}
                     </Link>
                   )}
-
                 </div>
               </div>
 
               {/* Stack Box */}
               <div className="bg-card border border-gray-800 rounded-2xl p-6 shadow-xl">
-                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Tech Stack</h3>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">{t('techStack')}</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.tech_stack.map((t) => (
                     <span key={t} className="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-sm text-gray-300">
@@ -145,7 +142,6 @@ export default function ProjectDetailClient({ project }: Props) {
             </aside>
           </div>
 
-          {/* Project Gallery Section */}
           <ProjectGallery 
             gallery={gallery} 
             projectTitle={project.title} 

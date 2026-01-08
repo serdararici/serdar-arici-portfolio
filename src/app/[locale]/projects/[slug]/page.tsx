@@ -2,24 +2,32 @@
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 import ProjectDetailClient from "@/components/projects/ProjectDetailClient";
-// 1. Define the props type where params is a Promise
+import { getTranslations } from "next-intl/server";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
+// Optional: Dinamik Sayfa Başlığı (SEO için süper olur)
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const { data: project } = await supabase.from('projects').select('title').eq('slug', slug).single();
+  
+  return {
+    title: project ? `${project.title} | Serdar Arıcı` : 'Project Details',
+  };
+}
+
 export default async function ProjectPage({ params }: Props) {
-  // 2. Await the params before using them (Crucial for Next.js 15+)
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
-  // 3. Fetch from Supabase with the resolved slug
   const { data: project, error } = await supabase
     .from('projects')
     .select('*')
     .eq('slug', slug)
     .maybeSingle();
 
-  // 4. Check for errors or empty results
   if (error || !project) {
     console.error("Project fetch error:", error?.message || "Project not found");
     return notFound();

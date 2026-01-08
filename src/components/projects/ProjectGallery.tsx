@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface ProjectGalleryProps {
   gallery: string[];
@@ -11,10 +12,10 @@ interface ProjectGalleryProps {
 }
 
 const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
+  const t = useTranslations('projects.gallery');
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const galleryItems = gallery.filter(Boolean);
 
-  // Navigation functions
   const showNext = (e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (currentIndex !== null) {
@@ -29,7 +30,6 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
     }
   };
 
-  // Keyboard support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (currentIndex === null) return;
@@ -46,8 +46,10 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
   return (
     <section className="mt-16 border-t border-gray-800 pt-12">
       <div className="flex items-center justify-between mb-8">
-        <h3 className="text-2xl font-bold text-white">Project Gallery</h3>
-        <span className="text-sm text-gray-400">{galleryItems.length} Screenshots</span>
+        <h3 className="text-2xl font-bold text-white">{t('title')}</h3>
+        <span className="text-sm text-gray-400">
+          {galleryItems.length} {t('screenshots')}
+        </span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -61,9 +63,9 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
             <div className="relative w-full aspect-video">
               <Image
                 src={src}
-                alt={`${projectTitle} screenshot ${i + 1}`}
+                alt={`${projectTitle} ${t('screenshotAlt')} ${i + 1}`}
                 fill
-                className="object-aspectratio object-center transition-transform duration-500 group-hover:scale-110"
+                className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
@@ -71,7 +73,6 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
         ))}
       </div>
 
-      {/* Lightbox Modal */}
       <AnimatePresence>
         {currentIndex !== null && (
           <motion.div
@@ -79,24 +80,24 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setCurrentIndex(null)}
-            className="fixed inset-0 z-100 flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
           >
             <button
-              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-110"
+              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-[110]"
               onClick={() => setCurrentIndex(null)}
             >
               <X className="w-10 h-10" />
             </button>
 
             <button
-              className="absolute left-4 md:left-8 p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all z-110"
+              className="absolute left-4 md:left-8 p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all z-[110]"
               onClick={showPrev}
             >
               <ArrowLeft className="w-8 h-8" />
             </button>
 
             <button
-              className="absolute right-4 md:right-8 p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all z-110"
+              className="absolute right-4 md:right-8 p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all z-[110]"
               onClick={showNext}
             >
               <ArrowRight className="w-8 h-8" />

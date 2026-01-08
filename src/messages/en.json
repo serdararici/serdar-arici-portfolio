@@ -40,7 +40,7 @@
             "title": "Featured Projects",
             "viewAll": "View All Projects",
             "github": "GitHub",
-            "live": "Live"
+            "demo": "Demo"
         },
         "certifications": {
         "title": "Certifications",
@@ -51,48 +51,81 @@
         }
     },
     "projects": {
-        
+        "page": {
+            "title": "My Projects",
+            "subtitle": "Engineering Focused",
+            "description": "A curated showcase of engineering-first projects spanning backend, frontend, mobile, and full-stack solutions. Filter or search to find projects that demonstrate different skills and domains."
+        },
+        "client": {
+            "searchPlaceholder": "Search by title or tech (e.g. React, Golang)",
+            "clear": "Clear",
+            "all": "All",
+            "noResults": "No projects found.",
+            "tryAgain": "Try adjusting your search or category filters."
+        },
+        "card": {
+            "viewDemo": "View Demo",
+            "github": "GitHub",
+            "ariaLabel": "Open details for"
+        },
+        "detail": {
+            "back": "Back to Projects",
+            "about": "About Project",
+            "noDescription": "No description provided.",
+            "sidebarTitle": "Project Details",
+            "category": "Category",
+            "completed": "Completed",
+            "live": "Live Preview",
+            "watch": "Watch Demo",
+            "source": "View Source",
+            "techStack": "Tech Stack"
+        },
+        "gallery": {
+            "title": "Project Gallery",
+            "screenshots": "Screenshots",
+            "screenshotAlt": "screenshot"
+        }
     },
     "blogs": {
-    "comingSoon": "Coming Soon",
-    "title": "The Blog is",
-    "titleHighlight": "Compiling...",
-    "description": "I'm currently curating deep-dive articles on software architecture, system design patterns, and engineering insights. Stay tuned for the release.",
-    "inputPlaceholder": "Enter your email address",
-    "notifyBtn": "Notify Me",
-    "spamNote": "No spam. Unsubscribe at any time.",
-    "footerNote": "Built with precision."
+        "comingSoon": "Coming Soon",
+        "title": "The Blog is",
+        "titleHighlight": "Compiling...",
+        "description": "I'm currently curating deep-dive articles on software architecture, system design patterns, and engineering insights. Stay tuned for the release.",
+        "inputPlaceholder": "Enter your email address",
+        "notifyBtn": "Notify Me",
+        "spamNote": "No spam. Unsubscribe at any time.",
+        "footerNote": "Built with precision."
     },
     "contact": {
-    "badge": "Available for hire",
-    "title": "Get in",
-    "titleHighlight": "touch.",
-    "description": "I am a recent Computer Engineering graduate looking for new opportunities. Whether you have a job opening or just want to say hi, I'd love to hear from you!",
-    "form": {
-        "name": "Your Name",
-        "namePlaceholder": "John Doe",
-        "email": "Your Email",
-        "emailPlaceholder": "john@example.com",
-        "message": "Message",
-        "messagePlaceholder": "Write your message here...",
-        "send": "Send Message",
-        "sending": "Sending...",
-        "success": "Your message has been sent successfully!",
-        "error": "Something went wrong. Please try again."
-    },
-    "info": {
-        "connect": "Connect Directly",
-        "location": "Base of Operations",
-        "city": "Istanbul, TR"
-    }
+        "badge": "Available for hire",
+        "title": "Get in",
+        "titleHighlight": "touch.",
+        "description": "I am a recent Computer Engineering graduate looking for new opportunities. Whether you have a job opening or just want to say hi, I'd love to hear from you!",
+        "form": {
+            "name": "Your Name",
+            "namePlaceholder": "John Doe",
+            "email": "Your Email",
+            "emailPlaceholder": "john@example.com",
+            "message": "Message",
+            "messagePlaceholder": "Write your message here...",
+            "send": "Send Message",
+            "sending": "Sending...",
+            "success": "Your message has been sent successfully!",
+            "error": "Something went wrong. Please try again."
+        },
+        "info": {
+            "connect": "Connect Directly",
+            "location": "Base of Operations",
+            "city": "Istanbul, TR"
+        }
     },
     "common": {
-    "error": {
-        "title": "Something went wrong! 🚨",
-        "retry": "Try Again"
-    },
-    "loading": {
-        "text": "Loading page..."
-    }
+        "error": {
+            "title": "Something went wrong! 🚨",
+            "retry": "Try Again"
+        },
+        "loading": {
+            "text": "Loading page..."
+        }
     }
 }

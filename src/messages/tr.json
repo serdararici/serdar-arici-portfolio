@@ -40,7 +40,7 @@
       "title": "Öne Çıkan Projeler",
       "viewAll": "Tüm Projeleri Gör",
       "github": "GitHub",
-      "live": "Canlı"
+      "demo": "Demo"
     },
     "certifications": {
       "title": "Sertifikalar",
@@ -51,7 +51,40 @@
     }
   },
   "projects": {
-      
+      "page": {
+        "title": "Projelerim",
+        "subtitle": "Mühendislik Odaklı",
+        "description": "Backend, frontend, mobil ve full-stack çözümleri kapsayan mühendislik öncelikli projelerim. Farklı becerileri ve alanları temsil eden projeleri bulmak için filtreleyebilir veya arama yapabilirsiniz."
+      },
+      "client": {
+        "searchPlaceholder": "Başlığa veya teknolojiye göre ara (ör. React, Golang)",
+        "clear": "Temizle",
+        "all": "Hepsi",
+        "noResults": "Proje bulunamadı.",
+        "tryAgain": "Aramanızı veya kategori filtrelerinizi değiştirmeyi deneyin."
+      },
+      "card": {
+        "viewDemo": "Demoyu Gör",
+        "github": "GitHub",
+        "ariaLabel": "Detayları gör:"
+      },
+      "detail": {
+        "back": "Projelere Dön",
+        "about": "Proje Hakkında",
+        "noDescription": "Açıklama belirtilmedi.",
+        "sidebarTitle": "Proje Detayları",
+        "category": "Kategori",
+        "completed": "Tamamlanma",
+        "live": "Canlı Önizleme",
+        "watch": "Demoyu İzle",
+        "source": "Kaynak Kodu",
+        "techStack": "Kullanılan Teknolojiler"
+    },
+    "gallery": {
+      "title": "Proje Galerisi",
+      "screenshots": "Ekran Görüntüsü",
+      "screenshotAlt": "ekran görüntüsü"
+    }
   },
   "blogs": {
   "comingSoon": "Yakında",
