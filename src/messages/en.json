@@ -12,7 +12,9 @@
     "home": {
         "hero": {
             "title": "Computer Engineer | Full-Stack Developer",
-            "shortDescription": "Computer Engineering graduate with a strong foundation in algorithms and software development. Currently focused on backend development with Java and Spring Boot, while also building experience in frontend and mobile technologies. A fast learner and collaborative problem-solver, eager to contribute to real-world projects and grow through continuous learning."
+            "shortDescription": "Computer Engineering graduate with a strong foundation in algorithms and software development. Currently focused on backend development with Java and Spring Boot, while also building experience in frontend and mobile technologies. A fast learner and collaborative problem-solver, eager to contribute to real-world projects and grow through continuous learning.",
+            "aboutMe": "About Me",
+            "viewResume": "View Resume"
         }
     },
     "about":{
@@ -22,11 +24,45 @@
         
     },
     "blogs": {
-        
+    "comingSoon": "Coming Soon",
+    "title": "The Blog is",
+    "titleHighlight": "Compiling...",
+    "description": "I'm currently curating deep-dive articles on software architecture, system design patterns, and engineering insights. Stay tuned for the release.",
+    "inputPlaceholder": "Enter your email address",
+    "notifyBtn": "Notify Me",
+    "spamNote": "No spam. Unsubscribe at any time.",
+    "footerNote": "Built with precision."
     },
     "contact": {
-    "title": "Get in Touch",
-    "description": "Feel free to reach out for collaborations or just a friendly hello!",
-    "button": "Send Message"
+    "badge": "Available for hire",
+    "title": "Get in",
+    "titleHighlight": "touch.",
+    "description": "I am a recent Computer Engineering graduate looking for new opportunities. Whether you have a job opening or just want to say hi, I'd love to hear from you!",
+    "form": {
+        "name": "Your Name",
+        "namePlaceholder": "John Doe",
+        "email": "Your Email",
+        "emailPlaceholder": "john@example.com",
+        "message": "Message",
+        "messagePlaceholder": "Write your message here...",
+        "send": "Send Message",
+        "sending": "Sending...",
+        "success": "Your message has been sent successfully!",
+        "error": "Something went wrong. Please try again."
+    },
+    "info": {
+        "connect": "Connect Directly",
+        "location": "Base of Operations",
+        "city": "Istanbul, TR"
+    }
+    },
+    "common": {
+    "error": {
+        "title": "Something went wrong! 🚨",
+        "retry": "Try Again"
+    },
+    "loading": {
+        "text": "Loading page..."
+    }
     }
 }

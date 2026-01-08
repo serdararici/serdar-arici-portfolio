@@ -1,18 +1,22 @@
-'use client' // error.tsx her zaman client component olmalı
+'use client'
+
+import { useTranslations } from 'next-intl';
 
 export default function GlobalError({ error, reset }: { error: Error; reset: () => void }) {
+  const t = useTranslations('common.error');
+
   return (
     <html>
-      <body className="flex flex-col items-center justify-center min-h-screen text-center px-6">
+      <body className="flex flex-col items-center justify-center min-h-screen text-center px-6 bg-background">
         <h2 className="text-2xl font-bold text-red-600 mb-4">
-          Bir hata oluştu! 🚨
+          {t('title')}
         </h2>
-        <p className="text-white-700 mb-6">{error.message}</p>
+        <p className="text-gray-400 mb-6">{error.message}</p>
         <button
           onClick={() => reset()}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          className="px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20"
         >
-          Tekrar Dene
+          {t('retry')}
         </button>
       </body>
     </html>

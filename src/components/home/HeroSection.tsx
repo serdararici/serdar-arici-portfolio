@@ -134,7 +134,8 @@ const HeroSection = () => {
             href="/about"
             className="group flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-all duration-300 shadow-[0_0_20px_-5px_rgba(var(--primary),0.4)] active:scale-95"
           >
-            <BsPerson className="text-xl group-hover:scale-110 transition-transform" /> About Me
+            <BsPerson className="text-xl group-hover:scale-110 transition-transform" /> 
+            {t('hero.aboutMe')}
           </Link>
 
           <a 
@@ -143,7 +144,8 @@ const HeroSection = () => {
             rel="noopener noreferrer" 
             className="group flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto font-semibold rounded-full bg-transparent border border-gray-700 text-gray-300 hover:border-primary hover:text-white transition-all duration-300 active:scale-95"
           >
-            <FiEye className="text-xl group-hover:scale-110 transition-transform" /> View Resume
+            <FiEye className="text-xl group-hover:scale-110 transition-transform" /> 
+            {t('hero.viewResume')}
           </a>
         </motion.div>
 

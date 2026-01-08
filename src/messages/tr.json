@@ -12,7 +12,9 @@
   "home": {
     "hero": {
       "title": "Bilgisayar Mühendisi | Full-Stack Developer",
-      "shortDescription": "Bilgisayar Mühendisliği mezunuyum ve algoritmalar ile yazılım geliştirme alanlarında güçlü bir teknik altyapıya sahibim. Ağırlıklı olarak Java ve Spring Boot kullanarak backend geliştirme üzerine çalışıyor; bunun yanında frontend ve mobil teknolojilerde de aktif olarak projeler geliştiriyorum. Hızlı öğrenen, ekip çalışmasına uyumlu ve analitik düşünme becerileri gelişmiş bir yazılımcı olarak, gerçek dünya problemlerine etkili çözümler üretmeyi ve sürekli öğrenerek kendimi geliştirmeyi hedefliyorum."
+      "shortDescription": "Bilgisayar Mühendisliği mezunuyum ve algoritmalar ile yazılım geliştirme alanlarında güçlü bir teknik altyapıya sahibim. Ağırlıklı olarak Java ve Spring Boot kullanarak backend geliştirme üzerine çalışıyor; bunun yanında frontend ve mobil teknolojilerde de aktif olarak projeler geliştiriyorum. Hızlı öğrenen, ekip çalışmasına uyumlu ve analitik düşünme becerileri gelişmiş bir yazılımcı olarak, gerçek dünya problemlerine etkili çözümler üretmeyi ve sürekli öğrenerek kendimi geliştirmeyi hedefliyorum.",
+      "aboutMe": "Hakkımda",
+      "viewResume": "Özgeçmişi Görüntüle"
     }
   },
   "about":{
@@ -22,11 +24,45 @@
       
   },
   "blogs": {
-      
+  "comingSoon": "Yakında",
+  "title": "Blog Sayfası",
+  "titleHighlight": "Derleniyor...",
+  "description": "Yazılım mimarisi, sistem tasarım kalıpları ve mühendislik içgörüleri üzerine derinlemesine makaleler hazırlıyorum. Takipte kalın.",
+  "inputPlaceholder": "E-posta adresinizi girin",
+  "notifyBtn": "Haber Ver",
+  "spamNote": "Spam içermez. İstediğiniz zaman ayrılabilirsiniz.",
+  "footerNote": "Hassasiyetle inşa edildi."
   },
   "contact": {
-    "title": "İletişime Geçin",
-    "description": "İş birlikleri veya sadece merhaba demek için çekinmeden ulaşabilirsiniz!",
-    "button": "Mesaj Gönder"
+  "badge": "İş tekliflerine açık",
+  "title": "Benimle",
+  "titleHighlight": "iletişime geç.",
+  "description": "Yeni fırsatlar arayan bir Bilgisayar Mühendisliği mezunuyum. İster bir iş ilanınız olsun, ister sadece merhaba demek isteyin, sizden haber almayı çok isterim!",
+  "form": {
+    "name": "Adınız",
+    "namePlaceholder": "Can Demir",
+    "email": "E-posta Adresiniz",
+    "emailPlaceholder": "can@ornek.com",
+    "message": "Mesajınız",
+    "messagePlaceholder": "Mesajınızı buraya yazın...",
+    "send": "Mesaj Gönder",
+    "sending": "Gönderiliyor...",
+    "success": "Mesajınız başarıyla iletildi!",
+    "error": "Bir sorun oluştu. Lütfen tekrar deneyin."
+  },
+  "info": {
+    "connect": "Doğrudan Bağlantı",
+    "location": "Operasyon Merkezi",
+    "city": "İstanbul, TR"
   }
+  },
+  "common": {
+  "error": {
+    "title": "Bir hata oluştu! 🚨",
+    "retry": "Tekrar Dene"
+  },
+  "loading": {
+    "text": "Sayfa yükleniyor..."
+  }
+  } 
 }
