@@ -18,7 +18,37 @@
     }
   },
   "about":{
-      
+      "hero": {
+      "title": "Bilgisayar Mühendisi | Full-Stack Developer",
+      "viewResume": "Özgeçmişi Görüntüle",
+      "location": "Sakarya, Türkiye",
+      "description1": "Full-stack yazılım geliştirmeye odaklanmış bir Bilgisayar Mühendisliği mezunuyum. Temel uzmanlığım, ölçeklenebilir ve verimli sistemler tasarlamaktan keyif aldığım <white>Java ve C#</white> ile backend geliştirme üzerinedir. Frontend tarafında ise modern ve kullanıcı dostu arayüzler inşa etmek için <white>React ve Next.js</white> ile çalışıyorum.",
+      "description2": "Full-stack geliştirmenin yanı sıra mobil uygulama geliştirme deneyimine sahibim; DevOps, güvenlik ve yapay zeka destekli sistemlere ilgi duyuyorum. Temiz koda, sürekli öğrenmeye ve iş birliğine değer veriyorum."
+    },
+    "education": {
+      "title": "Eğitim Geçmişi",
+      "present": "Günümüz"
+    },
+    "experience": {
+      "title": "İş Deneyimi",
+      "present": "Günümüz"
+    },
+    "skills": {
+      "title": "Teknik Yetenekler"
+    },
+    "projectCarousel": {
+      "title": "Öne Çıkan Projeler",
+      "viewAll": "Tüm Projeleri Gör",
+      "github": "GitHub",
+      "live": "Canlı"
+    },
+    "certifications": {
+      "title": "Sertifikalar",
+      "unit": "Sertifika",
+      "issued": "Verilme Tarihi",
+      "showMore": "Daha Fazla Göster",
+      "showLess": "Daha Az Göster"
+    }
   },
   "projects": {
       

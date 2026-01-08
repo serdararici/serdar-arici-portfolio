@@ -12,15 +12,17 @@ import { SiGithub } from "react-icons/si";
 import { useRef, useEffect, useState } from "react";
 import { Project } from "@/types/types";
 import { formatProjectDate } from "@/lib/utils";
+import { useTranslations, useLocale } from "next-intl";
 
 interface ProjectCarouselProps {
   initialProjects: Project[];
 }
 
 const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
+  const t = useTranslations('about.projectCarousel');
+  const locale = useLocale();
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll navigation logic
   const scrollByCards = (direction: "next" | "prev") => {
     const container = sliderRef.current;
     if (!container) return;
@@ -69,14 +71,14 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
             <div className="p-2 bg-primary/10 rounded-lg">
               <ExternalLink className="w-6 h-6 text-primary" />
             </div>
-            <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
+            <h2 className="text-3xl font-bold text-white">{t('title')}</h2>
           </div>
           
           <Link 
             href="/projects" 
             className="group flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-all"
           >
-            View All Projects
+            {t('viewAll')}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -105,10 +107,8 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                              sm:w-[calc(50%-16px)] 
                              lg:w-[calc(33.33%-20px)]"
                 >
-                  {/* Clickable Card Link */}
                   <Link href={`/projects/${project.slug}`} className="block h-full group">
                     <div className="h-full bg-card border border-gray-800 group-hover:border-primary/40 shadow-xl rounded-2xl overflow-hidden transition-all group-hover:scale-[1.01]">
-                      {/* Project Visual Section */}
                       <figure className="relative w-full h-48 overflow-hidden">
                         <Image
                           src={project.image_url ?? "/image_not_found.jpg"}
@@ -124,14 +124,14 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                         </div>
                       </figure>
 
-                      {/* Project Information Body */}
                       <div className="card-body p-6 space-y-4">
                         <div>
                           <h3 className="text-xl md:text-lg font-bold text-foreground truncate">
                             {project.title}
                           </h3>
                           <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">
-                            {formatProjectDate(project.project_date)}
+                            {/* Pass locale to the date formatter */}
+                            {formatProjectDate(project.project_date, locale)}
                           </p>
                         </div>
 
@@ -144,7 +144,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                             <span
                               key={t}
                               className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md 
-                                        border border-gray-800 text-gray-300 bg-gray-900/50"
+                                         border border-gray-800 text-gray-300 bg-gray-900/50"
                             >
                               {t}
                             </span>
@@ -156,11 +156,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                           )}
                         </div>
 
-                        {/* Link buttons - Note: stopPropagation is handled by placing them outside main Link if needed, 
-                            but in Next.js nested Links can be tricky. Here they are simple UI elements or separate triggers. */}
                         <div className="card-actions pt-2 flex gap-3 relative z-20">
-                          {/* We use div instead of Link here if we want the whole card to be the main link, 
-                              or keep them as is and user clicks will bubble up. */}
                           <div
                             onClick={(e) => {
                                 e.preventDefault();
@@ -169,7 +165,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                             }}
                             className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition-all"
                           >
-                            <SiGithub className="w-4 h-4" /> GitHub
+                            <SiGithub className="w-4 h-4" /> {t('github')}
                           </div>
                           
                           {project.live_url && (
@@ -181,7 +177,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                               }}
                               className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg"
                             >
-                              <ExternalLink className="w-4 h-4" /> Live
+                              <ExternalLink className="w-4 h-4" /> {t('live')}
                             </div>
                           )}
                         </div>

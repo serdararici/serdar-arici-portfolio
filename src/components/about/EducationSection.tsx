@@ -2,15 +2,19 @@
 
 import React from 'react';
 import { motion, Variants } from "framer-motion";
-import { GraduationCap, MapPin } from "lucide-react"; // Added MapPin icon
+import { GraduationCap, MapPin } from "lucide-react";
 import { Education } from "@/types/types";
 import { formatDate } from "@/lib/utils";
+import { useTranslations, useLocale } from "next-intl";
 
 interface EducationSectionProps {
   education: Education[];
 }
 
 const EducationSection = ({ education }: EducationSectionProps) => {
+  const t = useTranslations('about.education');
+  const locale = useLocale();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -32,7 +36,7 @@ const EducationSection = ({ education }: EducationSectionProps) => {
     <section className="py-6 px-6">
       <div className="max-w-6xl mx-auto">
         
-        {/* Section Title with Icon */}
+        {/* Section Title */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -40,11 +44,13 @@ const EducationSection = ({ education }: EducationSectionProps) => {
           className="flex items-center gap-3 mb-10"
         >
           <GraduationCap className="w-7 h-7 text-primary" />
-          <h2 className="text-3xl font-bold text-foreground tracking-tight">Education History</h2>
+          <h2 className="text-3xl font-bold text-foreground tracking-tight">
+            {t('title')}
+          </h2>
         </motion.div>
 
         <div className="relative">
-          {/* Vertical Timeline Line */}
+          {/* Timeline Vertical Line */}
           <motion.div 
             initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
@@ -53,7 +59,6 @@ const EducationSection = ({ education }: EducationSectionProps) => {
             className="absolute left-8 top-0 w-0.5 bg-primary/30 origin-top"
           />
 
-          {/* Education List Container */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -67,21 +72,19 @@ const EducationSection = ({ education }: EducationSectionProps) => {
                 variants={itemVariants}
                 className="relative pl-20"
               >
-                {/* Timeline Connector Dot */}
-                <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]"></div>
+                {/* Timeline Dot */}
+                <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
                 
-                {/* Education Card Content */}
+                {/* Content Card */}
                 <div className="bg-card p-6 rounded-2xl border border-gray-800 hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-foreground  transition-colors">
+                      <h3 className="text-xl font-bold text-foreground transition-colors">
                         {item.degree ? `${item.degree} - ${item.department}` : item.title}
                       </h3>
                       
-                      {/* University and Location Info */}
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
                         <p className="text-primary font-medium text-lg">{item.institution}</p>
-                        
                       </div>
 
                       {item.gpa && (
@@ -90,20 +93,21 @@ const EducationSection = ({ education }: EducationSectionProps) => {
                     </div>
                     
                     <div className='flex flex-col md:items-end md:text-right'>
-                      {/* Date Formatting */}
-                        <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
-                        {formatDate(item.start_date)} — {formatDate(item.end_date)}
+                      {/* Localized Date Range */}
+                      <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
+                        {formatDate(item.start_date, locale, t('present'))} — {formatDate(item.end_date, locale, t('present'))}
                       </div>
+
                       {item.location && (
                         <div className="flex items-center gap-1 text-gray-500 text-sm italic mt-2 mr-3">
                             <MapPin className="w-3.5 h-3.5" />
                             <span>{item.location}</span>
-                          </div>
+                        </div>
                       )}
                     </div>
                   </div>
 
-                  {/* Details List */}
+                  {/* Description List */}
                   {item.description && item.description.length > 0 && (
                     <ul className="list-disc list-inside space-y-2 text-gray-300 border-t border-gray-800/50 pt-4 mt-4">
                       {item.description.map((desc, i) => (

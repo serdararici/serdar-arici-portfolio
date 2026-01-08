@@ -18,7 +18,37 @@
         }
     },
     "about":{
-        
+        "hero": {
+            "title": "Computer Engineer | Full-Stack Developer",
+            "viewResume": "View Resume",
+            "location": "Sakarya, Türkiye",
+            "description1": "I am a Computer Engineering graduate with a strong focus on full-stack software development. My core expertise lies in backend development using <white>Java and C#</white>, where I enjoy designing scalable, maintainable, and efficient systems. On the frontend side, I work with <white>React and Next.js</white> to build modern, user-friendly interfaces.",
+            "description2": "In addition to full-stack development, I have experience in mobile application development and a growing interest in DevOps, security, and AI-driven systems. I value clean code, continuous learning, and collaboration."
+        },
+        "education": {
+            "title": "Education History",
+            "present": "Present"
+        },
+        "experience": {
+            "title": "Work Experience",
+            "present": "Present"
+        },
+        "skills": {
+            "title": "Technical Skills"
+        },
+        "projectCarousel": {
+            "title": "Featured Projects",
+            "viewAll": "View All Projects",
+            "github": "GitHub",
+            "live": "Live"
+        },
+        "certifications": {
+        "title": "Certifications",
+        "unit": "Certificates",
+        "issued": "Issued",
+        "showMore": "Show More",
+        "showLess": "Show Less"
+        }
     },
     "projects": {
         

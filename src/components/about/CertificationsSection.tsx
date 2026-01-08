@@ -5,12 +5,15 @@ import { motion, Variants, AnimatePresence } from "framer-motion";
 import { Award, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
 import { Certification } from "@/types/types";
 import { formatDate } from "@/lib/utils";
+import { useTranslations, useLocale } from "next-intl";
 
 interface CertificationsSectionProps {
   certifications: Certification[];
 }
 
 const CertificationsSection = ({ certifications }: CertificationsSectionProps) => {
+  const t = useTranslations('about.certifications');
+  const locale = useLocale();
   const [isExpanded, setIsExpanded] = useState(false);
   const initialCount = 6;
   const displayedCerts = isExpanded ? certifications : certifications.slice(0, initialCount);
@@ -31,10 +34,9 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
   } as Variants;
 
   return (
-    <section className="py-12 px-4 sm:px-6 pb-24"> {/* Adjusted section padding */}
+    <section className="py-12 px-4 sm:px-6 pb-24">
       <div className="max-w-6xl mx-auto">
         
-        {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -43,20 +45,21 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
         >
           <div className="flex items-center gap-3">
             <Award className="w-7 h-7 text-primary" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight">Certifications</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight">
+              {t('title')}
+            </h2>
           </div>
           <span className="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">
-            [{certifications.length} Certificates]
+            [{certifications.length} {t('unit')}]
           </span>
         </motion.div>
 
-        {/* Certifications Grid */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6" // Stack on mobile
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
             {displayedCerts.map((cert) => (
@@ -72,13 +75,11 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
                 exit={{ opacity: 0, scale: 0.95 }}
                 className="group relative bg-card border border-gray-800 rounded-2xl p-4 sm:p-6 hover:border-primary/50 hover:bg-primary/2 transition-all duration-300"
               >
-                {/* Arrow Icon - Hidden on small mobile for cleaner look, shown on sm+ */}
                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                 </div>
 
                 <div className="flex items-start gap-3 sm:gap-5">
-                  {/* Icon Decoration - Smaller on mobile */}
                   <div className="shrink-0 p-2 sm:p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
                     <Award className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
@@ -92,15 +93,14 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
                         <p className="text-xs sm:text-sm text-gray-400 font-medium mt-0.5">{cert.issuer}</p>
                         <p className="text-[10px] sm:text-xs text-gray-500 mt-2 flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
-                          Issued {formatDate(cert.issue_date)}
+                          {t('issued')} {formatDate(cert.issue_date, locale)}
                         </p>
                       </div>
                     </div>
 
-                    {/* Skills tags associated with the certification */}
                     {cert.skills && cert.skills.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-4">
-                        {cert.skills.slice(0, 3).map((skill, idx) => ( // Show 3 on mobile to save space
+                        {cert.skills.slice(0, 3).map((skill, idx) => (
                           <span 
                             key={idx} 
                             className="text-[9px] sm:text-[10px] uppercase tracking-wider font-bold px-1.5 sm:px-2 py-0.5 bg-gray-900 border border-gray-800 text-gray-400 rounded-md group-hover:border-primary/30 transition-colors"
@@ -120,7 +120,6 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
           </AnimatePresence>
         </motion.div>
 
-        {/* Show More / Less Trigger */}
         {certifications.length > initialCount && (
           <motion.div 
             initial={{ opacity: 0 }}
@@ -133,11 +132,11 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
             >
               {isExpanded ? (
                 <>
-                  <ChevronUp className="w-4 h-4" /> Show Less
+                  <ChevronUp className="w-4 h-4" /> {t('showLess')}
                 </>
               ) : (
                 <>
-                  <ChevronDown className="w-4 h-4" /> Show More ({certifications.length - initialCount})
+                  <ChevronDown className="w-4 h-4" /> {t('showMore')} ({certifications.length - initialCount})
                 </>
               )}
             </button>

@@ -1,16 +1,18 @@
 'use client';
 
 import React from 'react';
-import { motion, Variants } from "framer-motion"; // Scroll-based animations
+import { motion, Variants } from "framer-motion";
 import { Code } from "lucide-react";
 import { Skill } from "@/types/types";
+import { useTranslations } from "next-intl";
 
 interface SkillsSectionProps {
   skills: Skill[];
 }
 
 const SkillsSection = ({ skills }: SkillsSectionProps) => {
-  // Container variant to animate categories one by one
+  const t = useTranslations('about.skills');
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -19,7 +21,6 @@ const SkillsSection = ({ skills }: SkillsSectionProps) => {
     }
   } as Variants;
 
-  // Card variant for the category boxes
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
@@ -41,7 +42,9 @@ const SkillsSection = ({ skills }: SkillsSectionProps) => {
           className="flex items-center gap-3 mb-10"
         >
           <Code className="w-7 h-7 text-primary" />
-          <h2 className="text-3xl font-bold text-foreground tracking-tight">Technical Skills</h2>
+          <h2 className="text-3xl font-bold text-foreground tracking-tight">
+            {t('title')}
+          </h2>
         </motion.div>
 
         {/* Skills Grid */}
@@ -58,12 +61,10 @@ const SkillsSection = ({ skills }: SkillsSectionProps) => {
               variants={cardVariants}
               className="group"
             >
-              {/* Category Title */}
               <h3 className="text-sm font-semibold text-gray-500 mb-5 uppercase tracking-[0.2em] group-hover:text-primary transition-colors duration-300">
                 {group.title}
               </h3>
               
-              {/* Badges Container */}
               <div className="flex flex-wrap gap-3">
                 {group.items.map((item, idx) => (
                   <motion.span

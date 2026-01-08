@@ -1,20 +1,26 @@
 /**
- * Formats a date string into a readable 'Month Year' format.
- * Includes safety checks for null values and invalid dates.
+ * Formats a date string into a localized 'Month Year' format.
  * @param dateString - ISO date string or null
- * @returns Formatted date or "Present"
+ * @param locale - Current active locale ('tr' or 'en')
+ * @param presentText - Translated "Present" text from JSON
+ * @returns Formatted date
  */
-export const formatDate = (dateString: string | null | undefined) => {
-  if (!dateString) return "Present"; 
+export const formatDate = (
+  dateString: string | null | undefined, 
+  locale: string = 'en', 
+  presentText: string = 'Present'
+) => {
+  // If no date, return the translated "Present" text
+  if (!dateString) return presentText; 
 
   const date = new Date(dateString);
   
-  // Check for invalid date objects
+  // Safety check for invalid dates
   if (isNaN(date.getTime())) return "Invalid Date";
 
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {
     year: 'numeric',
-    month: 'long', // Use 'short' for Dec, 'long' for December
+    month: 'long',
   });
 };
 
