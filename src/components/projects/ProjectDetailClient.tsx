@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink as ExtIcon } from "lucide-react";
 import { SiGithub, SiYoutube } from "react-icons/si";
 import type { Project } from "@/types/types";
-import { formatDate } from "@/lib/utils";
+import { formatDate, getLocalized } from "@/lib/utils";
 import ProjectGallery from "./ProjectGallery";
 import { useTranslations, useLocale } from "next-intl";
 
@@ -18,6 +18,10 @@ type Props = {
 export default function ProjectDetailClient({ project }: Props) {
   const t = useTranslations('projects.detail');
   const locale = useLocale();
+
+  const currentTitle = getLocalized(project, 'title', locale);
+  const currentDesc = getLocalized(project, 'description', locale);
+  const currentCategory = getLocalized(project, 'category', locale);
 
   const gallery = (project.gallery && project.gallery.length > 0) 
     ? project.gallery 
@@ -31,7 +35,6 @@ export default function ProjectDetailClient({ project }: Props) {
         transition={{ duration: 0.4 }}
       >
         <div className="max-w-6xl mx-auto">
-          {/* Navigation Back */}
           <div className="mb-4">
             <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-primary transition">
               <ArrowLeft className="w-4 h-4" />
@@ -39,13 +42,12 @@ export default function ProjectDetailClient({ project }: Props) {
             </Link>
           </div>
 
-          {/* Hero Image */}
           <div className="max-w-4xl mx-auto mb-12"> 
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm">
               <div className="relative w-full h-64 md:h-112.5">
                 <Image
                   src={project.image_url ?? "/image_not_found.jpg"}
-                  alt={project.title}
+                  alt={currentTitle}
                   fill
                   className="object-cover object-center"
                   priority
@@ -55,10 +57,9 @@ export default function ProjectDetailClient({ project }: Props) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Left: Main Content */}
             <article className="lg:col-span-2 space-y-8">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
-                {project.title}
+                {currentTitle}
               </h1>
               
               <section className="max-w-none">
@@ -66,12 +67,11 @@ export default function ProjectDetailClient({ project }: Props) {
                   {t('about')}
                 </h2>
                 <div className="text-gray-300 text-lg leading-relaxed whitespace-pre-line">
-                  {project.description || t('noDescription')}
+                  {currentDesc || t('noDescription')}
                 </div>
               </section>
             </article>
 
-            {/* Right: Sidebar */}
             <aside className="space-y-6 sticky top-24 self-start">
               <div className="bg-card border border-gray-800 rounded-2xl p-6 shadow-xl">
                 <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">{t('sidebarTitle')}</h3>
@@ -80,7 +80,7 @@ export default function ProjectDetailClient({ project }: Props) {
                   <div className="flex justify-between items-center">
                     <dt className="text-gray-400 text-sm">{t('category')}</dt>
                     <dd className="text-white font-medium px-3 py-1 bg-gray-900 rounded-full text-xs">
-                      {project.category}
+                      {currentCategory}
                     </dd>
                   </div>
 
@@ -128,13 +128,12 @@ export default function ProjectDetailClient({ project }: Props) {
                 </div>
               </div>
 
-              {/* Stack Box */}
               <div className="bg-card border border-gray-800 rounded-2xl p-6 shadow-xl">
                 <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">{t('techStack')}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {project.tech_stack.map((t) => (
-                    <span key={t} className="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-sm text-gray-300">
-                      {t}
+                  {project.tech_stack.map((tech) => (
+                    <span key={tech} className="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-sm text-gray-300">
+                      {tech}
                     </span>
                   ))}
                 </div>
@@ -144,7 +143,7 @@ export default function ProjectDetailClient({ project }: Props) {
 
           <ProjectGallery 
             gallery={gallery} 
-            projectTitle={project.title} 
+            projectTitle={currentTitle} 
           />
           
         </div>

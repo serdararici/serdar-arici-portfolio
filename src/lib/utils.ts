@@ -25,3 +25,24 @@ export const formatDate = (
 };
 
 export const formatProjectDate = formatDate;
+////////////////////////////////////////////////////
+/**
+ * Returns the correct field based on the current locale.
+ * If locale is 'tr' and the localized field exists, it returns it.
+ * Otherwise, it falls back to the default English field.
+ */
+export function getLocalized<T>(obj: T, field: string, locale: string): any {
+  if (!obj) return "";
+  
+  // Check if we are in Turkish mode
+  if (locale === 'tr') {
+    const trValue = (obj as any)[`${field}_tr`];
+    // If we have a Turkish translation, use it!
+    if (trValue && (Array.isArray(trValue) ? trValue.length > 0 : trValue.trim() !== "")) {
+      return trValue;
+    }
+  }
+  
+  // Fallback to default (English) field
+  return (obj as any)[field];
+}

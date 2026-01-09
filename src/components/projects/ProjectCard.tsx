@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { SiGithub } from "react-icons/si";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/types/types";
-import { formatDate } from "@/lib/utils";
+import { formatDate, getLocalized } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
 
 type Props = {
@@ -19,6 +19,9 @@ export default function ProjectCard({ project }: Props) {
   const locale = useLocale();
   const router = useRouter();
   
+  const currentTitle = getLocalized(project, 'title', locale);
+  const currentShortDesc = getLocalized(project, 'short_description', locale);
+  const currentCategory = getLocalized(project, 'category', locale);
   const formattedDate = formatDate(project.project_date, locale);
 
   const goToProject = (slug: string) => router.push(`/projects/${slug}`);
@@ -33,7 +36,7 @@ export default function ProjectCard({ project }: Props) {
       transition={{ duration: 0.22 }}
       role="link"
       tabIndex={0}
-      aria-label={`${t('ariaLabel')} ${project.title}`}
+      aria-label={`${t('ariaLabel')} ${currentTitle}`}
       onClick={() => goToProject(project.slug)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -51,25 +54,25 @@ export default function ProjectCard({ project }: Props) {
         <figure className="relative w-full md:w-72 h-56 md:h-auto shrink-0 overflow-hidden md:rounded-l-[2.5rem] rounded-t-[2.5rem]">
           <Image
             src={project.image_url ?? "/image_not_found.jpg"}
-            alt={project.title}
+            alt={currentTitle}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute top-4 left-4">
             <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-foreground border border-primary/30">
-              {project.category}
+              {currentCategory}
             </span>
           </div>
         </figure>
 
         <div className="p-6 flex flex-col gap-3 flex-1 md:pl-6 min-w-0">
           <div className="pr-8 w-full overflow-hidden">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground truncate">{project.title}</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground truncate">{currentTitle}</h3>
           </div>
 
           <p className="text-sm text-gray-300 line-clamp-3 leading-relaxed pr-4 md:pr-6 overflow-hidden w-full">
-            {project.short_description || project.description}
+            {currentShortDesc || getLocalized(project, 'description', locale)}
           </p>
 
           <div className="flex items-center gap-2 flex-wrap">
@@ -83,7 +86,6 @@ export default function ProjectCard({ project }: Props) {
 
           <div className="mt-auto flex items-center justify-between gap-3">
             <div className="flex gap-3">
-              {/* Sadece Live URL varsa butonu gösteriyoruz */}
               {project.live_url && (
                 <Link
                   href={project.live_url}
@@ -97,7 +99,6 @@ export default function ProjectCard({ project }: Props) {
                 </Link>
               )}
 
-              {/* GitHub her zaman var diye varsayıyorum ama o da opsiyonelse benzeri yapılabilir */}
               <Link
                 href={project.github_url ?? "#"}
                 target="_blank"

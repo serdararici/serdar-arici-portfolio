@@ -4,7 +4,7 @@ import React from 'react';
 import { motion, Variants } from "framer-motion";
 import { GraduationCap, MapPin } from "lucide-react";
 import { Education } from "@/types/types";
-import { formatDate } from "@/lib/utils";
+import { formatDate, getLocalized } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
 
 interface EducationSectionProps {
@@ -43,7 +43,7 @@ const EducationSection = ({ education }: EducationSectionProps) => {
           viewport={{ once: true }}
           className="flex items-center gap-3 mb-10"
         >
-          <GraduationCap className="w-7 h-7 text-primary" />
+          < GraduationCap className="w-7 h-7 text-primary" />
           <h2 className="text-3xl font-bold text-foreground tracking-tight">
             {t('title')}
           </h2>
@@ -66,60 +66,69 @@ const EducationSection = ({ education }: EducationSectionProps) => {
             viewport={{ once: true, margin: "-100px" }}
             className="space-y-12"
           >
-            {education.map((item, index) => (
-              <motion.div 
-                key={item.id || index} 
-                variants={itemVariants}
-                className="relative pl-20"
-              >
-                {/* Timeline Dot */}
-                <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
-                
-                {/* Content Card */}
-                <div className="bg-card p-6 rounded-2xl border border-gray-800 hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-foreground transition-colors">
-                        {item.degree ? `${item.degree} - ${item.department}` : item.title}
-                      </h3>
-                      
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
-                        <p className="text-primary font-medium text-lg">{item.institution}</p>
-                      </div>
+            {education.map((item, index) => {
+              const currentTitle = getLocalized(item, 'title', locale);
+              const currentIntstitution = getLocalized(item, 'institution', locale);
+              const currentDegree = getLocalized(item, 'degree', locale);
+              const currentDept = getLocalized(item, 'department', locale);
+              const currentDesc = getLocalized(item, 'description', locale);
+              const currentLocation = getLocalized(item, 'location', locale);
 
-                      {item.gpa && (
-                         <span className="text-xs text-gray-400 block mt-2 font-mono uppercase tracking-widest">GPA: {item.gpa}</span>
-                      )}
-                    </div>
-                    
-                    <div className='flex flex-col md:items-end md:text-right'>
-                      {/* Localized Date Range */}
-                      <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
-                        {formatDate(item.start_date, locale, t('present'))} — {formatDate(item.end_date, locale, t('present'))}
-                      </div>
-
-                      {item.location && (
-                        <div className="flex items-center gap-1 text-gray-500 text-sm italic mt-2 mr-3">
-                            <MapPin className="w-3.5 h-3.5" />
-                            <span>{item.location}</span>
+              return (
+                <motion.div 
+                  key={item.id || index} 
+                  variants={itemVariants}
+                  className="relative pl-20"
+                >
+                  {/* Timeline Dot */}
+                  <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
+                  
+                  {/* Content Card */}
+                  <div className="bg-card p-6 rounded-2xl border border-gray-800 hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-foreground transition-colors">
+                          {currentDegree ? `${currentDegree} - ${currentDept}` : currentTitle}
+                        </h3>
+                        
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
+                          <p className="text-primary font-medium text-lg">{currentIntstitution}</p>
                         </div>
-                      )}
-                    </div>
-                  </div>
 
-                  {/* Description List */}
-                  {item.description && item.description.length > 0 && (
-                    <ul className="list-disc list-inside space-y-2 text-gray-300 border-t border-gray-800/50 pt-4 mt-4">
-                      {item.description.map((desc, i) => (
-                        <li key={i} className="text-sm sm:text-base leading-relaxed pl-2 marker:text-primary">
-                          {desc}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                        {item.gpa && (
+                           <span className="text-xs text-gray-400 block mt-2 font-mono uppercase tracking-widest">GPA: {item.gpa}</span>
+                        )}
+                      </div>
+                      
+                      <div className='flex flex-col md:items-end md:text-right'>
+                        {/* Localized Date Range */}
+                        <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
+                          {formatDate(item.start_date, locale, t('present'))} — {formatDate(item.end_date, locale, t('present'))}
+                        </div>
+
+                        {item.location && (
+                          <div className="flex items-center gap-1 text-gray-500 text-sm italic mt-2 mr-3">
+                              <MapPin className="w-3.5 h-3.5" />
+                              <span>{currentLocation}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Description List (Localized Array) */}
+                    {currentDesc && currentDesc.length > 0 && (
+                      <ul className="list-disc list-inside space-y-2 text-gray-300 border-t border-gray-800/50 pt-4 mt-4">
+                        {currentDesc.map((desc: string, i: number) => (
+                          <li key={i} className="text-sm sm:text-base leading-relaxed pl-2 marker:text-primary">
+                            {desc}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </div>

@@ -11,7 +11,7 @@ import {
 import { SiGithub } from "react-icons/si";
 import { useRef, useEffect, useState } from "react";
 import { Project } from "@/types/types";
-import { formatProjectDate } from "@/lib/utils";
+import { formatProjectDate, getLocalized } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
 
 interface ProjectCarouselProps {
@@ -65,7 +65,6 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
   return (
     <section className="py-12">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Header Section */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-primary/10 rounded-lg">
@@ -87,7 +86,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
           <button
             type="button"
             onClick={() => scrollByCards("prev")}
-            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-30"
+            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -98,101 +97,102 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar py-4"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              {initialProjects.map((project) => (
-                <div
-                  key={project.slug}
-                  data-card
-                  className="shrink-0 snap-start transition-all duration-300
-                             w-[calc(100%-40px)] 
-                             sm:w-[calc(50%-16px)] 
-                             lg:w-[calc(33.33%-20px)]"
-                >
-                  <Link href={`/projects/${project.slug}`} className="block h-full group">
-                    <div className="h-full bg-card border border-gray-800 group-hover:border-primary/40 shadow-xl rounded-2xl overflow-hidden transition-all group-hover:scale-[1.01]">
-                      <figure className="relative w-full h-48 overflow-hidden">
-                        <Image
-                          src={project.image_url ?? "/image_not_found.jpg"}
-                          alt={project.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                        <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-white border border-primary/30">
-                            {project.category}
-                          </span>
-                        </div>
-                      </figure>
+              {initialProjects.map((project) => {
+                const currentTitle = getLocalized(project, 'title', locale);
+                const currentShortDesc = getLocalized(project, 'short_description', locale);
+                const currentCategory = getLocalized(project, 'category', locale);
 
-                      <div className="card-body p-6 space-y-4">
-                        <div>
-                          <h3 className="text-xl md:text-lg font-bold text-foreground truncate">
-                            {project.title}
-                          </h3>
-                          <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">
-                            {/* Pass locale to the date formatter */}
-                            {formatProjectDate(project.project_date, locale)}
-                          </p>
-                        </div>
-
-                        <p className="text-sm text-gray-400 line-clamp-3 min-h-18 leading-relaxed">
-                          {project.short_description}
-                        </p>
-
-                        <div className="flex items-center gap-2 overflow-hidden flex-nowrap py-1">
-                          {project.tech_stack.slice(0, visibleTechs).map((t) => (
-                            <span
-                              key={t}
-                              className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md 
-                                         border border-gray-800 text-gray-300 bg-gray-900/50"
-                            >
-                              {t}
+                return (
+                  <div
+                    key={project.slug}
+                    data-card
+                    className="shrink-0 snap-start transition-all duration-300 w-[calc(100%-40px)] sm:w-[calc(50%-16px)] lg:w-[calc(33.33%-20px)]"
+                  >
+                    <Link href={`/projects/${project.slug}`} className="block h-full group">
+                      <div className="h-full bg-card border border-gray-800 group-hover:border-primary/40 shadow-xl rounded-2xl overflow-hidden transition-all group-hover:scale-[1.01]">
+                        <figure className="relative w-full h-48 overflow-hidden">
+                          <Image
+                            src={project.image_url ?? "/image_not_found.jpg"}
+                            alt={currentTitle}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          />
+                          <div className="absolute top-4 left-4">
+                            <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-white border border-primary/30">
+                              {currentCategory}
                             </span>
-                          ))}
-                          {project.tech_stack.length > visibleTechs && (
-                            <span className="text-xs text-gray-500">
-                              +{project.tech_stack.length - visibleTechs}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="card-actions pt-2 flex gap-3 relative z-20">
-                          <div
-                            onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                window.open(project.github_url ?? "#", "_blank");
-                            }}
-                            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition-all"
-                          >
-                            <SiGithub className="w-4 h-4" /> {t('github')}
                           </div>
-                          
-                          {project.live_url && (
+                        </figure>
+
+                        <div className="card-body p-6 space-y-4">
+                          <div>
+                            <h3 className="text-xl md:text-lg font-bold text-foreground truncate">
+                              {currentTitle}
+                            </h3>
+                            <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">
+                              {formatProjectDate(project.project_date, locale)}
+                            </p>
+                          </div>
+
+                          <p className="text-sm text-gray-400 line-clamp-3 min-h-18 leading-relaxed">
+                            {currentShortDesc}
+                          </p>
+
+                          <div className="flex items-center gap-2 overflow-hidden flex-nowrap py-1">
+                            {project.tech_stack.slice(0, visibleTechs).map((t) => (
+                              <span
+                                key={t}
+                                className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md border border-gray-800 text-gray-300 bg-gray-900/50"
+                              >
+                                {t}
+                              </span>
+                            ))}
+                            {project.tech_stack.length > visibleTechs && (
+                              <span className="text-xs text-gray-500">
+                                +{project.tech_stack.length - visibleTechs}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="card-actions pt-2 flex gap-3 relative z-20">
                             <div
                               onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
-                                  window.open(project.live_url!, "_blank");
+                                  window.open(project.github_url ?? "#", "_blank");
                               }}
-                              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg"
+                              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition-all"
                             >
-                              <ExternalLink className="w-4 h-4" /> {t('demo')}
+                              <SiGithub className="w-4 h-4" /> {t('github')}
                             </div>
-                          )}
+                            
+                            {project.live_url && (
+                              <div
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    window.open(project.live_url!, "_blank");
+                                }}
+                                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg"
+                              >
+                                <ExternalLink className="w-4 h-4" /> {t('demo')}
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
           <button
             type="button"
             onClick={() => scrollByCards("next")}
-            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-30"
+            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

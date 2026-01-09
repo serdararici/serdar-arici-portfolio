@@ -1,20 +1,26 @@
-// src/app/projects/[slug]/page.tsx
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 import ProjectDetailClient from "@/components/projects/ProjectDetailClient";
 import { getTranslations } from "next-intl/server";
+import { getLocalized } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-// Optional: Dinamik Sayfa Başlığı (SEO için süper olur)
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const { data: project } = await supabase.from('projects').select('title').eq('slug', slug).single();
   
+  const { data: project } = await supabase
+    .from('projects')
+    .select('title, title_tr')
+    .eq('slug', slug)
+    .single();
+
+  if (!project) return { title: 'Project Not Found' };
+
   return {
-    title: project ? `${project.title} | Serdar Arıcı` : 'Project Details',
+    title: `${project.title} | Serdar Arıcı`,
   };
 }
 
@@ -29,9 +35,14 @@ export default async function ProjectPage({ params }: Props) {
     .maybeSingle();
 
   if (error || !project) {
-    console.error("Project fetch error:", error?.message || "Project not found");
     return notFound();
   }
 
-  return <ProjectDetailClient project={project} />;
+  const normalizedProject = {
+    ...project,
+    tech_stack: Array.isArray(project.tech_stack) ? project.tech_stack : [],
+    gallery: Array.isArray(project.gallery) ? project.gallery : [],
+  };
+
+  return <ProjectDetailClient project={normalizedProject} />;
 }
