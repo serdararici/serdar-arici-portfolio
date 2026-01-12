@@ -81,10 +81,10 @@
         "techStack": "Kullanılan Teknolojiler"
     },
     "gallery": {
-      "title": "Project Gallery",
-      "screenshots": "Screenshots",
-      "screenshotAlt": "Screenshot",
-      "swipeHint": "Swipe left or right to navigate"
+      "title": "Proje Galerisi",
+      "screenshots": "Ekran Görüntüsü",
+      "screenshotAlt": "Görüntü",
+      "swipeHint": "Görseller arasında kaydırarak geçiş yapabilirsiniz"
     }
   },
   "blogs": {
