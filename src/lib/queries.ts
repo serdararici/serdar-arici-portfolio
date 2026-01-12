@@ -55,13 +55,17 @@ export async function getCertifications(): Promise<Certification[]> {
 
 /**
  * Fetch featured projects for the carousel
+ * Sorted by: 1. order_index (Manual Priority) 2. project_date (Recency)
  */
 export async function getFeaturedProjects(): Promise<Project[]> {
   const { data, error } = await supabase
     .from('projects')
     .select('*')
     .eq('is_featured', true)
-    .order('created_at', { ascending: false });
+    // First it looks at the order you provided (Smaller number = Higher priority)
+    .order('order_index', { ascending: true }) 
+    // If the order is the same or not provided, it sorts by the most recent date
+    .order('project_date', { ascending: false });
 
   if (error) {
     console.error("Error fetching featured projects:", error.message);
