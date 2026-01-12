@@ -80,14 +80,12 @@
             "source": "View Source",
             "techStack": "Tech Stack"
         },
-        "projects": {
         "gallery": {
             "title": "Project Gallery",
             "screenshots": "Screenshots",
             "screenshotAlt": "Screenshot",
             "swipeHint": "Swipe left or right to navigate"
         }
-}
     },
     "blogs": {
         "comingSoon": "Coming Soon",

@@ -37,7 +37,7 @@ export default function HamburgerMenu({ isOpen, onClose }: Props) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="absolute top-0 right-0 w-3/4 max-w-xs bg-background p-4 border-l border-gray-700 shadow-2xl"
+            className="absolute top-0 right-0 w-3/4 max-w-xs bg-background p-4 border-l border-gray-700 rounded-bl-lg shadow-2xl"
           >
             {/* Close Button */}
             <div className="flex justify-end">
@@ -50,7 +50,7 @@ export default function HamburgerMenu({ isOpen, onClose }: Props) {
             </div>
 
             {/* Menu Items */}
-            <ul className="flex flex-col gap-2 mt-3">
+            <ul className="flex flex-col gap-2 mt-10">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
