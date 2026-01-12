@@ -50,6 +50,24 @@ body {
   border-radius: 4px;
 }
 
+/* Sadece 'custom-nav-scroll' class'ına sahip elementlerde çalışır */
+.custom-nav-scroll::-webkit-scrollbar {
+  height: 7px; /* Yatay scroll olduğu için genişlik değil yükseklik (height) veriyoruz */
+}
+
+.custom-nav-scroll::-webkit-scrollbar-track {
+  background: transparent; /* Arka planı gizliyoruz ki kaba durmasın */
+}
+
+.custom-nav-scroll::-webkit-scrollbar-thumb {
+  background: #4b5563; /* Gray-600 gibi koyu bir renk */
+  border-radius: 20px;
+}
+
+.custom-nav-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary); /* Üzerine gelince senin ana rengin olsun */
+}
+
 /* Başlık Stilleri (Opsiyonel, daha belirgin olması için) */
 h1, h2, h3 {
   font-weight: 700; /* Bold */

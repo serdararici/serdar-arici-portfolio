@@ -80,11 +80,14 @@
             "source": "View Source",
             "techStack": "Tech Stack"
         },
+        "projects": {
         "gallery": {
             "title": "Project Gallery",
             "screenshots": "Screenshots",
-            "screenshotAlt": "screenshot"
+            "screenshotAlt": "Screenshot",
+            "swipeHint": "Swipe left or right to navigate"
         }
+}
     },
     "blogs": {
         "comingSoon": "Coming Soon",
@@ -103,7 +106,7 @@
         "description": "I am a recent Computer Engineering graduate looking for new opportunities. Whether you have a job opening or just want to say hi, I'd love to hear from you!",
         "form": {
             "name": "Your Name",
-            "namePlaceholder": "John Doe",
+            "namePlaceholder": "Enter your full name",
             "email": "Your Email",
             "emailPlaceholder": "john@example.com",
             "message": "Message",

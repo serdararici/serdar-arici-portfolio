@@ -16,19 +16,29 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const galleryItems = gallery.filter(Boolean);
 
-  const showNext = (e?: React.MouseEvent) => {
+  const showNext = (e?: React.MouseEvent | any) => {
     e?.stopPropagation();
     if (currentIndex !== null) {
       setCurrentIndex((currentIndex + 1) % galleryItems.length);
     }
   };
 
-  const showPrev = (e?: React.MouseEvent) => {
+  const showPrev = (e?: React.MouseEvent | any) => {
     e?.stopPropagation();
     if (currentIndex !== null) {
       setCurrentIndex((currentIndex - 1 + galleryItems.length) % galleryItems.length);
     }
   };
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (currentIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => { document.body.style.overflow = "unset"; };
+  }, [currentIndex]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -79,47 +89,65 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 touch-none"
             onClick={() => setCurrentIndex(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
           >
+            {/* Close Button */}
             <button
-              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-[110]"
+              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-[110] p-2"
               onClick={() => setCurrentIndex(null)}
             >
-              <X className="w-10 h-10" />
+              <X className="w-8 h-8 md:w-10 md:h-10" />
             </button>
 
+            {/* Navigation Buttons (Hidden on small touch devices, shown on desktop) */}
             <button
-              className="absolute left-4 md:left-8 p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all z-[110]"
+              className="hidden md:flex absolute left-4 md:left-8 p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all z-[110]"
               onClick={showPrev}
             >
               <ArrowLeft className="w-8 h-8" />
             </button>
 
             <button
-              className="absolute right-4 md:right-8 p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all z-[110]"
+              className="hidden md:flex absolute right-4 md:right-8 p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all z-[110]"
               onClick={showNext}
             >
               <ArrowRight className="w-8 h-8" />
             </button>
 
+            {/* Image Container with Swipe Support */}
             <motion.div
               key={currentIndex}
-              initial={{ x: 50, opacity: 0 }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(_, info) => {
+                const swipeThreshold = 50;
+                if (info.offset.x > swipeThreshold) showPrev();
+                else if (info.offset.x < -swipeThreshold) showNext();
+              }}
+              initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -50, opacity: 0 }}
-              className="relative w-full h-full max-w-5xl max-h-[80vh]"
+              exit={{ x: -100, opacity: 0 }}
+              className="relative w-full h-full max-w-5xl max-h-[70vh] md:max-h-[80vh] cursor-grab active:cursor-grabbing"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
                 src={galleryItems[currentIndex]}
                 alt="Selected view"
                 fill
-                className="object-contain"
+                className="object-contain pointer-events-none"
                 priority
               />
-              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-gray-400 text-sm font-medium">
-                {currentIndex + 1} / {galleryItems.length}
+              
+              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+                <div className="text-gray-400 text-sm font-medium">
+                  {currentIndex + 1} / {galleryItems.length}
+                </div>
+                {/* Visual hint for mobile */}
+                <div className="md:hidden text-[10px] text-gray-600 uppercase tracking-widest animate-pulse">
+                  {t('swipeHint') || 'Swipe to navigate'}
+                </div>
               </div>
             </motion.div>
           </motion.div>

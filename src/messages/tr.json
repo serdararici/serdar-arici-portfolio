@@ -81,31 +81,32 @@
         "techStack": "Kullanılan Teknolojiler"
     },
     "gallery": {
-      "title": "Proje Galerisi",
-      "screenshots": "Ekran Görüntüsü",
-      "screenshotAlt": "ekran görüntüsü"
+      "title": "Project Gallery",
+      "screenshots": "Screenshots",
+      "screenshotAlt": "Screenshot",
+      "swipeHint": "Swipe left or right to navigate"
     }
   },
   "blogs": {
-  "comingSoon": "Yakında",
-  "title": "Blog Sayfası",
-  "titleHighlight": "Derleniyor...",
-  "description": "Yazılım mimarisi, sistem tasarım kalıpları ve mühendislik içgörüleri üzerine derinlemesine makaleler hazırlıyorum. Takipte kalın.",
-  "inputPlaceholder": "E-posta adresinizi girin",
-  "notifyBtn": "Haber Ver",
-  "spamNote": "Spam içermez. İstediğiniz zaman ayrılabilirsiniz.",
-  "footerNote": "Hassasiyetle inşa edildi."
+    "comingSoon": "Yakında",
+    "title": "Blog Sayfası",
+    "titleHighlight": "Derleniyor...",
+    "description": "Yazılım mimarisi, sistem tasarım kalıpları ve mühendislik içgörüleri üzerine derinlemesine makaleler hazırlıyorum. Takipte kalın.",
+    "inputPlaceholder": "E-posta adresinizi girin",
+    "notifyBtn": "Haber Ver",
+    "spamNote": "Spam içermez. İstediğiniz zaman ayrılabilirsiniz.",
+    "footerNote": "Hassasiyetle inşa edildi."
   },
   "contact": {
-  "badge": "İş tekliflerine açık",
-  "title": "Benimle",
-  "titleHighlight": "iletişime geç.",
-  "description": "Yeni fırsatlar arayan bir Bilgisayar Mühendisliği mezunuyum. İster bir iş ilanınız olsun, ister sadece merhaba demek isteyin, sizden haber almayı çok isterim!",
+    "badge": "İş tekliflerine açık",
+    "title": "Benimle",
+    "titleHighlight": "iletişime geç.",
+    "description": "Yeni fırsatlar arayan bir Bilgisayar Mühendisliği mezunuyum. İster bir iş ilanınız olsun, ister sadece merhaba demek isteyin, sizden haber almayı çok isterim!",
   "form": {
     "name": "Adınız",
-    "namePlaceholder": "Can Demir",
+    "namePlaceholder": "Adınızı girin",
     "email": "E-posta Adresiniz",
-    "emailPlaceholder": "can@ornek.com",
+    "emailPlaceholder": "john@example.com",
     "message": "Mesajınız",
     "messagePlaceholder": "Mesajınızı buraya yazın...",
     "send": "Mesaj Gönder",

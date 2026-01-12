@@ -42,7 +42,7 @@ export default function ProjectsClient({ initialProjects }: Props) {
   return (
     <div>
       <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
-        <div className="flex items-center gap-3 bg-card border border-gray-800 rounded-full px-4 py-2 shadow-sm w-full md:w-1/2">
+        <div className="flex items-center gap-3 bg-card border border-gray-800 rounded-full px-4 py-2 shadow-sm w-full md:max-w-md">
           <Search className="w-5 h-5 text-gray-400" />
           <input
             aria-label="Search projects"
@@ -61,7 +61,7 @@ export default function ProjectsClient({ initialProjects }: Props) {
           )}
         </div>
 
-        <nav className="flex gap-3 overflow-x-auto py-1 px-1 no-scrollbar">
+        <nav className="flex gap-2 overflow-x-auto py-1 px-1 custom-nav-scroll">
           {categories.map((cat) => {
             const active = cat === activeCategory;
             
