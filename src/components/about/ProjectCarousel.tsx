@@ -22,6 +22,21 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
   const t = useTranslations('about.projectCarousel');
   const locale = useLocale();
   const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [visibleTechs, setVisibleTechs] = useState(3);
+  
+  // Navigation states
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+
+  // Update button states on scroll
+  const handleScroll = () => {
+    const container = sliderRef.current;
+    if (container) {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      setIsAtStart(scrollLeft <= 10);
+      setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 10);
+    }
+  };
 
   const scrollByCards = (direction: "next" | "prev") => {
     const container = sliderRef.current;
@@ -39,11 +54,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
     }
 
     const delta = direction === "next" ? step : -step;
-
-    container.scrollBy({
-      left: delta,
-      behavior: "smooth",
-    });
+    container.scrollBy({ left: delta, behavior: "smooth" });
   };
 
   const getVisibleTechCount = () => {
@@ -52,8 +63,6 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
     if (window.innerWidth < 1024) return 4;
     return 3;
   };
-
-  const [visibleTechs, setVisibleTechs] = useState(3);
 
   useEffect(() => {
     const update = () => setVisibleTechs(getVisibleTechCount());
@@ -85,8 +94,9 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-6">
           <button
             type="button"
+            disabled={isAtStart}
             onClick={() => scrollByCards("prev")}
-            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg"
+            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -94,6 +104,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
           <div className="overflow-hidden -mx-2 px-2">
             <div
               ref={sliderRef}
+              onScroll={handleScroll}
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar py-4"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
@@ -191,8 +202,9 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
 
           <button
             type="button"
+            disabled={isAtEnd}
             onClick={() => scrollByCards("next")}
-            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg"
+            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

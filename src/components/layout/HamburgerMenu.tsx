@@ -74,7 +74,7 @@ export default function HamburgerMenu({ isOpen, onClose }: Props) {
                 <SiGithub className="w-5 h-5 text-gray-400 hover:text-white" />
               </a>
               <a
-                href="https://linkedin.com/in/serdar"
+                href="https://linkedin.com/in/serdararici"
                 target="_blank"
                 className="hover:scale-110 transition-transform"
               >
