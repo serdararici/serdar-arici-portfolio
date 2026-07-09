@@ -12,7 +12,7 @@
     "home": {
         "hero": {
             "title": "Computer Engineer | Full-Stack Developer",
-            "shortDescription": "Computer Engineering graduate with a strong foundation in algorithms and software development. Currently focused on backend development with Java and Spring Boot, while also building experience in frontend and mobile technologies. A fast learner and collaborative problem-solver, eager to contribute to real-world projects and grow through continuous learning.",
+            "shortDescription": "Backend and full-stack focused Computer Engineer with a passion for building scalable software and solving real-world problems. I primarily develop applications and RESTful APIs using Java, Spring Boot, React, and Next.js, while also working with cloud technologies, mobile development using Kotlin and Flutter, and AI-driven solutions involving machine learning, NLP, and computer vision. Currently pursuing an M.Sc. in Information Systems Engineering to further strengthen my expertise in modern software engineering.",
             "aboutMe": "About Me",
             "viewResume": "View Resume"
         }
@@ -22,8 +22,8 @@
             "title": "Computer Engineer | Full-Stack Developer",
             "viewResume": "View Resume",
             "location": "Sakarya, Türkiye",
-            "description1": "I am a Computer Engineering graduate with a strong focus on full-stack software development. My core expertise lies in backend development using <white>Java and C#</white>, where I enjoy designing scalable, maintainable, and efficient systems. On the frontend side, I work with <white>React and Next.js</white> to build modern, user-friendly interfaces.",
-            "description2": "In addition to full-stack development, I have experience in mobile application development and a growing interest in DevOps, security, and AI-driven systems. I value clean code, continuous learning, and collaboration."
+            "description1": "I'm Serdar Arıcı, a Computer Engineer currently pursuing an M.Sc. in Information Systems Engineering. My primary focus is backend and full-stack software development, building scalable applications and RESTful services with Java, Spring Boot, React, and Next.js. I also have experience with C#/.NET, Kotlin, Flutter, relational databases, cloud technologies, and modern software engineering practices. \nBeyond web and mobile development, I'm interested in artificial intelligence, with experience in machine learning, natural language processing (NLP), computer vision, and YOLO-based applications. I enjoy combining software engineering with AI to build practical solutions for real-world problems.",
+            "description2": "I believe great software is not only functional but also maintainable, scalable, and well-designed. Clean code, solid architecture, and continuous learning are principles that guide the way I develop software. AI-assisted tools such as Claude, ChatGPT, and Gemini are an integral part of my workflow, helping me learn faster, evaluate different approaches, and improve development efficiency. \nMy goal is to contribute to impactful engineering projects, collaborate with talented teams, and continue growing as a software engineer who builds reliable, scalable, and intelligent software solutions."
         },
         "education": {
             "title": "Education History",

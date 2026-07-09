@@ -12,7 +12,7 @@
   "home": {
     "hero": {
       "title": "Bilgisayar Mühendisi | Full-Stack Developer",
-      "shortDescription": "Bilgisayar Mühendisliği mezunuyum ve algoritmalar ile yazılım geliştirme alanlarında güçlü bir teknik altyapıya sahibim. Ağırlıklı olarak Java ve Spring Boot kullanarak backend geliştirme üzerine çalışıyor; bunun yanında frontend ve mobil teknolojilerde de aktif olarak projeler geliştiriyorum. Hızlı öğrenen, ekip çalışmasına uyumlu ve analitik düşünme becerileri gelişmiş bir yazılımcı olarak, gerçek dünya problemlerine etkili çözümler üretmeyi ve sürekli öğrenerek kendimi geliştirmeyi hedefliyorum.",
+      "shortDescription": "Backend ve full-stack yazılım geliştirmeye odaklanan bir Bilgisayar Mühendisiyim. Java, Spring Boot, React ve Next.js ile ölçeklenebilir uygulamalar ve RESTful API'ler geliştiriyor; bunun yanında bulut teknolojileri, Kotlin ve Flutter ile mobil uygulama geliştirme, ayrıca makine öğrenmesi, doğal dil işleme (NLP) ve bilgisayarlı görü alanlarında yapay zeka çözümleri üzerine çalışıyorum. Şu anda Bilişim Sistemleri Mühendisliği yüksek lisans eğitimime devam ederek modern yazılım mühendisliği alanındaki bilgi ve deneyimimi geliştirmeyi sürdürüyorum.",
       "aboutMe": "Hakkımda",
       "viewResume": "Özgeçmişi Görüntüle"
     }
@@ -22,8 +22,8 @@
       "title": "Bilgisayar Mühendisi | Full-Stack Developer",
       "viewResume": "Özgeçmişi Görüntüle",
       "location": "Sakarya, Türkiye",
-      "description1": "Full-stack yazılım geliştirmeye odaklanmış bir Bilgisayar Mühendisliği mezunuyum. Temel uzmanlığım, ölçeklenebilir ve verimli sistemler tasarlamaktan keyif aldığım <white>Java ve C#</white> ile backend geliştirme üzerinedir. Frontend tarafında ise modern ve kullanıcı dostu arayüzler inşa etmek için <white>React ve Next.js</white> ile çalışıyorum.",
-      "description2": "Full-stack geliştirmenin yanı sıra mobil uygulama geliştirme deneyimine sahibim; DevOps, güvenlik ve yapay zeka destekli sistemlere ilgi duyuyorum. Temiz koda, sürekli öğrenmeye ve iş birliğine değer veriyorum."
+      "description1": "Ben Serdar Arıcı. Bilgisayar Mühendisiyim ve şu anda Bilişim Sistemleri Mühendisliği alanında yüksek lisans eğitimime devam ediyorum. Kariyerimi ağırlıklı olarak backend ve full-stack yazılım geliştirme üzerine şekillendiriyorum. Java, Spring Boot, React ve Next.js ile ölçeklenebilir uygulamalar ve RESTful servisler geliştiriyor; bunun yanında C#/.NET, Kotlin, Flutter, ilişkisel veritabanları, bulut teknolojileri ve modern yazılım geliştirme yaklaşımlarıyla da çalışıyorum.\nWeb ve mobil geliştirmenin yanı sıra makine öğrenmesi, doğal dil işleme (NLP), bilgisayarlı görü ve YOLO tabanlı uygulamalar gibi yapay zeka alanlarında da çalışmalar yapıyorum. Yazılım mühendisliği ile yapay zekayı bir araya getirerek gerçek dünya problemlerine uygulanabilir çözümler geliştirmeyi hedefliyorum.",
+      "description2": "Yazılım geliştirirken yalnızca çalışan uygulamalar üretmeyi değil, sürdürülebilir, ölçeklenebilir ve iyi tasarlanmış sistemler geliştirmeyi önemsiyorum. Temiz kod, doğru mimari yaklaşımlar ve sürekli öğrenme anlayışı, yazılım geliştirme yaklaşımımın temelini oluşturuyor. Claude, ChatGPT ve Gemini gibi yapay zeka araçlarını yeni teknolojileri öğrenmek, farklı çözüm yaklaşımlarını değerlendirmek ve geliştirme sürecini daha verimli hale getirmek için aktif olarak kullanıyorum.\nHedefim; güçlü ekiplerle birlikte yüksek etkiye sahip projelerde yer almak ve güvenilir, ölçeklenebilir, yapay zeka destekli yazılım çözümleri geliştiren bir yazılım mühendisi olarak kendimi sürekli geliştirmektir."
     },
     "education": {
       "title": "Eğitim Geçmişi",
