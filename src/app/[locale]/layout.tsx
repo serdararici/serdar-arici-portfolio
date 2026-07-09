@@ -20,26 +20,69 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Serdar Arıcı',
+  jobTitle: 'Computer Engineer',
+  url: BASE_URL,
+  image: `${BASE_URL}/profile_ai.png`,
+  sameAs: [
+    'https://github.com/serdararici',
+    'https://www.linkedin.com/in/serdar-ar%C4%B1c%C4%B1-9827981a3/',
+    'https://www.kaggle.com/serdararici',
+  ],
+};
+
 export async function generateMetadata({
   params
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  
-  const titles = {
-    tr: "Serdar Arıcı - Portfolio",
-    en: "Serdar Arıcı - Portfolio"
-  };
-  
-  const descriptions = {
-    tr: "Serdar Arıcı'nın kişisel portfolio websitesi",
-    en: "Personal portfolio website of Serdar Arıcı"
-  };
+  const isTr = locale === 'tr';
+
+  const title = "Serdar Arıcı — Portfolio";
+  const description = isTr
+    ? "Serdar Arıcı'nın kişisel portfolio websitesi — Java, Spring Boot, React ve Next.js uzmanı Bilgisayar Mühendisi."
+    : "Personal portfolio of Serdar Arıcı — Computer Engineer & Full-Stack Developer specializing in Java, Spring Boot, React, and Next.js.";
 
   return {
-    title: titles[locale as 'tr' | 'en'],
-    description: descriptions[locale as 'tr' | 'en'],
+    metadataBase: new URL(BASE_URL),
+    title: {
+      default: title,
+      template: '%s | Serdar Arıcı',
+    },
+    description,
+    openGraph: {
+      type: 'profile',
+      firstName: 'Serdar',
+      lastName: 'Arıcı',
+      title,
+      description,
+      url: `${BASE_URL}/${locale}`,
+      siteName: 'Serdar Arıcı',
+      locale: isTr ? 'tr_TR' : 'en_US',
+      images: [
+        {
+          url: '/profile_ai.png',
+          width: 800,
+          height: 800,
+          alt: 'Serdar Arıcı',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/profile_ai.png'],
+    },
+    verification: {
+      google: '9THtHXL8nDvgDMVKtshNlPSHol1c76aKErwYwElfX78',
+    },
   };
 }
 
@@ -72,6 +115,12 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
+      </head>
       <body
         key={locale}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

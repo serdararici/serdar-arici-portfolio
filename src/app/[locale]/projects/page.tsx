@@ -1,5 +1,40 @@
 import React from "react";
+import type { Metadata } from "next";
 import type { Project } from "@/types/types";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isTr = locale === 'tr';
+
+  const title = isTr ? 'Projeler' : 'Projects';
+  const description = isTr
+    ? 'Backend, frontend, mobil ve full-stack mühendislik projelerimi keşfedin.'
+    : 'Explore my backend, frontend, mobile, and full-stack engineering projects.';
+
+  return {
+    title,
+    description,
+    openGraph: {
+      type: 'website',
+      title: `${title} | Serdar Arıcı`,
+      description,
+      url: `${BASE_URL}/${locale}/projects`,
+      images: [{ url: '/profile_ai.png', width: 800, height: 800, alt: 'Serdar Arıcı' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Serdar Arıcı`,
+      description,
+      images: ['/profile_ai.png'],
+    },
+  };
+}
 import { supabase } from "@/lib/supabase";
 import ProjectsClient from "@/components/projects/ProjectsClient";
 import { projects as fallbackProjects } from "@/data/projectsData";

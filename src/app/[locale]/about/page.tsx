@@ -1,10 +1,45 @@
-import { 
-  getExperiences, 
-  getEducation, 
-  getSkills, 
-  getCertifications, 
-  getFeaturedProjects 
+import type { Metadata } from "next";
+import {
+  getExperiences,
+  getEducation,
+  getSkills,
+  getCertifications,
+  getFeaturedProjects
 } from "@/lib/queries";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isTr = locale === 'tr';
+
+  const title = isTr ? 'Hakkımda' : 'About Me';
+  const description = isTr
+    ? 'Serdar Arıcı hakkında — iş deneyimi, eğitim, teknik beceriler ve sertifikalar.'
+    : 'About Serdar Arıcı — work experience, education, technical skills, and certifications.';
+
+  return {
+    title,
+    description,
+    openGraph: {
+      type: 'website',
+      title: `${title} | Serdar Arıcı`,
+      description,
+      url: `${BASE_URL}/${locale}/about`,
+      images: [{ url: '/profile_ai.png', width: 800, height: 800, alt: 'Serdar Arıcı' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Serdar Arıcı`,
+      description,
+      images: ['/profile_ai.png'],
+    },
+  };
+}
 
 import AboutHero from "@/components/about/AboutHero";
 import ExperienceSection from "@/components/about/ExperienceSection";
