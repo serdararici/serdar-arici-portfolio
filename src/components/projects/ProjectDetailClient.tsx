@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Link } from '@/i18n/routing';
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink as ExtIcon } from "lucide-react";
+import { ArrowLeft, ExternalLink as ExtIcon, FileText } from "lucide-react";
 import { SiGithub, SiYoutube } from "react-icons/si";
 import type { Project } from "@/types/types";
 import { formatDate, getLocalized } from "@/lib/utils";
@@ -125,6 +125,18 @@ export default function ProjectDetailClient({ project }: Props) {
                     >
                       <SiGithub className="w-4 h-4" />
                       {t('source')}
+                    </Link>
+                  )}
+
+                  {project.document_url && (
+                    <Link
+                      href={project.document_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-700 text-white font-bold hover:bg-white hover:text-black transition"
+                    >
+                      <FileText className="w-4 h-4" />
+                      {t('document')}
                     </Link>
                   )}
                 </div>

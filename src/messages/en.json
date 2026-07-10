@@ -78,6 +78,7 @@
             "live": "Live Preview",
             "watch": "Watch Demo",
             "source": "View Source",
+            "document": "View Document",
             "techStack": "Tech Stack"
         },
         "gallery": {
