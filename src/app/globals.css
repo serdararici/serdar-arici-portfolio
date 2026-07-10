@@ -2,29 +2,17 @@
 
 
 @theme {
-  --color-background: #0B0E18; 
-  --color-background2: #141A2E; 
+  --color-background: #0B0E18;
+  --color-background2: #141A2E;
   --color-foreground: #FFFFFF;
-  --color-primary: #3B82F6; 
-  --color-secondary: #00A3FF; 
+  --color-primary: #3B82F6;
+  --color-secondary: #00A3FF;
   --color-card: #151928;
   --color-menu-bg: #141A2E;
-}
-
-
-:root {
-  /* Tasarımdaki çok koyu, lacivert arka plan rengi */
-  --color-background: #0B0E18; 
-  --color-background2: #141A2E; 
-  /* Temel metin rengi */
-  --color-foreground: #FFFFFF;
-  /* Birincil vurgu rengi (Butonlar, linkler vb.) */
-  --color-primary: #3B82F6; 
-  /* İkincil vurgu rengi veya hover için açık ton */
-  --color-secondary: #00A3FF; 
-  /* Kart/Bölüm Arka Plan rengi (Arka plandan biraz daha açık) */
-  --color-card: #151928; 
-  --color-menu-bg: #141A2E
+  --color-surface: #121212;
+  --color-border: #1f2937;
+  --color-scrollbar-track: #1e1e2f;
+  --color-scrollbar-thumb: #4b5563;
 }
 
 html,
@@ -42,7 +30,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e1e2f;
+  background: var(--color-scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -60,7 +48,7 @@ body {
 }
 
 .custom-nav-scroll::-webkit-scrollbar-thumb {
-  background: #4b5563; /* Gray-600 gibi koyu bir renk */
+  background: var(--color-scrollbar-thumb);
   border-radius: 20px;
 }
 

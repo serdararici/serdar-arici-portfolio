@@ -6,7 +6,7 @@ export default function Footer() {
   const t = useTranslations('footer');
 
   return (
-    <footer className="border-t border-gray-800 bg-[#121212] py-6">
+    <footer className="border-t border-gray-800 bg-surface py-6">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 md:flex-row md:justify-between">
         <p className="text-sm text-gray-400">
           {/* JSON'dan çekiyoruz */}

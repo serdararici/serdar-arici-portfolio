@@ -35,7 +35,7 @@ export default function LanguageSwitcher({ variant = 'desktop' }: LanguageSwitch
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 mt-2 w-28 bg-[#1a1a1a] border border-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div className="absolute right-0 mt-2 w-28 bg-surface border border-gray-800 rounded-lg shadow-lg overflow-hidden">
             {routing.locales.map((locale) => (
               <button
                 key={locale}
@@ -69,7 +69,7 @@ export default function LanguageSwitcher({ variant = 'desktop' }: LanguageSwitch
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-32 bg-[#1a1a1a] border border-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="absolute right-0 mt-2 w-32 bg-surface border border-gray-800 rounded-lg shadow-lg overflow-hidden">
           {routing.locales.map((locale) => (
             <button
               key={locale}

@@ -7,10 +7,15 @@ export default {
     extend: {
       colors: {
         background: "var(--color-background)",
+        background2: "var(--color-background2)",
         foreground: "var(--color-foreground)",
         card: "var(--color-card)",
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
+        surface: "var(--color-surface)",
+        border: "var(--color-border)",
+        "scrollbar-track": "var(--color-scrollbar-track)",
+        "scrollbar-thumb": "var(--color-scrollbar-thumb)",
         accent: {
           DEFAULT: "var(--color-primary)",
           dark: "#2563EB",
