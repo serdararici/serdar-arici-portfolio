@@ -78,7 +78,7 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
                 >
                   <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
                   
-                  <div className="bg-card p-6 rounded-2xl border border-gray-800 hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
+                  <div className="bg-card p-6 rounded-2xl border border-border hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
                         <h3 className="text-xl font-bold text-foreground transition-colors">
@@ -86,14 +86,14 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
                         </h3>
                         <p className="text-primary font-medium text-lg mt-1">{currentCompany}</p>
                       </div>
-                      
+
                       <div className='flex flex-col md:items-end md:text-right'>
-                        <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
+                        <div className="text-muted text-sm font-medium mt-2 md:mt-0 bg-card/50 px-3 py-1 rounded-full border border-border">
                           {formatDate(item.start_date, locale, t('present'))} — {formatDate(item.end_date, locale, t('present'))}
                         </div>
-                        
+
                         {currentLoc && (
-                          <div className="flex items-center gap-1 text-gray-500 text-sm italic mt-2 mr-3">
+                          <div className="flex items-center gap-1 text-muted text-sm italic mt-2 mr-3">
                               <MapPin className="w-3.5 h-3.5" />
                               <span>{currentLoc}</span>
                           </div>
@@ -102,7 +102,7 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
                     </div>
 
                     {currentDesc && currentDesc.length > 0 && (
-                      <ul className="list-disc list-inside space-y-2 text-gray-300">
+                      <ul className="list-disc list-inside space-y-2 text-muted">
                         {currentDesc.map((desc: string, i: number) => (
                           <li key={i} className="text-sm sm:text-base leading-relaxed pl-2 marker:text-primary">
                             {desc}

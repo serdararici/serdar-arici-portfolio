@@ -78,7 +78,7 @@ const AboutHero = ({ profileContent }: Props) => {
               variants={fadeInUp}
               className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4"
             >
-              <p className="text-xl md:text-2xl text-gray-400">
+              <p className="text-xl md:text-2xl text-muted">
                 {jobTitle}
               </p>
 
@@ -94,7 +94,7 @@ const AboutHero = ({ profileContent }: Props) => {
 
             <motion.div
               variants={fadeInUp}
-              className="flex items-center justify-center md:justify-start gap-2 text-gray-300 mb-6"
+              className="flex items-center justify-center md:justify-start gap-2 text-muted mb-6"
             >
               <MapPin className="w-5 h-5 text-primary" />
               <span>{t('location')}</span>
@@ -104,17 +104,17 @@ const AboutHero = ({ profileContent }: Props) => {
               {aboutParagraphs.length > 0 ? (
                 <div className="space-y-4 max-w-2xl md:max-w-3xl">
                   {aboutParagraphs.map((para, i) => (
-                    <p key={i} className="text-gray-300 leading-relaxed">{para}</p>
+                    <p key={i} className="text-muted leading-relaxed">{para}</p>
                   ))}
                 </div>
               ) : (
                 <>
-                  <p className="text-gray-300 leading-relaxed max-w-2xl md:max-w-3xl">
+                  <p className="text-muted leading-relaxed max-w-2xl md:max-w-3xl">
                     {t.rich('description1', {
                       white: (chunks) => <span className="text-white">{chunks}</span>
                     })}
                   </p>
-                  <p className="text-gray-300 leading-relaxed max-w-2xl md:max-w-3xl mt-4">
+                  <p className="text-muted leading-relaxed max-w-2xl md:max-w-3xl mt-4">
                     {t('description2')}
                   </p>
                 </>

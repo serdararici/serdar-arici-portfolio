@@ -37,15 +37,15 @@ export default function HamburgerMenu({ isOpen, onClose }: Props) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="absolute top-0 right-0 w-3/4 max-w-xs bg-background p-4 border-l border-gray-700 rounded-bl-lg shadow-2xl"
+            className="absolute top-0 right-0 w-3/4 max-w-xs bg-background p-4 border-l border-border rounded-bl-lg shadow-2xl"
           >
             {/* Close Button */}
             <div className="flex justify-end">
               <button
                 onClick={onClose}
-                className="hover:bg-gray-800 p-2 rounded-full transition-colors"
+                className="hover:bg-card p-2 rounded-full transition-colors"
               >
-                <HiX className="w-6 h-6 text-gray-300 hover:text-white" />
+                <HiX className="w-6 h-6 text-muted hover:text-foreground" />
               </button>
             </div>
 
@@ -56,7 +56,7 @@ export default function HamburgerMenu({ isOpen, onClose }: Props) {
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="text-gray-300 hover:text-white text-lg transition-colors block py-1 hover:pl-2 hover:border-l-2 hover:border-blue-500"
+                    className="text-muted hover:text-foreground text-lg transition-colors block py-1 hover:pl-2 hover:border-l-2 hover:border-primary"
                   >
                     {t(item.name)}
                   </Link>
@@ -65,26 +65,26 @@ export default function HamburgerMenu({ isOpen, onClose }: Props) {
             </ul>
 
             {/* Social Icons */}
-            <div className="flex gap-4 justify-center mt-5 pt-4 border-t border-gray-700">
+            <div className="flex gap-4 justify-center mt-5 pt-4 border-t border-border">
               <a
                 href="https://github.com/serdararici"
                 target="_blank"
                 className="hover:scale-110 transition-transform"
               >
-                <SiGithub className="w-5 h-5 text-gray-400 hover:text-white" />
+                <SiGithub className="w-5 h-5 text-muted hover:text-foreground" />
               </a>
               <a
                 href="https://linkedin.com/in/serdararici"
                 target="_blank"
                 className="hover:scale-110 transition-transform"
               >
-                <SiLinkedin className="w-5 h-5 text-gray-400 hover:text-blue-400" />
+                <SiLinkedin className="w-5 h-5 text-muted hover:text-blue-400" />
               </a>
               <a
                 href="mailto:serdararici3@gmail.com"
                 className="hover:scale-110 transition-transform"
               >
-                <SiGmail className="w-5 h-5 text-gray-400 hover:text-red-400" />
+                <SiGmail className="w-5 h-5 text-muted hover:text-red-400" />
               </a>
             </div>
           </motion.div>

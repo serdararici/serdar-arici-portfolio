@@ -84,30 +84,30 @@ const EducationSection = ({ education }: EducationSectionProps) => {
                   <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
                   
                   {/* Content Card */}
-                  <div className="bg-card p-6 rounded-2xl border border-gray-800 hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
+                  <div className="bg-card p-6 rounded-2xl border border-border hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-foreground transition-colors">
                           {currentDegree ? `${currentDegree} - ${currentDept}` : currentTitle}
                         </h3>
-                        
+
                         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
                           <p className="text-primary font-medium text-lg">{currentIntstitution}</p>
                         </div>
 
                         {item.gpa && (
-                           <span className="text-xs text-gray-400 block mt-2 font-mono uppercase tracking-widest">GPA: {item.gpa}</span>
+                           <span className="text-xs text-muted block mt-2 font-mono uppercase tracking-widest">GPA: {item.gpa}</span>
                         )}
                       </div>
-                      
+
                       <div className='flex flex-col md:items-end md:text-right'>
                         {/* Localized Date Range */}
-                        <div className="text-gray-400 text-sm font-medium mt-2 md:mt-0 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
+                        <div className="text-muted text-sm font-medium mt-2 md:mt-0 bg-card/50 px-3 py-1 rounded-full border border-border">
                           {formatDate(item.start_date, locale, t('present'))} — {formatDate(item.end_date, locale, t('present'))}
                         </div>
 
                         {item.location && (
-                          <div className="flex items-center gap-1 text-gray-500 text-sm italic mt-2 mr-3">
+                          <div className="flex items-center gap-1 text-muted text-sm italic mt-2 mr-3">
                               <MapPin className="w-3.5 h-3.5" />
                               <span>{currentLocation}</span>
                           </div>
@@ -117,7 +117,7 @@ const EducationSection = ({ education }: EducationSectionProps) => {
 
                     {/* Description List (Localized Array) */}
                     {currentDesc && currentDesc.length > 0 && (
-                      <ul className="list-disc list-inside space-y-2 text-gray-300 border-t border-gray-800/50 pt-4 mt-4">
+                      <ul className="list-disc list-inside space-y-2 text-muted border-t border-border/50 pt-4 mt-4">
                         {currentDesc.map((desc: string, i: number) => (
                           <li key={i} className="text-sm sm:text-base leading-relaxed pl-2 marker:text-primary">
                             {desc}

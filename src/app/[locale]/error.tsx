@@ -11,10 +11,10 @@ export default function GlobalError({ error, reset }: { error: Error; reset: () 
         <h2 className="text-2xl font-bold text-red-600 mb-4">
           {t('title')}
         </h2>
-        <p className="text-gray-400 mb-6">{error.message}</p>
+        <p className="text-muted mb-6">{error.message}</p>
         <button
           onClick={() => reset()}
-          className="px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20"
+          className="px-6 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary/80 transition shadow-lg shadow-primary/20"
         >
           {t('retry')}
         </button>

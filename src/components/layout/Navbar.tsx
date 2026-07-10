@@ -28,7 +28,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link 
           href="/" 
-          className="text-xl font-semibold text-white
+          className="text-xl font-semibold text-foreground
           transition-transform transition-colors duration-600
           hover:scale-103"
         >
@@ -49,7 +49,7 @@ export default function Navbar() {
                   className={`
                     group relative pb-1 text-md font-medium
                     transition-colors duration-300
-                    ${isActive ? "text-blue-400" : "text-gray-300 hover:text-white"}
+                    ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                   `}
                 >
                   {t(item.name)}
@@ -57,7 +57,7 @@ export default function Navbar() {
                   {/* Animated underline */}
                   <span
                     className={`
-                      absolute left-0 -bottom-1 h-[2px] bg-blue-500
+                      absolute left-0 -bottom-1 h-[2px] bg-primary
                       transition-all duration-300
                       ${isActive ? "w-full" : "w-0 group-hover:w-full"}
                     `}
@@ -80,7 +80,7 @@ export default function Navbar() {
 
           {!isOpen && (
             <button onClick={() => setIsOpen(true)}>
-              <Menu className="w-6 h-6 text-gray-300 hover:text-white" />
+              <Menu className="w-6 h-6 text-muted hover:text-foreground" />
             </button>
           )}
         </div>

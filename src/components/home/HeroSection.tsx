@@ -103,7 +103,7 @@ const HeroSection = ({ profileContent }: Props) => {
 
         <motion.p
           variants={itemVariants}
-          className="text-sm sm:text-base text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed font-light"
+          className="text-sm sm:text-base text-muted max-w-3xl mx-auto mb-8 leading-relaxed font-light"
         >
           {shortDescription}
         </motion.p>
@@ -124,7 +124,7 @@ const HeroSection = ({ profileContent }: Props) => {
             href={cvHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto font-semibold rounded-full bg-transparent border border-gray-700 text-gray-300 hover:border-primary hover:text-white transition-all duration-300 active:scale-95"
+            className="group flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto font-semibold rounded-full bg-transparent border border-border text-muted hover:border-primary hover:text-foreground transition-all duration-300 active:scale-95"
           >
             <FiEye className="text-xl group-hover:scale-110 transition-transform" />
             {t('hero.viewResume')}
@@ -142,7 +142,7 @@ const HeroSection = ({ profileContent }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               title={item.label}
-              className="p-3 border border-gray-800 rounded-full text-gray-500 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 hover:-translate-y-1"
+              className="p-3 border border-border rounded-full text-muted hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 hover:-translate-y-1"
             >
               <item.icon className="text-xl" />
             </a>

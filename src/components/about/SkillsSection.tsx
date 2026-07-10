@@ -65,18 +65,18 @@ const SkillsSection = ({ skills }: SkillsSectionProps) => {
                 variants={cardVariants}
                 className="group"
               >
-                <h3 className="text-sm font-semibold text-gray-500 mb-5 uppercase tracking-[0.2em] group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-sm font-semibold text-muted mb-5 uppercase tracking-[0.2em] group-hover:text-primary transition-colors duration-300">
                   {currentTitle}
                 </h3>
-                
+
                 <div className="flex flex-wrap gap-3">
                   {currentItems.map((item: string, idx: number) => (
                     <motion.span
                       key={idx}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 bg-card border border-gray-800 rounded-xl text-sm font-medium text-gray-300 
-                                 hover:border-primary/50 hover:text-white hover:shadow-[0_0_15px_rgba(var(--primary),0.1)] 
+                      className="px-4 py-2 bg-card border border-border rounded-xl text-sm font-medium text-muted
+                                 hover:border-primary/50 hover:text-foreground hover:shadow-[0_0_15px_rgba(var(--primary),0.1)]
                                  transition-all duration-300 cursor-default"
                     >
                       {item}

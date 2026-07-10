@@ -80,7 +80,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
             <div className="p-2 bg-primary/10 rounded-lg">
               <ExternalLink className="w-6 h-6 text-primary" />
             </div>
-            <h2 className="text-3xl font-bold text-white">{t('title')}</h2>
+            <h2 className="text-3xl font-bold text-foreground">{t('title')}</h2>
           </div>
           
           <Link 
@@ -121,7 +121,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                     className="shrink-0 snap-start transition-all duration-300 w-[calc(100%-40px)] sm:w-[calc(50%-16px)] lg:w-[calc(33.33%-20px)]"
                   >
                     <Link href={`/projects/${project.slug}`} className="block h-full group">
-                      <div className="h-full bg-card border border-gray-800 group-hover:border-primary/40 shadow-xl rounded-2xl overflow-hidden transition-all group-hover:scale-[1.01]">
+                      <div className="h-full bg-card border border-border group-hover:border-primary/40 shadow-xl rounded-2xl overflow-hidden transition-all group-hover:scale-[1.01]">
                         <figure className="relative w-full h-48 overflow-hidden">
                           <Image
                             src={project.image_url ?? "/image_not_found.jpg"}
@@ -142,12 +142,12 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                             <h3 className="text-xl md:text-lg font-bold text-foreground truncate">
                               {currentTitle}
                             </h3>
-                            <p className="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">
+                            <p className="text-xs font-medium text-muted mt-1 uppercase tracking-wide">
                               {formatProjectDate(project.project_date, locale)}
                             </p>
                           </div>
 
-                          <p className="text-sm text-gray-400 line-clamp-3 min-h-18 leading-relaxed">
+                          <p className="text-sm text-muted line-clamp-3 min-h-18 leading-relaxed">
                             {currentShortDesc}
                           </p>
 
@@ -155,13 +155,13 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                             {project.tech_stack.slice(0, visibleTechs).map((t) => (
                               <span
                                 key={t}
-                                className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md border border-gray-800 text-gray-300 bg-gray-900/50"
+                                className="shrink-0 px-2.5 py-1 text-[10px] font-medium rounded-md border border-border text-muted bg-card/50"
                               >
                                 {t}
                               </span>
                             ))}
                             {project.tech_stack.length > visibleTechs && (
-                              <span className="text-xs text-gray-500">
+                              <span className="text-xs text-muted">
                                 +{project.tech_stack.length - visibleTechs}
                               </span>
                             )}
@@ -174,7 +174,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                                   e.stopPropagation();
                                   window.open(project.github_url ?? "#", "_blank");
                               }}
-                              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition-all"
+                              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-border text-foreground hover:bg-foreground hover:text-background transition-all"
                             >
                               <SiGithub className="w-4 h-4" /> {t('github')}
                             </div>

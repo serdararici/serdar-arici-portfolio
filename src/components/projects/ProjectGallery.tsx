@@ -54,10 +54,10 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
   if (galleryItems.length === 0) return null;
 
   return (
-    <section className="mt-16 border-t border-gray-800 pt-12">
+    <section className="mt-16 border-t border-border pt-12">
       <div className="flex items-center justify-between mb-8">
-        <h3 className="text-2xl font-bold text-white">{t('title')}</h3>
-        <span className="text-sm text-gray-400">
+        <h3 className="text-2xl font-bold text-foreground">{t('title')}</h3>
+        <span className="text-sm text-muted">
           {galleryItems.length} {t('screenshots')}
         </span>
       </div>
@@ -68,7 +68,7 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
             key={i}
             whileHover={{ y: -5 }}
             onClick={() => setCurrentIndex(i)}
-            className="group rounded-2xl overflow-hidden border border-gray-800 bg-card hover:border-primary/50 transition-all duration-300 shadow-lg cursor-zoom-in"
+            className="group rounded-2xl overflow-hidden border border-border bg-card hover:border-primary/50 transition-all duration-300 shadow-lg cursor-zoom-in"
           >
             <div className="relative w-full aspect-video">
               <Image
@@ -142,11 +142,11 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
               />
               
               <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-                <div className="text-gray-400 text-sm font-medium">
+                <div className="text-muted text-sm font-medium">
                   {currentIndex + 1} / {galleryItems.length}
                 </div>
                 {/* Visual hint for mobile */}
-                <div className="md:hidden text-[10px] text-gray-600 uppercase tracking-widest animate-pulse">
+                <div className="md:hidden text-[10px] text-faint uppercase tracking-widest animate-pulse">
                   {t('swipeHint') || 'Swipe to navigate'}
                 </div>
               </div>
