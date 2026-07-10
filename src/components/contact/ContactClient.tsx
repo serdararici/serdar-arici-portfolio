@@ -22,7 +22,7 @@ const ContactClient = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-white py-12 px-6">
+    <div className="min-h-screen bg-background text-foreground py-12 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
@@ -39,7 +39,7 @@ const ContactClient = () => {
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
                 {t('title')} <span className="text-primary">{t('titleHighlight')}</span>
               </h1>
-              <p className="text-gray-400 text-md max-w-lg">
+              <p className="text-muted text-md max-w-lg">
                 {t('description')}
               </p>
             </div>
@@ -55,33 +55,33 @@ const ContactClient = () => {
               />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-400 ml-1">{t('form.name')}</label>
+                  <label className="text-sm font-medium text-muted ml-1">{t('form.name')}</label>
                   <input
                     name="name"
                     required
                     placeholder={t('form.namePlaceholder')}
-                    className="w-full bg-gray-900/50 border border-gray-800 rounded-2xl py-4 px-6 focus:outline-none focus:border-primary/50 transition-all"
+                    className="w-full bg-card/50 border border-border rounded-2xl py-4 px-6 focus:outline-none focus:border-primary/50 transition-all"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-400 ml-1">{t('form.email')}</label>
+                  <label className="text-sm font-medium text-muted ml-1">{t('form.email')}</label>
                   <input
                     name="email"
                     type="email"
                     required
                     placeholder={t('form.emailPlaceholder')}
-                    className="w-full bg-gray-900/50 border border-gray-800 rounded-2xl py-4 px-6 focus:outline-none focus:border-primary/50 transition-all"
+                    className="w-full bg-card/50 border border-border rounded-2xl py-4 px-6 focus:outline-none focus:border-primary/50 transition-all"
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-400 ml-1">{t('form.message')}</label>
+                <label className="text-sm font-medium text-muted ml-1">{t('form.message')}</label>
                 <textarea
                   name="message"
                   required
                   rows={5}
                   placeholder={t('form.messagePlaceholder')}
-                  className="w-full bg-gray-900/50 border border-gray-800 rounded-2xl py-4 px-6 focus:outline-none focus:border-primary/50 transition-all resize-none"
+                  className="w-full bg-card/50 border border-border rounded-2xl py-4 px-6 focus:outline-none focus:border-primary/50 transition-all resize-none"
                 />
               </div>
 
@@ -103,7 +103,7 @@ const ContactClient = () => {
             animate={{ opacity: 1, x: 0 }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="bg-gray-900/30 border border-gray-800 rounded-[2.5rem] p-8 mt-20 space-y-6">
+            <div className="bg-card/30 border border-border rounded-[2.5rem] p-8 mt-20 space-y-6">
               <h3 className="text-xl font-bold">{t('info.connect')}</h3>
               <div className="space-y-4">
                 <ContactLink icon={<Mail className="w-5 h-5" />} label="EMAIL" value="serdararici3@gmail.com" href="mailto:serdararici3@gmail.com" />
@@ -112,7 +112,7 @@ const ContactClient = () => {
               </div>
             </div>
 
-            <div className="relative group rounded-[2.5rem] overflow-hidden border border-gray-800 aspect-video">
+            <div className="relative group rounded-[2.5rem] overflow-hidden border border-border aspect-video">
               <div className="absolute inset-0 bg-black/40 z-10" />
               <img
                 src="/istanbul-view.jpg"
@@ -125,7 +125,7 @@ const ContactClient = () => {
                   {t('info.location')}
                 </div>
                 <h4 className="text-2xl font-bold">{t('info.city')}</h4>
-                <p className="text-xs text-gray-400">UTC+3</p>
+                <p className="text-xs text-muted">UTC+3</p>
               </div>
             </div>
           </motion.div>
@@ -136,15 +136,15 @@ const ContactClient = () => {
 };
 
 const ContactLink = ({ icon, label, value, href }: { icon: React.ReactNode, label: string, value: string, href: string }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-gray-800/30 border border-transparent hover:border-gray-700 hover:bg-gray-800/50 transition-all group">
+  <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-card hover:bg-card/70 border border-transparent hover:border-border transition-all group">
     <div className="flex items-center gap-4">
-      <div className="p-3 bg-gray-900 rounded-xl text-primary group-hover:text-white transition-colors">{icon}</div>
+      <div className="p-3 bg-card rounded-xl text-primary group-hover:text-foreground transition-colors">{icon}</div>
       <div>
-        <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{label}</p>
+        <p className="text-[10px] text-muted font-bold uppercase tracking-widest">{label}</p>
         <p className="text-sm font-semibold">{value}</p>
       </div>
     </div>
-    <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-primary transition-colors" />
+    <ArrowUpRight className="w-4 h-4 text-faint group-hover:text-primary transition-colors" />
   </a>
 );
 

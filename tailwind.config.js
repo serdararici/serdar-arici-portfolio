@@ -14,6 +14,9 @@ export default {
         secondary: "var(--color-secondary)",
         surface: "var(--color-surface)",
         border: "var(--color-border)",
+        muted: "var(--color-muted)",
+        subtle: "var(--color-subtle)",
+        faint: "var(--color-faint)",
         "scrollbar-track": "var(--color-scrollbar-track)",
         "scrollbar-thumb": "var(--color-scrollbar-thumb)",
         accent: {

@@ -36,18 +36,18 @@ const BlogsComingSoon = () => {
             <span className="text-[var(--color-primary)]">{t('titleHighlight')}</span>
           </h1>
 
-          <p className="text-gray-400 text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed">
+          <p className="text-muted text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed">
             {t('description')}
           </p>
 
           <form onSubmit={(e) => e.preventDefault()} className="relative max-w-md mx-auto lg:mx-0 group">
             <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
-              <Mail className="w-5 h-5 text-gray-500 group-focus-within:text-[var(--color-primary)] transition-colors" />
+              <Mail className="w-5 h-5 text-muted group-focus-within:text-[var(--color-primary)] transition-colors" />
             </div>
             <input
               type="email"
               placeholder={t('inputPlaceholder')}
-              className="w-full bg-[var(--color-card)] border border-gray-800 rounded-2xl py-4 pl-14 pr-36 focus:outline-none focus:border-[var(--color-primary)]/50 transition-all text-sm"
+              className="w-full bg-[var(--color-card)] border border-border rounded-2xl py-4 pl-14 pr-36 focus:outline-none focus:border-[var(--color-primary)]/50 transition-all text-sm"
             />
             <button
               type="submit"
@@ -57,7 +57,7 @@ const BlogsComingSoon = () => {
             </button>
           </form>
 
-          <p className="text-xs text-gray-600 italic">{t('spamNote')}</p>
+          <p className="text-xs text-faint italic">{t('spamNote')}</p>
         </motion.div>
 
         <motion.div
@@ -66,7 +66,7 @@ const BlogsComingSoon = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative group"
         >
-          <div className="relative rounded-[2.5rem] overflow-hidden border border-gray-800 bg-gray-900/50 backdrop-blur-sm shadow-2xl transition-transform duration-700 group-hover:rotate-1">
+          <div className="relative rounded-[2.5rem] overflow-hidden border border-border bg-card/50 backdrop-blur-sm shadow-2xl transition-transform duration-700 group-hover:rotate-1">
             <div className="absolute inset-0 opacity-20 font-mono text-[10px] p-6 text-blue-400 pointer-events-none select-none overflow-hidden">
               {`struct BlogEntry {
     title: String,
@@ -97,7 +97,7 @@ impl Compiler for SerdarArıcı {
                 </div>
                 <div className="mt-8 flex justify-between items-center">
                    <div className="flex -space-x-2">
-                      <div className="w-8 h-8 rounded-full bg-gray-800 border-2 border-black" />
+                      <div className="w-8 h-8 rounded-full bg-background2 border-2 border-black" />
                       <div className="w-8 h-8 rounded-full bg-[var(--color-primary)]/20 border-2 border-black" />
                    </div>
                    <div className="w-12 h-2 bg-[var(--color-primary)]/20 rounded-full" />
@@ -108,8 +108,8 @@ impl Compiler for SerdarArıcı {
         </motion.div>
       </main>
 
-      <footer className="mt-auto py-12 flex flex-col items-center gap-8 w-full border-t border-gray-900/50">
-        <nav className="flex gap-8 text-sm font-medium text-gray-500">
+      <footer className="mt-auto py-12 flex flex-col items-center gap-8 w-full border-t border-border/50">
+        <nav className="flex gap-8 text-sm font-medium text-muted">
           <Link href="/" className="hover:text-[var(--color-primary)] transition-colors">{tNav('home')}</Link>
           <Link href="/projects" className="hover:text-[var(--color-primary)] transition-colors">{tNav('projects')}</Link>
           <Link href="/about" className="hover:text-[var(--color-primary)] transition-colors">{tNav('about')}</Link>
@@ -118,15 +118,15 @@ impl Compiler for SerdarArıcı {
         </nav>
 
         <div className="flex gap-4">
-          <button className="p-3 rounded-full bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-all">
+          <button className="p-3 rounded-full bg-card border border-border text-muted hover:text-foreground transition-all">
             <Code2 className="w-5 h-5" />
           </button>
-          <button className="p-3 rounded-full bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-all">
+          <button className="p-3 rounded-full bg-card border border-border text-muted hover:text-foreground transition-all">
             <Share2 className="w-5 h-5" />
           </button>
         </div>
 
-        <p className="text-[10px] text-gray-700 uppercase tracking-[0.2em]">
+        <p className="text-[10px] text-faint uppercase tracking-[0.2em]">
           © {new Date().getFullYear()} Serdar Arıcı. {t('footerNote')}
         </p>
       </footer>

@@ -13,6 +13,9 @@
   --color-border: #1f2937;
   --color-scrollbar-track: #1e1e2f;
   --color-scrollbar-thumb: #4b5563;
+  --color-muted: #9CA3AF;
+  --color-subtle: #E5E7EB;
+  --color-faint: #6B7280;
 }
 
 html,

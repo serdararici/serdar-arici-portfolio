@@ -37,14 +37,14 @@ export default function ProjectDetailClient({ project }: Props) {
       >
         <div className="max-w-6xl mx-auto">
           <div className="mb-4">
-            <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-primary transition">
+            <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-muted hover:text-primary transition">
               <ArrowLeft className="w-4 h-4" />
               {t('back')}
             </Link>
           </div>
 
           <div className="max-w-4xl mx-auto mb-12"> 
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-border bg-card/50 backdrop-blur-sm">
               <div className="relative w-full h-64 md:h-112.5">
                 <Image
                   src={project.image_url ?? "/image_not_found.jpg"}
@@ -60,35 +60,35 @@ export default function ProjectDetailClient({ project }: Props) {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <article className="lg:col-span-2 space-y-8">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
                 {currentTitle}
               </h1>
               
               <section className="max-w-none">
-                <h2 className="text-2xl font-semibold text-primary mb-4 border-b border-gray-800 pb-2">
+                <h2 className="text-2xl font-semibold text-primary mb-4 border-b border-border pb-2">
                   {t('about')}
                 </h2>
-                <div className="text-gray-300 text-lg leading-relaxed whitespace-pre-line">
+                <div className="text-muted text-lg leading-relaxed whitespace-pre-line">
                   {currentDesc || t('noDescription')}
                 </div>
               </section>
             </article>
 
             <aside className="space-y-6 sticky top-24 self-start">
-              <div className="bg-card border border-gray-800 rounded-2xl p-6 shadow-xl">
-                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">{t('sidebarTitle')}</h3>
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-xl">
+                <h3 className="text-sm font-bold uppercase tracking-widest text-muted mb-4">{t('sidebarTitle')}</h3>
 
                 <dl className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <dt className="text-gray-400 text-sm">{t('category')}</dt>
-                    <dd className="text-white font-medium px-3 py-1 bg-gray-900 rounded-full text-xs">
+                    <dt className="text-muted text-sm">{t('category')}</dt>
+                    <dd className="text-foreground font-medium px-3 py-1 bg-background2 rounded-full text-xs">
                       {currentCategory}
                     </dd>
                   </div>
 
                   <div className="flex justify-between items-center">
-                    <dt className="text-gray-400 text-sm">{t('completed')}</dt>
-                    <dd className="text-gray-200 font-medium">
+                    <dt className="text-muted text-sm">{t('completed')}</dt>
+                    <dd className="text-subtle font-medium">
                       {formatDate(project.project_date, locale)}
                     </dd>
                   </div>
@@ -121,7 +121,7 @@ export default function ProjectDetailClient({ project }: Props) {
                     <Link
                       href={project.github_url}
                       target="_blank"
-                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-700 text-white font-bold hover:bg-white hover:text-black transition"
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-border text-white font-bold hover:bg-foreground hover:text-background transition"
                     >
                       <SiGithub className="w-4 h-4" />
                       {t('source')}
@@ -133,7 +133,7 @@ export default function ProjectDetailClient({ project }: Props) {
                       href={project.document_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-700 text-white font-bold hover:bg-white hover:text-black transition"
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-border text-white font-bold hover:bg-foreground hover:text-background transition"
                     >
                       <FileText className="w-4 h-4" />
                       {t('document')}
@@ -142,11 +142,11 @@ export default function ProjectDetailClient({ project }: Props) {
                 </div>
               </div>
 
-              <div className="bg-card border border-gray-800 rounded-2xl p-6 shadow-xl">
-                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">{t('techStack')}</h3>
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-xl">
+                <h3 className="text-sm font-bold uppercase tracking-widest text-muted mb-4">{t('techStack')}</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.tech_stack.map((tech) => (
-                    <span key={tech} className="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-sm text-gray-300">
+                    <span key={tech} className="px-3 py-1.5 rounded-lg bg-background2 border border-border text-sm text-muted">
                       {tech}
                     </span>
                   ))}
