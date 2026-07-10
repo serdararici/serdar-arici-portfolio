@@ -45,6 +45,14 @@ const ContactClient = () => {
             </div>
 
             <form id="contact-form" action={handleSubmit} className="mt-5 space-y-6">
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px' }}
+              />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-400 ml-1">{t('form.name')}</label>
