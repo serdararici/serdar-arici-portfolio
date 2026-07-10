@@ -53,8 +53,8 @@
   "projects": {
       "page": {
         "title": "Projelerim",
-        "subtitle": "Mühendislik Odaklı",
-        "description": "Backend, frontend, mobil ve full-stack çözümleri kapsayan mühendislik öncelikli projelerim. Farklı becerileri ve alanları temsil eden projeleri bulmak için filtreleyebilir veya arama yapabilirsiniz."
+        "subtitle": "",
+        "description": "Backend, frontend, mobil, full-stack ve yapçalışmalarımı da içeren proje arşivim. Farklı becerileri ve alanları temsil eden projeleri bulmak için filtreleyebilir veya arama yapabilirsiniz."
       },
       "client": {
         "searchPlaceholder": "Başlığa veya teknolojiye göre ara (ör. React, Golang)",

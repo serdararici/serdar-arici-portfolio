@@ -85,7 +85,7 @@ export default function ProjectCard({ project }: Props) {
             {project.tech_stack.length > 5 && <span className="text-xs text-gray-500">+{project.tech_stack.length - 5}</span>}
           </div>
 
-          <div className="mt-auto flex items-center justify-between gap-3">
+          <div className="mt-auto flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex gap-3">
               {project.live_url && (
                 <Link
@@ -100,16 +100,18 @@ export default function ProjectCard({ project }: Props) {
                 </Link>
               )}
 
-              <Link
-                href={project.github_url ?? "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition min-w-30"
-              >
-                <SiGithub className="w-4 h-4" />
-                {t('github')}
-              </Link>
+              {project.github_url && (
+                <Link
+                  href={project.github_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border border-gray-700 text-foreground hover:bg-white hover:text-black transition min-w-30"
+                >
+                  <SiGithub className="w-4 h-4" />
+                  {t('github')}
+                </Link>
+              )}
             </div>
             <time className="text-xs text-gray-400">{formattedDate}</time>
           </div>

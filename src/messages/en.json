@@ -53,8 +53,8 @@
     "projects": {
         "page": {
             "title": "My Projects",
-            "subtitle": "Engineering Focused",
-            "description": "A curated showcase of engineering-first projects spanning backend, frontend, mobile, and full-stack solutions. Filter or search to find projects that demonstrate different skills and domains."
+            "subtitle": "",
+            "description": "A collection of my backend, frontend, mobile, full-stack, and AI projects, alongside academic work. Filter or search to explore projects across different skills and domains."
         },
         "client": {
             "searchPlaceholder": "Search by title or tech (e.g. React, Golang)",

@@ -5,7 +5,6 @@ export type Project = {
   title: string;
   slug: string;
   category: 'Backend' | 'Frontend' | 'Full-Stack' | 'Mobile' | 'Desktop' | 'System' | 'AI/ML' | 'Academic' | 'Other';
-  category_tr?: string | null;
   description: string | null;
   short_description: string | null;
   tech_stack: string[];
