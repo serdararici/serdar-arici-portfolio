@@ -54,7 +54,7 @@
       "page": {
         "title": "Projelerim",
         "subtitle": "",
-        "description": "Backend, frontend, mobil, full-stack ve yapçalışmalarımı da içeren proje arşivim. Farklı becerileri ve alanları temsil eden projeleri bulmak için filtreleyebilir veya arama yapabilirsiniz."
+        "description": "Backend, frontend, mobil, full-stack ve yapay zeka projelerinin yanı sıra akademik çalışmalarımı da içeren proje arşivim. Farklı becerileri ve alanları temsil eden projeleri bulmak için filtreleyebilir veya arama yapabilirsiniz."
       },
       "client": {
         "searchPlaceholder": "Başlığa veya teknolojiye göre ara (ör. React, Golang)",

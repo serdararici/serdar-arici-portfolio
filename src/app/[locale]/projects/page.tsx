@@ -1,6 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
 import type { Project } from "@/types/types";
+import { supabase } from "@/lib/supabase";
+import ProjectsClient from "@/components/projects/ProjectsClient";
+import { projects as fallbackProjects } from "@/data/projectsData";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
+export const dynamic = 'force-dynamic';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
 
@@ -35,15 +41,18 @@ export async function generateMetadata({
     },
   };
 }
-import { supabase } from "@/lib/supabase";
-import ProjectsClient from "@/components/projects/ProjectsClient";
-import { projects as fallbackProjects } from "@/data/projectsData";
-import { getTranslations } from "next-intl/server";
 
-export default async function ProjectsPage() {
+export default async function ProjectsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations('projects.page');
-  
-  const { data, error } = await supabase
+
+  const { data } = await supabase
     .from("projects")
     .select("*")
     .order('project_date', { ascending: false });
@@ -57,7 +66,6 @@ export default async function ProjectsPage() {
       : typeof p.tech_stack === "string"
       ? (p.tech_stack ? JSON.parse(p.tech_stack) : [])
       : p.tech_stack ?? [],
-    // Gallery null gelirse boş array set edelim
     gallery: Array.isArray(p.gallery) ? p.gallery : [],
   }));
 
