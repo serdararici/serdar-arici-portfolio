@@ -4,7 +4,8 @@ export type Project = {
   created_at?: string;
   title: string;
   slug: string;
-  category: 'Backend' | 'Frontend' | 'Full-Stack' | 'Mobile' | 'Desktop' | 'System' | 'Other';
+  category: 'Backend' | 'Frontend' | 'Full-Stack' | 'Mobile' | 'Desktop' | 'System' | 'AI/ML' | 'Academic' | 'Other';
+  category_tr?: string | null;
   description: string | null;
   short_description: string | null;
   tech_stack: string[];
@@ -12,8 +13,9 @@ export type Project = {
   live_url?: string | null;
   image_url: string | null;
   video_url?: string | null;
+  document_url?: string | null;
   project_date?: string | null;
-  is_featured?: boolean; 
+  is_featured?: boolean;
   gallery?: string[] | null;
 }
 
