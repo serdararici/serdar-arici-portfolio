@@ -7,6 +7,7 @@ import type { Project } from "@/types/types";
 import ProjectCard from "@/components/projects/ProjectCard";
 import { useTranslations, useLocale } from "next-intl";
 import { getLocalized } from "@/lib/utils";
+import { CATEGORY_ORDER, getCategoryLabel } from "@/lib/categories";
 
 type Props = {
   initialProjects: Project[];
@@ -19,8 +20,10 @@ export default function ProjectsClient({ initialProjects }: Props) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
   const categories = useMemo(() => {
-    const cats = Array.from(new Set(initialProjects.map((p) => p.category)));
-    return ["All", ...cats];
+    const present = new Set(initialProjects.map((p) => p.category));
+    const sorted = CATEGORY_ORDER.filter((cat) => present.has(cat));
+    const remaining = Array.from(present).filter((cat) => !CATEGORY_ORDER.includes(cat as any));
+    return ["All", ...sorted, ...remaining];
   }, [initialProjects]);
 
   const filtered = useMemo(() => {
@@ -39,9 +42,14 @@ export default function ProjectsClient({ initialProjects }: Props) {
       .sort((a, b) => Number(b.is_featured) - Number(a.is_featured));
   }, [query, activeCategory, initialProjects, locale]);
 
+  const getCatDisplayName = (cat: string): string => {
+    if (cat === "All") return t('all');
+    return getCategoryLabel(cat, locale);
+  };
+
   return (
     <div>
-      <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
+      <div className="flex flex-col md:flex-row md:items-start gap-4 mb-8">
         <div className="flex items-center gap-3 bg-card border border-gray-800 rounded-full px-4 py-2 shadow-sm w-full md:max-w-md">
           <Search className="w-5 h-5 text-gray-400" />
           <input
@@ -61,26 +69,33 @@ export default function ProjectsClient({ initialProjects }: Props) {
           )}
         </div>
 
-        <nav className="flex gap-2 overflow-x-auto py-1 px-1 custom-nav-scroll">
+        {/* Mobile: native select */}
+        <select
+          value={activeCategory}
+          onChange={(e) => setActiveCategory(e.target.value)}
+          className="md:hidden w-full bg-card border border-gray-800 rounded-xl px-4 text-sm text-gray-300 min-h-[44px] focus:outline-none focus:border-primary/50 transition-all"
+        >
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {getCatDisplayName(cat)}
+            </option>
+          ))}
+        </select>
+
+        {/* Desktop: wrapped filter buttons */}
+        <nav className="hidden md:flex gap-2 flex-wrap py-1">
           {categories.map((cat) => {
             const active = cat === activeCategory;
-            
-            // Get the translated name for the category from the first project that matches this category
-            const projectWithCat = initialProjects.find(p => p.category === cat);
-            const displayCatName = cat === "All" 
-              ? t('all') 
-              : (projectWithCat ? getLocalized(projectWithCat, 'category', locale) : cat);
-
             return (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all border ${
+                className={`shrink-0 px-4 py-3 min-h-[44px] rounded-full text-sm font-medium transition-all border ${
                   active ? "text-white" : "text-gray-300 border-gray-800 hover:border-primary/50"
                 }`}
                 style={active ? { backgroundColor: "var(--color-primary)", borderColor: "transparent" } : {}}
               >
-                {displayCatName}
+                {getCatDisplayName(cat)}
               </button>
             );
           })}

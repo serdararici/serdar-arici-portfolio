@@ -8,6 +8,7 @@ import { ArrowLeft, ExternalLink as ExtIcon } from "lucide-react";
 import { SiGithub, SiYoutube } from "react-icons/si";
 import type { Project } from "@/types/types";
 import { formatDate, getLocalized } from "@/lib/utils";
+import { getCategoryLabel } from "@/lib/categories";
 import ProjectGallery from "./ProjectGallery";
 import { useTranslations, useLocale } from "next-intl";
 
@@ -21,7 +22,7 @@ export default function ProjectDetailClient({ project }: Props) {
 
   const currentTitle = getLocalized(project, 'title', locale);
   const currentDesc = getLocalized(project, 'description', locale);
-  const currentCategory = getLocalized(project, 'category', locale);
+  const currentCategory = getCategoryLabel(project.category, locale);
 
   const gallery = (project.gallery && project.gallery.length > 0) 
     ? project.gallery 

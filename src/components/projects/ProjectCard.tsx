@@ -8,6 +8,7 @@ import { SiGithub } from "react-icons/si";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/types/types";
 import { formatDate, getLocalized } from "@/lib/utils";
+import { getCategoryLabel } from "@/lib/categories";
 import { useTranslations, useLocale } from "next-intl";
 
 type Props = {
@@ -21,7 +22,7 @@ export default function ProjectCard({ project }: Props) {
   
   const currentTitle = getLocalized(project, 'title', locale);
   const currentShortDesc = getLocalized(project, 'short_description', locale);
-  const currentCategory = getLocalized(project, 'category', locale);
+  const currentCategory = getCategoryLabel(project.category, locale);
   const formattedDate = formatDate(project.project_date, locale);
 
   const goToProject = (slug: string) => router.push(`/projects/${slug}`);

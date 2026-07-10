@@ -12,6 +12,7 @@ import { SiGithub } from "react-icons/si";
 import { useRef, useEffect, useState } from "react";
 import { Project } from "@/types/types";
 import { formatProjectDate, getLocalized } from "@/lib/utils";
+import { getCategoryLabel } from "@/lib/categories";
 import { useTranslations, useLocale } from "next-intl";
 
 interface ProjectCarouselProps {
@@ -111,7 +112,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
               {initialProjects.map((project) => {
                 const currentTitle = getLocalized(project, 'title', locale);
                 const currentShortDesc = getLocalized(project, 'short_description', locale);
-                const currentCategory = getLocalized(project, 'category', locale);
+                const currentCategory = getCategoryLabel(project.category, locale);
 
                 return (
                   <div
