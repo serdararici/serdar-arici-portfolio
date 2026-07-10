@@ -60,3 +60,14 @@ export type Certification = {
   skills: string[];
 };
 
+export type ProfileContent = {
+  id: number;
+  job_title: string;
+  job_title_tr?: string | null;
+  home_short_description?: string | null;
+  home_short_description_tr?: string | null;
+  about_description?: string | null;
+  about_description_tr?: string | null;
+  resume_url?: string | null;
+};
+

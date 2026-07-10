@@ -1,13 +1,13 @@
 import React from 'react'
 import HeroSection from '@/components/home/HeroSection'
+import { getProfileContent } from '@/lib/queries'
 
-const Home = () => {
+export default async function Home() {
+  const profileContent = await getProfileContent();
+
   return (
     <div>
-      <HeroSection />
+      <HeroSection profileContent={profileContent} />
     </div>
-
-  )
+  );
 }
-
-export default Home

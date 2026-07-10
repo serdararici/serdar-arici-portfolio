@@ -1,5 +1,5 @@
 import { supabase } from './supabase'; // Your supabase client initialization
-import { Experience, Education, Skill, Certification, Project } from '@/types/types';
+import { Experience, Education, Skill, Certification, Project, ProfileContent } from '@/types/types';
 
 /**
  * Fetch all experience records ordered by start date (newest first)
@@ -57,6 +57,17 @@ export async function getCertifications(): Promise<Certification[]> {
  * Fetch featured projects for the carousel
  * Sorted by: 1. order_index (Manual Priority) 2. project_date (Recency)
  */
+export async function getProfileContent(): Promise<ProfileContent | null> {
+  const { data, error } = await supabase
+    .from('profile_content')
+    .select('*')
+    .eq('id', 1)
+    .single();
+
+  if (error || !data) return null;
+  return data;
+}
+
 export async function getFeaturedProjects(): Promise<Project[]> {
   const { data, error } = await supabase
     .from('projects')
