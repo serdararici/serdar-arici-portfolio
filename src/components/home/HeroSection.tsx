@@ -9,7 +9,6 @@ import { FiEye } from 'react-icons/fi';
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si";
 import TypewriterText from "@/components/ui/TypewriterText";
 import { useTranslations, useLocale } from 'next-intl';
-import { getLocalized } from '@/lib/utils';
 import type { ProfileContent } from '@/types/types';
 
 type Props = {
@@ -36,8 +35,14 @@ const HeroSection = ({ profileContent }: Props) => {
   const locale = useLocale();
   const name = "Serdar Arıcı";
 
-  const title = getLocalized(profileContent, 'job_title', locale) || t('hero.title');
-  const shortDescription = getLocalized(profileContent, 'home_short_description', locale) || t('hero.shortDescription');
+  const title = locale === 'tr'
+    ? (profileContent?.job_title_tr || t('hero.title'))
+    : (profileContent?.job_title || t('hero.title'));
+
+  const shortDescription = locale === 'tr'
+    ? (profileContent?.home_short_description_tr || t('hero.shortDescription'))
+    : (profileContent?.home_short_description || t('hero.shortDescription'));
+
   const cvHref = profileContent?.resume_url || "/Serdar_Arici_Resume.pdf";
 
   const containerVariants = {

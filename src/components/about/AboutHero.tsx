@@ -6,7 +6,6 @@ import { motion, Variants } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { FiEye } from "react-icons/fi";
 import { useTranslations, useLocale } from "next-intl";
-import { getLocalized } from "@/lib/utils";
 import type { ProfileContent } from "@/types/types";
 
 type Props = {
@@ -17,12 +16,18 @@ const AboutHero = ({ profileContent }: Props) => {
   const t = useTranslations('about.hero');
   const locale = useLocale();
 
-  const jobTitle = getLocalized(profileContent, 'job_title', locale) || t('title');
+  const jobTitle = locale === 'tr'
+    ? (profileContent?.job_title_tr || t('title'))
+    : (profileContent?.job_title || t('title'));
+
   const cvHref = profileContent?.resume_url || "/Serdar_Arici_Resume.pdf";
 
-  const rawDescription = getLocalized(profileContent, 'about_description', locale);
+  const rawDescription = locale === 'tr'
+    ? (profileContent?.about_description_tr || null)
+    : (profileContent?.about_description || null);
+
   const aboutParagraphs: string[] = rawDescription
-    ? rawDescription.split('\n\n').map((p: string) => p.trim()).filter(Boolean)
+    ? rawDescription.split(/\r?\n\r?\n/).map((p: string) => p.trim()).filter(Boolean)
     : [];
 
   const fadeInUp = {
