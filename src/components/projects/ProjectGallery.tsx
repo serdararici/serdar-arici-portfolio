@@ -136,6 +136,7 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
                 src={galleryItems[currentIndex]}
                 alt="Selected view"
                 fill
+                sizes="100vw"
                 className="object-contain pointer-events-none"
                 priority
               />

@@ -95,9 +95,10 @@ const HeroSection = () => {
             <Image
               src="/profile_ai.png"
               alt="Serdar Arıcı"
-              fill 
+              fill
+              sizes="(max-width: 640px) 160px, 208px"
               className="object-cover"
-              priority 
+              priority
             />
           </div>
         </motion.div>

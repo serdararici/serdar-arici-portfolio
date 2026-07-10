@@ -41,6 +41,7 @@ const AboutHero = () => {
               src="/profile_ai.png"
               alt="Serdar Arıcı"
               fill
+              sizes="(max-width: 768px) 192px, 224px"
               className="object-cover"
               priority
             />
