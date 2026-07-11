@@ -4,7 +4,10 @@
     "about": "Hakkımda",
     "projects": "Projeler",
     "blogs": "Blog",
-    "contact": "İletişim"
+    "contact": "İletişim",
+    "openMenu": "Menüyü aç",
+    "mobileMenu": "Mobil menü",
+    "closeMenu": "Menüyü kapat"
   },
   "footer": {
         "rights": "Tüm hakları saklıdır."

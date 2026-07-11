@@ -137,7 +137,7 @@ const ContactClient = () => {
               <div className="space-y-4">
                 <ContactLink icon={<Mail className="w-5 h-5" />} label="EMAIL" value="serdararici3@gmail.com" href="mailto:serdararici3@gmail.com" />
                 <ContactLink icon={<SiGithub className="w-5 h-5" />} label="GITHUB" value="@serdararici" href="https://github.com/serdararici" />
-                <ContactLink icon={<SiLinkedin className="w-5 h-5" />} label="LINKEDIN" value="Serdar Arıcı" href="https://www.linkedin.com/in/serdar-ar%C4%B1c%C4%B1-9827981a3/" />
+                <ContactLink icon={<SiLinkedin className="w-5 h-5" />} label="LINKEDIN" value="Serdar Arıcı" href="https://linkedin.com/in/serdararici" />
               </div>
             </div>
 

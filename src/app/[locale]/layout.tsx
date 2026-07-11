@@ -32,7 +32,7 @@ const JSON_LD = {
   image: `${BASE_URL}/profile_ai.png`,
   sameAs: [
     'https://github.com/serdararici',
-    'https://www.linkedin.com/in/serdar-ar%C4%B1c%C4%B1-9827981a3/',
+    'https://linkedin.com/in/serdararici',
     'https://www.kaggle.com/serdararici',
   ],
 };

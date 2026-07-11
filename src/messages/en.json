@@ -4,7 +4,10 @@
         "about": "About Me",
         "projects": "Projects",
         "blogs": "Blogs",
-        "contact": "Contact"
+        "contact": "Contact",
+        "openMenu": "Open menu",
+        "mobileMenu": "Mobile menu",
+        "closeMenu": "Close menu"
     },
     "footer": {
         "rights": "All rights reserved."
