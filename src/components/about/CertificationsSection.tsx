@@ -35,7 +35,7 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
   } as Variants;
 
   return (
-    <section className="py-12 px-4 sm:px-6 pb-24">
+    <section className="px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         
         <motion.div 
@@ -78,7 +78,7 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
                   initial="hidden"
                   animate="visible"
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="group relative bg-card border border-border rounded-2xl p-4 sm:p-6 hover:border-primary/50 hover:bg-primary/2 transition-all duration-300"
+                  className="group relative bg-card border border-border rounded-2xl p-4 sm:p-6 hover:border-primary/50 hover:bg-primary/2 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
@@ -95,8 +95,8 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
                           <h3 className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors truncate pr-6">
                             {currentTitle}
                           </h3>
-                          <p className="text-xs sm:text-sm text-muted font-medium mt-0.5">{cert.issuer}</p>
-                          <p className="text-[10px] sm:text-xs text-muted mt-2 flex items-center gap-2">
+                          <p className="text-sm text-subtle font-medium mt-0.5">{cert.issuer}</p>
+                          <p className="text-xs text-subtle mt-2 flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
                             {t('issued')} {formatDate(cert.issue_date, locale)}
                           </p>
@@ -108,13 +108,13 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
                           {currentSkills.slice(0, 3).map((skill: string, idx: number) => (
                             <span 
                               key={idx} 
-                              className="text-[9px] sm:text-[10px] uppercase tracking-wider font-bold px-1.5 sm:px-2 py-0.5 bg-background2 border border-border text-muted rounded-md group-hover:border-primary/30 transition-colors"
+                              className="text-xs uppercase tracking-wider font-bold px-2 py-0.5 bg-background2 border border-border text-subtle rounded-md group-hover:border-primary/30 transition-colors"
                             >
                               {skill}
                             </span>
                           ))}
                           {currentSkills.length > 3 && (
-                            <span className="text-[9px] sm:text-[10px] text-faint">+{currentSkills.length - 3}</span>
+                            <span className="text-xs text-faint">+{currentSkills.length - 3}</span>
                           )}
                         </div>
                       )}

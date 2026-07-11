@@ -33,7 +33,7 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
   } as Variants;
 
   return (
-    <section className="py-6 px-6">
+    <section className="px-6">
       <div className="max-w-6xl mx-auto">
         
         <motion.div 
@@ -54,7 +54,7 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
             whileInView={{ height: "100%" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute left-8 top-0 w-0.5 bg-primary/30 origin-top"
+            className="absolute left-4 sm:left-8 top-0 w-0.5 bg-primary/30 origin-top"
           />
 
           <motion.div 
@@ -74,9 +74,9 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
                 <motion.div 
                   key={item.id || index} 
                   variants={itemVariants}
-                  className="relative pl-20"
+                  className="relative pl-14 sm:pl-20"
                 >
-                  <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
+                  <div className="absolute left-3 sm:left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
                   
                   <div className="bg-card p-6 rounded-2xl border border-border hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">

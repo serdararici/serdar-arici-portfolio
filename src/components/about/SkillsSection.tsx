@@ -33,7 +33,7 @@ const SkillsSection = ({ skills }: SkillsSectionProps) => {
   } as Variants;
 
   return (
-    <section className="py-6 px-6">
+    <section className="px-6">
       <div className="max-w-6xl mx-auto">
         
         <motion.div 

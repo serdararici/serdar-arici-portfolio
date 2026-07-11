@@ -33,7 +33,7 @@ const EducationSection = ({ education }: EducationSectionProps) => {
   } as Variants;
 
   return (
-    <section className="py-6 px-6">
+    <section className="px-6">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Title */}
@@ -56,7 +56,7 @@ const EducationSection = ({ education }: EducationSectionProps) => {
             whileInView={{ height: "100%" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute left-8 top-0 w-0.5 bg-primary/30 origin-top"
+            className="absolute left-4 sm:left-8 top-0 w-0.5 bg-primary/30 origin-top"
           />
 
           <motion.div 
@@ -78,10 +78,10 @@ const EducationSection = ({ education }: EducationSectionProps) => {
                 <motion.div 
                   key={item.id || index} 
                   variants={itemVariants}
-                  className="relative pl-20"
+                  className="relative pl-14 sm:pl-20"
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
+                  <div className="absolute left-3 sm:left-6 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
                   
                   {/* Content Card */}
                   <div className="bg-card p-6 rounded-2xl border border-border hover:border-primary/40 hover:shadow-xl transition-all duration-300 group">

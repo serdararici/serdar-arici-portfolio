@@ -62,7 +62,7 @@ export default async function AboutPage() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <AboutHero profileContent={profileContent} />
 
-      <div className="max-w-6xl mx-auto space-y-12 pb-10">
+      <div className="max-w-6xl mx-auto space-y-12 pt-4 pb-16">
         <ExperienceSection experiences={experiences} />
         <EducationSection education={education} />
         <SkillsSection skills={skills} />
