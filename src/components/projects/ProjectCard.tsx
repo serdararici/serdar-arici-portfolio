@@ -45,7 +45,7 @@ export default function ProjectCard({ project }: Props) {
           goToProject(project.slug);
         }
       }}
-      className="relative group bg-card border border-border rounded-[2.5rem] overflow-hidden shadow-lg transform transition hover:scale-[1.02] hover:border-primary/50 hover:shadow-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/40"
+      className="relative group bg-card border border-border rounded-[2.5rem] overflow-hidden shadow-lg transform transition hover:scale-[1.02] hover:border-primary/50 hover:shadow-2xl cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
     >
       <div className="absolute top-6 right-8 z-20 text-muted group-hover:text-primary transition-colors duration-300">
         <ArrowUpRight className="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
@@ -85,7 +85,7 @@ export default function ProjectCard({ project }: Props) {
             {project.tech_stack.length > 5 && <span className="text-xs text-muted">+{project.tech_stack.length - 5}</span>}
           </div>
 
-          <div className="mt-auto flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex gap-3">
               {project.live_url && (
                 <Link

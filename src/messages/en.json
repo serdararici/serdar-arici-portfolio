@@ -81,13 +81,20 @@
             "watch": "Watch Demo",
             "source": "View Source",
             "document": "View Document",
-            "techStack": "Tech Stack"
+            "techStack": "Tech Stack",
+            "prevProject": "Previous Project",
+            "nextProject": "Next Project"
         },
         "gallery": {
             "title": "Project Gallery",
             "screenshots": "Screenshots",
             "screenshotAlt": "Screenshot",
-            "swipeHint": "Swipe left or right to navigate"
+            "swipeHint": "Swipe left or right to navigate",
+            "openImage": "Open image",
+            "dialogLabel": "Project image gallery",
+            "close": "Close",
+            "prevImage": "Previous image",
+            "nextImage": "Next image"
         }
     },
     "blogs": {

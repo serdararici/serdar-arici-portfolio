@@ -51,11 +51,13 @@ export default async function ProjectPage({ params }: Props) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
-  const { data: project, error } = await supabase
-    .from('projects')
-    .select('*')
-    .eq('slug', slug)
-    .maybeSingle();
+  const [{ data: project, error }, { data: allProjects }] = await Promise.all([
+    supabase.from('projects').select('*').eq('slug', slug).maybeSingle(),
+    supabase
+      .from('projects')
+      .select('slug, title, title_tr, image_url')
+      .order('project_date', { ascending: false }),
+  ]);
 
   if (error || !project) {
     return notFound();
@@ -67,5 +69,16 @@ export default async function ProjectPage({ params }: Props) {
     gallery: Array.isArray(project.gallery) ? project.gallery : [],
   };
 
-  return <ProjectDetailClient project={normalizedProject} />;
+  const allList = allProjects ?? [];
+  const idx = allList.findIndex(p => p.slug === slug);
+  const prevProject = idx > 0 ? allList[idx - 1] : null;
+  const nextProject = idx !== -1 && idx < allList.length - 1 ? allList[idx + 1] : null;
+
+  return (
+    <ProjectDetailClient
+      project={normalizedProject}
+      prevProject={prevProject}
+      nextProject={nextProject}
+    />
+  );
 }

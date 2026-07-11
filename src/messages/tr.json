@@ -81,13 +81,20 @@
         "watch": "Demoyu İzle",
         "source": "Kaynak Kodu",
         "document": "Belgeyi Görüntüle",
-        "techStack": "Kullanılan Teknolojiler"
+        "techStack": "Kullanılan Teknolojiler",
+      "prevProject": "Önceki Proje",
+      "nextProject": "Sonraki Proje"
     },
     "gallery": {
       "title": "Proje Galerisi",
       "screenshots": "Ekran Görüntüsü",
       "screenshotAlt": "Görüntü",
-      "swipeHint": "Görseller arasında kaydırarak geçiş yapabilirsiniz"
+      "swipeHint": "Görseller arasında kaydırarak geçiş yapabilirsiniz",
+      "openImage": "Resmi büyüt",
+      "dialogLabel": "Proje görseli galerisi",
+      "close": "Kapat",
+      "prevImage": "Önceki görsel",
+      "nextImage": "Sonraki görsel"
     }
   },
   "blogs": {
