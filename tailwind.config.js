@@ -3,6 +3,7 @@ import daisyui from "daisyui";
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
@@ -17,6 +18,7 @@ export default {
         muted: "var(--color-muted)",
         subtle: "var(--color-subtle)",
         faint: "var(--color-faint)",
+        "on-primary": "var(--color-on-primary)",
         "scrollbar-track": "var(--color-scrollbar-track)",
         "scrollbar-thumb": "var(--color-scrollbar-thumb)",
         accent: {

@@ -93,7 +93,7 @@ export default function ProjectCard({ project }: Props) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-primary text-white hover:opacity-90 transition shadow min-w-30"
+                  className="flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-primary text-on-primary hover:opacity-90 transition shadow min-w-30"
                 >
                   <ExternalLink className="w-4 h-4" />
                   {t('viewDemo')}

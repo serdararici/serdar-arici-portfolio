@@ -114,7 +114,7 @@ const HeroSection = ({ profileContent }: Props) => {
         >
           <Link
             href="/about"
-            className="group flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-all duration-300 shadow-[0_0_20px_-5px_rgba(var(--primary),0.4)] active:scale-95"
+            className="group flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto font-semibold rounded-full bg-primary text-on-primary hover:bg-primary/90 transition-all duration-300 shadow-[0_0_20px_-5px_rgba(var(--primary),0.4)] active:scale-95"
           >
             <BsPerson className="text-xl group-hover:scale-110 transition-transform" />
             {t('hero.aboutMe')}

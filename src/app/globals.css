@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
+  /* Dark theme (default) */
   --color-background: #0B0E18;
   --color-background2: #141A2E;
   --color-foreground: #FFFFFF;
   --color-primary: #3B82F6;
   --color-secondary: #00A3FF;
+  --color-on-primary: #FFFFFF;
   --color-card: #151928;
   --color-menu-bg: #141A2E;
   --color-surface: #121212;
@@ -16,6 +19,25 @@
   --color-muted: #9CA3AF;
   --color-subtle: #E5E7EB;
   --color-faint: #6B7280;
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+  --color-background: #FFFFFF;
+  --color-background2: #F3F4F6;
+  --color-card: #FFFFFF;
+  --color-surface: #F9FAFB;
+  --color-foreground: #0F172A;
+  --color-muted: #6B7280;
+  --color-subtle: #374151;
+  --color-faint: #9CA3AF;
+  --color-border: #E5E7EB;
+  --color-primary: #3B82F6;
+  --color-secondary: #0284C7;
+  --color-on-primary: #FFFFFF;
+  --color-menu-bg: #F9FAFB;
+  --color-scrollbar-track: #E5E7EB;
+  --color-scrollbar-thumb: #9CA3AF;
 }
 
 html,

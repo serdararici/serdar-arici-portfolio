@@ -87,7 +87,7 @@ const ContactClient = () => {
 
               <button
                 disabled={isSending}
-                className="group inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20 disabled:opacity-50"
+                className="group inline-flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-full font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20 disabled:opacity-50"
               >
                 {isSending ? t('form.sending') : t('form.send')}
                 <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

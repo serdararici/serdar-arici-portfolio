@@ -97,7 +97,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
             type="button"
             disabled={isAtStart}
             onClick={() => scrollByCards("prev")}
-            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed"
+            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-on-primary transition-all w-10 h-10 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -186,7 +186,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                                     e.stopPropagation();
                                     window.open(project.live_url!, "_blank");
                                 }}
-                                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg"
+                                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-on-primary hover:opacity-90 transition-all shadow-lg"
                               >
                                 <ExternalLink className="w-4 h-4" /> {t('demo')}
                               </div>
@@ -205,7 +205,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
             type="button"
             disabled={isAtEnd}
             onClick={() => scrollByCards("next")}
-            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-white transition-all w-10 h-10 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed"
+            className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-on-primary transition-all w-10 h-10 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

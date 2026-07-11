@@ -91,7 +91,7 @@ export default function ProjectsClient({ initialProjects }: Props) {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`shrink-0 px-4 py-3 min-h-[44px] rounded-full text-sm font-medium transition-all border ${
-                  active ? "text-white" : "text-muted border-border hover:border-primary/50"
+                  active ? "text-on-primary" : "text-muted border-border hover:border-primary/50"
                 }`}
                 style={active ? { backgroundColor: "var(--color-primary)", borderColor: "transparent" } : {}}
               >

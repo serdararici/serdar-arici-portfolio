@@ -99,7 +99,7 @@ export default function ProjectDetailClient({ project }: Props) {
                     <Link
                       href={project.live_url}
                       target="_blank"
-                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-white font-bold hover:opacity-90 transition shadow-lg shadow-primary/20"
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-on-primary font-bold hover:opacity-90 transition shadow-lg shadow-primary/20"
                     >
                       <ExtIcon className="w-4 h-4" />
                       {t('live')}

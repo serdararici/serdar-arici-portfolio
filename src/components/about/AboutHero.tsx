@@ -86,7 +86,7 @@ const AboutHero = ({ profileContent }: Props) => {
                 href={cvHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-primary text-white hover:bg-primary/80 transition duration-300 transform hover:scale-[1.05] shadow-xl"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-primary text-on-primary hover:bg-primary/80 transition duration-300 transform hover:scale-[1.05] shadow-xl"
               >
                 <FiEye className="text-xl" /> {t('viewResume')}
               </a>

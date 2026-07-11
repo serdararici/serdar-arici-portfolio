@@ -14,7 +14,7 @@ export default function GlobalError({ error, reset }: { error: Error; reset: () 
         <p className="text-muted mb-6">{error.message}</p>
         <button
           onClick={() => reset()}
-          className="px-6 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary/80 transition shadow-lg shadow-primary/20"
+          className="px-6 py-3 bg-primary text-on-primary rounded-xl font-bold hover:bg-primary/80 transition shadow-lg shadow-primary/20"
         >
           {t('retry')}
         </button>
