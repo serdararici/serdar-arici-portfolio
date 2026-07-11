@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import ProjectsClient from "@/components/projects/ProjectsClient";
 import { projects as fallbackProjects } from "@/data/projectsData";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { SiGithub, SiKaggle } from "react-icons/si";
 
 export const dynamic = 'force-dynamic';
 
@@ -73,15 +74,39 @@ export default async function ProjectsPage({
     <div className="min-h-screen bg-background text-foreground py-12 md:py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <header className="mb-8 text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {t('title')}{" "}
-            <span className="hidden md:inline text-primary">
-              — {t('subtitle')}
-            </span>
-          </h1>
-          <p className="text-muted max-w-2xl">
-            {t('description')}
-          </p>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl font-bold">
+                {t('title')}{" "}
+                <span className="hidden md:inline text-primary">
+                  — {t('subtitle')}
+                </span>
+              </h1>
+              <p className="text-muted max-w-2xl">
+                {t('description')}
+              </p>
+            </div>
+            <div className="flex items-center justify-center md:justify-end gap-2 shrink-0">
+              <a
+                href="https://github.com/serdararici"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-muted hover:bg-card hover:text-foreground transition-all text-sm font-medium"
+              >
+                <SiGithub className="w-4 h-4" />
+                GitHub
+              </a>
+              <a
+                href="https://www.kaggle.com/serdararici"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-muted hover:bg-card hover:text-foreground transition-all text-sm font-medium"
+              >
+                <SiKaggle className="w-4 h-4" />
+                Kaggle
+              </a>
+            </div>
+          </div>
         </header>
 
         <ProjectsClient initialProjects={projects} />
