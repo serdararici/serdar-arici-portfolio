@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Link, useRouter } from '@/i18n/routing';
+import { Link } from '@/i18n/routing';
 import { motion } from "framer-motion";
 import { SiGithub } from "react-icons/si";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
@@ -18,14 +18,11 @@ type Props = {
 export default function ProjectCard({ project }: Props) {
   const t = useTranslations('projects.card');
   const locale = useLocale();
-  const router = useRouter();
-  
+
   const currentTitle = getLocalized(project, 'title', locale);
   const currentShortDesc = getLocalized(project, 'short_description', locale);
   const currentCategory = getCategoryLabel(project.category, locale);
   const formattedDate = formatDate(project.project_date, locale);
-
-  const goToProject = (slug: string) => router.push(`/projects/${slug}`);
 
   return (
     <motion.article
@@ -35,19 +32,19 @@ export default function ProjectCard({ project }: Props) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -8, scale: 0.995 }}
       transition={{ duration: 0.22 }}
-      role="link"
-      tabIndex={0}
-      aria-label={`${t('ariaLabel')} ${currentTitle}`}
-      onClick={() => goToProject(project.slug)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          goToProject(project.slug);
-        }
-      }}
-      className="relative group bg-card border border-border rounded-[2.5rem] overflow-hidden shadow-lg transform transition hover:scale-[1.02] hover:border-primary/50 hover:shadow-2xl cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      className="relative group bg-card border border-border rounded-[2.5rem] overflow-hidden shadow-lg transform transition hover:scale-[1.02] hover:border-primary/50 hover:shadow-2xl"
     >
-      <div className="absolute top-6 right-8 z-20 text-muted group-hover:text-primary transition-colors duration-300">
+      {/* Stretched link: covers the full card surface as the primary navigation target.
+          z-[1] puts it above in-flow content; action buttons at z-[2] intercept their own clicks.
+          This avoids nested <a> elements while keeping native keyboard/focus behaviour. */}
+      <Link
+        href={`/projects/${project.slug}`}
+        aria-label={`${t('ariaLabel')} ${currentTitle}`}
+        className="absolute inset-0 z-[1] rounded-[2.5rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      />
+
+      {/* Arrow indicator — pointer-events-none so clicks fall through to the stretched link */}
+      <div className="absolute top-6 right-8 z-0 text-muted group-hover:text-primary transition-colors duration-300 pointer-events-none">
         <ArrowUpRight className="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
       </div>
 
@@ -77,22 +74,24 @@ export default function ProjectCard({ project }: Props) {
           </p>
 
           <div className="flex items-center gap-2 flex-wrap">
-            {project.tech_stack.slice(0, 5).map((t) => (
-              <span key={t} className="px-2.5 py-1 text-[11px] font-medium rounded-md border border-border text-muted bg-card/50">
-                {t}
+            {project.tech_stack.slice(0, 5).map((tech) => (
+              <span key={tech} className="px-2.5 py-1 text-xs font-medium rounded-md border border-border text-muted bg-card/50">
+                {tech}
               </span>
             ))}
-            {project.tech_stack.length > 5 && <span className="text-xs text-muted">+{project.tech_stack.length - 5}</span>}
+            {project.tech_stack.length > 5 && (
+              <span className="text-xs text-muted">+{project.tech_stack.length - 5}</span>
+            )}
           </div>
 
-          <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          {/* Action row at z-[2]: above the stretched link, intercepts its own clicks */}
+          <div className="mt-auto relative z-[2] flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex gap-3">
               {project.live_url && (
                 <Link
                   href={project.live_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
                   className="flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-primary text-on-primary hover:opacity-90 transition shadow min-w-30"
                 >
                   <ExternalLink className="w-4 h-4" />
@@ -105,7 +104,6 @@ export default function ProjectCard({ project }: Props) {
                   href={project.github_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
                   className="flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border border-border text-foreground hover:bg-foreground hover:text-background transition min-w-30"
                 >
                   <SiGithub className="w-4 h-4" />

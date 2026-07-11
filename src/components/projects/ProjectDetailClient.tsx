@@ -48,7 +48,7 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
         transition={{ duration: 0.4 }}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="mb-4">
+          <div className="mb-8">
             <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-muted hover:text-primary transition">
               <ArrowLeft className="w-4 h-4" />
               {t('back')}

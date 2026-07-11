@@ -91,7 +91,7 @@ const ProjectGallery = ({ gallery, projectTitle }: ProjectGalleryProps) => {
   if (galleryItems.length === 0) return null;
 
   return (
-    <section className="mt-16 border-t border-border pt-12">
+    <section className="mt-12 border-t border-border pt-8">
       <div className="flex items-center justify-between mb-8">
         <h3 className="text-2xl font-bold text-foreground">{t('title')}</h3>
         <span className="text-sm text-muted">
