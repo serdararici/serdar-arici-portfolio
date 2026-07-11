@@ -123,12 +123,14 @@
     "send": "Mesaj Gönder",
     "sending": "Gönderiliyor...",
     "success": "Mesajınız başarıyla iletildi!",
-    "error": "Bir sorun oluştu. Lütfen tekrar deneyin."
+    "error": "Bir sorun oluştu. Lütfen tekrar deneyin.",
+    "successCta": "Projelerimi İnceleyin"
   },
   "info": {
     "connect": "Doğrudan Bağlantı",
-    "location": "Operasyon Merkezi",
-    "city": "İstanbul, TR"
+    "location": "Konum",
+    "city": "Sakarya, Türkiye",
+    "availability": "Türkiye genelinde çalışmaya açığım"
   }
   },
   "common": {

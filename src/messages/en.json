@@ -123,12 +123,14 @@
             "send": "Send Message",
             "sending": "Sending...",
             "success": "Your message has been sent successfully!",
-            "error": "Something went wrong. Please try again."
+            "error": "Something went wrong. Please try again.",
+            "successCta": "View My Projects"
         },
         "info": {
             "connect": "Connect Directly",
-            "location": "Base of Operations",
-            "city": "Istanbul, TR"
+            "location": "Location",
+            "city": "Sakarya, Türkiye",
+            "availability": "Open to opportunities across Türkiye"
         }
     },
     "common": {
