@@ -70,10 +70,10 @@ export default async function ProjectsPage({
   }));
 
   return (
-    <div className="min-h-screen bg-background text-foreground py-20 px-4">
+    <div className="min-h-screen bg-background text-foreground py-12 md:py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <header className="mb-8 text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
             {t('title')}{" "}
             <span className="hidden md:inline text-primary">
               — {t('subtitle')}

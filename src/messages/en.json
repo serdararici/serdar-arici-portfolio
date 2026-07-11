@@ -63,7 +63,8 @@
             "clear": "Clear",
             "all": "All",
             "noResults": "No projects found.",
-            "tryAgain": "Try adjusting your search or category filters."
+            "tryAgain": "Try adjusting your search or category filters.",
+            "resultAnnouncement": "{count} projects found"
         },
         "card": {
             "viewDemo": "View Demo",

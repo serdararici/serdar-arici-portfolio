@@ -102,6 +102,11 @@ export default function ProjectsClient({ initialProjects }: Props) {
         </nav>
       </div>
 
+      {/* Screen-reader announcement when filter/search results change */}
+      <p role="status" aria-live="polite" className="sr-only">
+        {t('resultAnnouncement', { count: filtered.length })}
+      </p>
+
       <section>
         {filtered.length === 0 ? (
           <div className="bg-card border border-border rounded-[2.5rem] p-12 text-center">

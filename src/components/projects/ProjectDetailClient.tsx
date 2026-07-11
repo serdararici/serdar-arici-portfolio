@@ -82,7 +82,7 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
                 <h2 className="text-2xl font-semibold text-primary mb-4 border-b border-border pb-2">
                   {t('about')}
                 </h2>
-                <div className="text-muted text-lg leading-relaxed whitespace-pre-line">
+                <div className="text-foreground text-lg leading-relaxed whitespace-pre-line">
                   {currentDesc || t('noDescription')}
                 </div>
               </section>

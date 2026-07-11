@@ -63,7 +63,8 @@
         "clear": "Temizle",
         "all": "Hepsi",
         "noResults": "Proje bulunamadı.",
-        "tryAgain": "Aramanızı veya kategori filtrelerinizi değiştirmeyi deneyin."
+        "tryAgain": "Aramanızı veya kategori filtrelerinizi değiştirmeyi deneyin.",
+        "resultAnnouncement": "{count} proje bulundu"
       },
       "card": {
         "viewDemo": "Demoyu Gör",

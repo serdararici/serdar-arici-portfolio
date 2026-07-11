@@ -113,7 +113,7 @@ export default function ProjectCard({ project }: Props) {
                 </Link>
               )}
             </div>
-            <time className="text-xs text-muted">{formattedDate}</time>
+            <time className="text-xs text-subtle">{formattedDate}</time>
           </div>
         </div>
       </div>
