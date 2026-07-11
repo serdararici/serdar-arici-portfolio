@@ -89,7 +89,7 @@ const HeroSection = ({ profileContent }: Props) => {
 
         <motion.h1
           variants={itemVariants}
-          className="text-5xl sm:text-7xl font-extrabold mb-2 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent tracking-tight"
+          className="text-5xl sm:text-7xl font-extrabold mb-2 bg-gradient-to-b from-foreground to-muted bg-clip-text text-transparent tracking-tight"
         >
           {name}
         </motion.h1>

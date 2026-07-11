@@ -5,6 +5,7 @@ import { useState } from "react";
 import { usePathname, useParams } from "next/navigation";
 import HamburgerMenu from "./HamburgerMenu";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
+import ThemeToggle from "../ui/ThemeToggle";
 import { Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -23,7 +24,7 @@ export default function Navbar() {
   const t = useTranslations('navigation');
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-surface/80 backdrop-blur">
+    <header className="fixed top-0 z-50 w-full bg-surface/80 backdrop-blur border-b border-border/50">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link 
@@ -67,14 +68,16 @@ export default function Navbar() {
             );
           })}
 
-          {/* Language Switcher - Desktop */}
-          <li>
+          {/* Language Switcher + Theme Toggle - Desktop */}
+          <li className="flex items-center gap-1">
             <LanguageSwitcher variant="desktop" />
+            <ThemeToggle />
           </li>
         </ul>
 
-        {/* Mobile: Hamburger + Language */}
-        <div className="md:hidden flex items-center gap-3">
+        {/* Mobile: Hamburger + Language + Theme */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
           {/* Language Switcher - Mobile */}
           <LanguageSwitcher variant="mobile" />
 

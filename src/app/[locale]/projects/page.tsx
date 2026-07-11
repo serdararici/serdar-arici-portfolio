@@ -79,7 +79,7 @@ export default async function ProjectsPage({
               — {t('subtitle')}
             </span>
           </h1>
-          <p className="text-gray-300 max-w-2xl">
+          <p className="text-muted max-w-2xl">
             {t('description')}
           </p>
         </header>

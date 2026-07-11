@@ -5,6 +5,7 @@ import { Link } from '@/i18n/routing';
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si";
 import { HiX } from "react-icons/hi";
 import { useTranslations } from "next-intl";
+import ThemeToggle from "../ui/ThemeToggle";
 
 type Props = {
   isOpen: boolean;
@@ -39,14 +40,18 @@ export default function HamburgerMenu({ isOpen, onClose }: Props) {
             transition={{ type: "tween", duration: 0.3 }}
             className="absolute top-0 right-0 w-3/4 max-w-xs bg-background p-4 border-l border-border rounded-bl-lg shadow-2xl"
           >
-            {/* Close Button */}
-            <div className="flex justify-end">
-              <button
-                onClick={onClose}
-                className="hover:bg-card p-2 rounded-full transition-colors"
-              >
-                <HiX className="w-6 h-6 text-muted hover:text-foreground" />
-              </button>
+            {/* Header row: logo / theme toggle / close */}
+            <div className="flex items-center justify-between">
+              <span className="text-base font-semibold text-foreground">Serdar Arıcı</span>
+              <div className="flex items-center gap-1">
+                <ThemeToggle />
+                <button
+                  onClick={onClose}
+                  className="hover:bg-card p-2 rounded-full transition-colors"
+                >
+                  <HiX className="w-6 h-6 text-muted hover:text-foreground" />
+                </button>
+              </div>
             </div>
 
             {/* Menu Items */}

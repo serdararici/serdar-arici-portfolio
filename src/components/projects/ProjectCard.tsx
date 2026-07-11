@@ -61,7 +61,7 @@ export default function ProjectCard({ project }: Props) {
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-foreground border border-primary/30">
+            <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-black/60 backdrop-blur-md text-on-primary border border-primary/30">
               {currentCategory}
             </span>
           </div>

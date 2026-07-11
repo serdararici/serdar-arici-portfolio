@@ -8,6 +8,7 @@ import { routing } from '@/i18n/routing';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ClientLayout from "@/components/layout/ClientLayout";
+import ThemeProvider from "@/components/providers/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
@@ -126,8 +127,10 @@ export default async function LocaleLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ClientLayout>{children}</ClientLayout>
-          <Analytics />
+          <ThemeProvider>
+            <ClientLayout>{children}</ClientLayout>
+            <Analytics />
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

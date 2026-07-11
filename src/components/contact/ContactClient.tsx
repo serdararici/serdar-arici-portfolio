@@ -113,7 +113,7 @@ const ContactClient = () => {
             </div>
 
             <div className="relative group rounded-[2.5rem] overflow-hidden border border-border aspect-video">
-              <div className="absolute inset-0 bg-black/40 z-10" />
+              <div className="absolute inset-0 bg-black/60 z-10" />
               <img
                 src="/istanbul-view.jpg"
                 alt="Istanbul, TR"
@@ -136,7 +136,7 @@ const ContactClient = () => {
 };
 
 const ContactLink = ({ icon, label, value, href }: { icon: React.ReactNode, label: string, value: string, href: string }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-card hover:bg-card/70 border border-transparent hover:border-border transition-all group">
+  <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-card hover:bg-card/70 border border-border/50 hover:border-border transition-all group">
     <div className="flex items-center gap-4">
       <div className="p-3 bg-card rounded-xl text-primary group-hover:text-foreground transition-colors">{icon}</div>
       <div>

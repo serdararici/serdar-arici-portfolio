@@ -121,7 +121,7 @@ export default function ProjectDetailClient({ project }: Props) {
                     <Link
                       href={project.github_url}
                       target="_blank"
-                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-border text-white font-bold hover:bg-foreground hover:text-background transition"
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-border text-foreground font-bold hover:bg-foreground hover:text-background transition"
                     >
                       <SiGithub className="w-4 h-4" />
                       {t('source')}
@@ -133,7 +133,7 @@ export default function ProjectDetailClient({ project }: Props) {
                       href={project.document_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-border text-white font-bold hover:bg-foreground hover:text-background transition"
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-border text-foreground font-bold hover:bg-foreground hover:text-background transition"
                     >
                       <FileText className="w-4 h-4" />
                       {t('document')}
