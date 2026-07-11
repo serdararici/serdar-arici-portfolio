@@ -97,6 +97,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
             type="button"
             disabled={isAtStart}
             onClick={() => scrollByCards("prev")}
+            aria-label={t('prevProject')}
             className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-on-primary transition-all w-10 h-10 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -168,28 +169,30 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
                           </div>
 
                           <div className="card-actions pt-2 flex gap-3 relative z-20">
-                            <div
+                            <button
+                              type="button"
                               onClick={(e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  window.open(project.github_url ?? "#", "_blank");
+                                e.preventDefault();
+                                e.stopPropagation();
+                                window.open(project.github_url ?? "#", "_blank");
                               }}
                               className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-border text-foreground hover:bg-foreground hover:text-background transition-all"
                             >
                               <SiGithub className="w-4 h-4" /> {t('github')}
-                            </div>
-                            
+                            </button>
+
                             {project.live_url && (
-                              <div
+                              <button
+                                type="button"
                                 onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    window.open(project.live_url!, "_blank");
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  window.open(project.live_url!, "_blank");
                                 }}
                                 className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary text-on-primary hover:opacity-90 transition-all shadow-lg"
                               >
                                 <ExternalLink className="w-4 h-4" /> {t('demo')}
-                              </div>
+                              </button>
                             )}
                           </div>
                         </div>
@@ -205,6 +208,7 @@ const ProjectCarousel = ({ initialProjects }: ProjectCarouselProps) => {
             type="button"
             disabled={isAtEnd}
             onClick={() => scrollByCards("next")}
+            aria-label={t('nextProject')}
             className="z-10 flex items-center justify-center rounded-full border border-primary/30 bg-card text-primary hover:bg-primary hover:text-on-primary transition-all w-10 h-10 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed"
           >
             <ChevronRight className="w-5 h-5" />

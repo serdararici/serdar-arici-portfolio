@@ -111,7 +111,7 @@ const AboutHero = ({ profileContent }: Props) => {
                 <>
                   <p className="text-muted leading-relaxed max-w-2xl md:max-w-3xl">
                     {t.rich('description1', {
-                      white: (chunks) => <span className="text-white">{chunks}</span>
+                      white: (chunks) => <span className="text-foreground">{chunks}</span>
                     })}
                   </p>
                   <p className="text-muted leading-relaxed max-w-2xl md:max-w-3xl mt-4">

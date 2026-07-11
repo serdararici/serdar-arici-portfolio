@@ -40,7 +40,9 @@
       "title": "Öne Çıkan Projeler",
       "viewAll": "Tüm Projeleri Gör",
       "github": "GitHub",
-      "demo": "Demo"
+      "demo": "Demo",
+      "prevProject": "Önceki proje",
+      "nextProject": "Sonraki proje"
     },
     "certifications": {
       "title": "Sertifikalar",

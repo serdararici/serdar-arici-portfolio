@@ -40,7 +40,9 @@
             "title": "Featured Projects",
             "viewAll": "View All Projects",
             "github": "GitHub",
-            "demo": "Demo"
+            "demo": "Demo",
+            "prevProject": "Previous project",
+            "nextProject": "Next project"
         },
         "certifications": {
         "title": "Certifications",

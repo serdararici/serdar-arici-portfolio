@@ -142,6 +142,7 @@ const HeroSection = ({ profileContent }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               title={item.label}
+              aria-label={item.label}
               className="p-3 border border-border rounded-full text-muted hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 hover:-translate-y-1"
             >
               <item.icon className="text-xl" />
