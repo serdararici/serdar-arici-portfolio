@@ -61,7 +61,7 @@ export default function BlogCard({ blog, featured = false }: Props) {
         <ArrowUpRight className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
       </div>
 
-      <div className={`flex flex-col ${featured ? 'md:flex-row' : 'md:flex-row'}`}>
+      <div className="flex flex-col md:flex-row">
 
         {/* Cover Image */}
         {blog.cover_image_url && (

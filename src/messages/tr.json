@@ -135,9 +135,14 @@
       "back": "Bloglara Dön",
       "readTime": "{minutes} dk okuma",
       "noContent": "Henüz içerik eklenmedi.",
+      "category": "Kategori",
+      "date": "Tarih",
       "links": "Bağlantılar",
       "link": "Bağlantı",
-      "documents": "Belgeler"
+      "documents": "Belgeler",
+      "videos": "Videolar",
+      "prevBlog": "Önceki Yazı",
+      "nextBlog": "Sonraki Yazı"
     },
     "gallery": {
       "title": "Galeri",

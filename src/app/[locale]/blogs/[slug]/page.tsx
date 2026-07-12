@@ -54,17 +54,23 @@ export default async function BlogDetailPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const { data } = await supabase
-    .from("blogs")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  const [{ data }, { data: allBlogs }] = await Promise.all([
+    supabase.from("blogs").select("*").eq("slug", slug).single(),
+    supabase
+      .from("blogs")
+      .select("slug, title, title_tr, cover_image_url")
+      .order("published_date", { ascending: false }),
+  ]);
 
   if (!data) {
     notFound();
   }
 
   const blog = data as Blog;
+  const allList = allBlogs ?? [];
+  const idx = allList.findIndex((b) => b.slug === slug);
+  const prevBlog = idx > 0 ? allList[idx - 1] : null;
+  const nextBlog = idx !== -1 && idx < allList.length - 1 ? allList[idx + 1] : null;
 
-  return <BlogDetailClient blog={blog} />;
+  return <BlogDetailClient blog={blog} prevBlog={prevBlog} nextBlog={nextBlog} />;
 }

@@ -135,9 +135,14 @@
             "back": "Back to Blogs",
             "readTime": "{minutes} min read",
             "noContent": "No content available yet.",
+            "category": "Category",
+            "date": "Date",
             "links": "Links",
             "link": "Link",
-            "documents": "Documents"
+            "documents": "Documents",
+            "videos": "Videos",
+            "prevBlog": "Previous Post",
+            "nextBlog": "Next Post"
         },
         "gallery": {
             "title": "Gallery",

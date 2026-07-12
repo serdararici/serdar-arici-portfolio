@@ -77,6 +77,7 @@ export type Blog = {
   cover_image_url?: string | null;
   gallery?: string[] | null;
   documents?: { title: string; title_tr?: string; url: string }[] | null;
+  videos?: { title: string; title_tr?: string; url: string }[] | null;
   category: 'Blog' | 'Academic' | 'Notes' | 'Study' | 'Other';
   is_featured?: boolean;
   published_date?: string | null;

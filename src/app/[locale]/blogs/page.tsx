@@ -4,6 +4,7 @@ import type { Blog } from "@/types/types";
 import { supabase } from "@/lib/supabase";
 import BlogsClient from "@/components/blogs/BlogsClient";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { SiMedium } from "react-icons/si";
 
 export const dynamic = 'force-dynamic';
 
@@ -62,8 +63,23 @@ export default async function BlogsPage({
     <div className="min-h-screen bg-background text-foreground py-12 md:py-20 px-4">
       <div className="max-w-5xl mx-auto">
         <header className="mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('title')}</h1>
-          <p className="text-muted max-w-2xl text-base">{t('description')}</p>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl font-bold">{t('title')}</h1>
+              <p className="text-muted max-w-2xl text-base">{t('description')}</p>
+            </div>
+            <div className="flex items-center justify-center md:justify-end gap-2 shrink-0">
+              <a
+                href="https://medium.com/@serdararici"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-muted hover:bg-card hover:text-foreground transition-all text-sm font-medium"
+              >
+                <SiMedium className="w-4 h-4" />
+                Medium
+              </a>
+            </div>
+          </div>
         </header>
 
         <BlogsClient initialBlogs={blogs} />
