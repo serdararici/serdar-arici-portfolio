@@ -109,7 +109,47 @@
     "inputPlaceholder": "E-posta adresinizi girin",
     "notifyBtn": "Haber Ver",
     "spamNote": "Spam içermez. İstediğiniz zaman ayrılabilirsiniz.",
-    "footerNote": "Hassasiyetle inşa edildi."
+    "footerNote": "Hassasiyetle inşa edildi.",
+    "page": {
+      "title": "Bloglarım",
+      "description": "Yazılım mühendisliği, yapay zeka ve akademik çalışmalar üzerine notlar, makaleler ve çalışmalar."
+    },
+    "client": {
+      "searchPlaceholder": "Başlığa veya konuya göre ara...",
+      "clear": "Temizle",
+      "all": "Hepsi",
+      "noResults": "Yazı bulunamadı.",
+      "tryAgain": "Aramanızı veya kategori filtrelerinizi değiştirmeyi deneyin.",
+      "resultAnnouncement": "{count} yazı bulundu",
+      "empty": "Henüz yazı yok.",
+      "emptyNote": "Yakında içerikler eklenecek."
+    },
+    "card": {
+      "readTime": "{minutes} dk okuma",
+      "readOnMedium": "Medium'da Oku",
+      "readMore": "Devamını Oku",
+      "external": "Harici Bağlantı",
+      "featured": "Öne Çıkan"
+    },
+    "detail": {
+      "back": "Bloglara Dön",
+      "readTime": "{minutes} dk okuma",
+      "noContent": "Henüz içerik eklenmedi.",
+      "links": "Bağlantılar",
+      "link": "Bağlantı",
+      "documents": "Belgeler"
+    },
+    "gallery": {
+      "title": "Galeri",
+      "screenshots": "Görsel",
+      "screenshotAlt": "Görüntü",
+      "swipeHint": "Görseller arasında kaydırarak geçiş yapabilirsiniz",
+      "openImage": "Resmi büyüt",
+      "dialogLabel": "Blog görseli galerisi",
+      "close": "Kapat",
+      "prevImage": "Önceki görsel",
+      "nextImage": "Sonraki görsel"
+    }
   },
   "contact": {
     "badge": "İş tekliflerine açık",

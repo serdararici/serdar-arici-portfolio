@@ -60,6 +60,30 @@ export type Certification = {
   skills: string[];
 };
 
+export type Blog = {
+  id?: number;
+  slug: string;
+  title: string;
+  title_tr?: string | null;
+  summary?: string | null;
+  summary_tr?: string | null;
+  content?: string | null;
+  content_tr?: string | null;
+  external_url?: string | null;
+  medium_url?: string | null;
+  github_url?: string | null;
+  youtube_url?: string | null;
+  kaggle_url?: string | null;
+  cover_image_url?: string | null;
+  gallery?: string[] | null;
+  documents?: { title: string; title_tr?: string; url: string }[] | null;
+  category: 'Blog' | 'Academic' | 'Notes' | 'Study' | 'Other';
+  is_featured?: boolean;
+  published_date?: string | null;
+  other_url?: string | null;
+  other_url_label?: string | null;
+};
+
 export type ProfileContent = {
   id: number;
   job_title: string;

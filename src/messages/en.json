@@ -109,7 +109,47 @@
         "inputPlaceholder": "Enter your email address",
         "notifyBtn": "Notify Me",
         "spamNote": "No spam. Unsubscribe at any time.",
-        "footerNote": "Built with precision."
+        "footerNote": "Built with precision.",
+        "page": {
+            "title": "My Blogs",
+            "description": "Notes, articles, and studies on software engineering, AI, and academic research."
+        },
+        "client": {
+            "searchPlaceholder": "Search by title or topic...",
+            "clear": "Clear",
+            "all": "All",
+            "noResults": "No articles found.",
+            "tryAgain": "Try adjusting your search or category filters.",
+            "resultAnnouncement": "{count} articles found",
+            "empty": "No articles yet.",
+            "emptyNote": "Content coming soon."
+        },
+        "card": {
+            "readTime": "{minutes} min read",
+            "readOnMedium": "Read on Medium",
+            "readMore": "Read More",
+            "external": "External Link",
+            "featured": "Featured"
+        },
+        "detail": {
+            "back": "Back to Blogs",
+            "readTime": "{minutes} min read",
+            "noContent": "No content available yet.",
+            "links": "Links",
+            "link": "Link",
+            "documents": "Documents"
+        },
+        "gallery": {
+            "title": "Gallery",
+            "screenshots": "Images",
+            "screenshotAlt": "Image",
+            "swipeHint": "Swipe left or right to navigate",
+            "openImage": "Open image",
+            "dialogLabel": "Blog image gallery",
+            "close": "Close",
+            "prevImage": "Previous image",
+            "nextImage": "Next image"
+        }
     },
     "contact": {
         "badge": "Available for hire",

@@ -1,5 +1,11 @@
+import React from "react";
 import type { Metadata } from "next";
-import BlogsComingSoon from "@/components/blogs/BlogsComingSoon";
+import type { Blog } from "@/types/types";
+import { supabase } from "@/lib/supabase";
+import BlogsClient from "@/components/blogs/BlogsClient";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
+export const dynamic = 'force-dynamic';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
 
@@ -13,8 +19,8 @@ export async function generateMetadata({
 
   const title = isTr ? 'Blog' : 'Blog';
   const description = isTr
-    ? 'Yazılım mimarisi, sistem tasarımı ve mühendislik içgörüleri üzerine blog — yakında.'
-    : "Serdar Arıcı's blog on software architecture, system design, and engineering insights — coming soon.";
+    ? 'Yazılım mühendisliği, yapay zeka ve akademik çalışmalar üzerine notlar, makaleler ve çalışmalar.'
+    : 'Notes, articles, and studies on software engineering, AI, and academic research.';
 
   return {
     title,
@@ -35,6 +41,33 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogsPage() {
-  return <BlogsComingSoon />;
+export default async function BlogsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations('blogs.page');
+
+  const { data } = await supabase
+    .from("blogs")
+    .select("*")
+    .order('published_date', { ascending: false });
+
+  const blogs: Blog[] = (data ?? []) as Blog[];
+
+  return (
+    <div className="min-h-screen bg-background text-foreground py-12 md:py-20 px-4">
+      <div className="max-w-5xl mx-auto">
+        <header className="mb-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('title')}</h1>
+          <p className="text-muted max-w-2xl text-base">{t('description')}</p>
+        </header>
+
+        <BlogsClient initialBlogs={blogs} />
+      </div>
+    </div>
+  );
 }
