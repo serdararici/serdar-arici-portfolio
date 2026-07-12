@@ -72,6 +72,7 @@
         "card": {
             "viewDemo": "View Demo",
             "github": "GitHub",
+            "kaggle": "Kaggle profile",
             "ariaLabel": "Open details for"
         },
         "detail": {
@@ -84,6 +85,7 @@
             "live": "Live Preview",
             "watch": "Watch Demo",
             "source": "View Source",
+            "kaggle": "Kaggle profile",
             "document": "View Document",
             "techStack": "Tech Stack",
             "prevProject": "Previous Project",

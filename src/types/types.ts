@@ -9,6 +9,7 @@ export type Project = {
   short_description: string | null;
   tech_stack: string[];
   github_url?: string | null;
+  kaggle_url?: string | null;
   live_url?: string | null;
   image_url: string | null;
   video_url?: string | null;

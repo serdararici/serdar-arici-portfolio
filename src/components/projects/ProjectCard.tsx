@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Link } from '@/i18n/routing';
 import { motion } from "framer-motion";
-import { SiGithub } from "react-icons/si";
+import { SiGithub, SiKaggle } from "react-icons/si";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/types/types";
 import { formatDate, getLocalized } from "@/lib/utils";
@@ -108,6 +108,19 @@ export default function ProjectCard({ project }: Props) {
                 >
                   <SiGithub className="w-4 h-4" />
                   {t('github')}
+                </Link>
+              )}
+
+              {project.kaggle_url && (
+                <Link
+                  href={project.kaggle_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t('kaggle')}
+                  className="flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border border-border text-foreground hover:bg-foreground hover:text-background transition min-w-30"
+                >
+                  <SiKaggle className="w-4 h-4" />
+                  Kaggle
                 </Link>
               )}
             </div>

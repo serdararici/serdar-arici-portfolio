@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Link } from '@/i18n/routing';
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ExternalLink as ExtIcon, FileText } from "lucide-react";
-import { SiGithub, SiYoutube } from "react-icons/si";
+import { SiGithub, SiKaggle, SiYoutube } from "react-icons/si";
 import type { Project } from "@/types/types";
 import { formatDate, getLocalized } from "@/lib/utils";
 import { getCategoryLabel } from "@/lib/categories";
@@ -139,6 +139,19 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
                     >
                       <SiGithub className="w-4 h-4" />
                       {t('source')}
+                    </Link>
+                  )}
+
+                  {project.kaggle_url && (
+                    <Link
+                      href={project.kaggle_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={t('kaggle')}
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-border text-foreground font-bold hover:bg-foreground hover:text-background transition"
+                    >
+                      <SiKaggle className="w-4 h-4" />
+                      Kaggle
                     </Link>
                   )}
 

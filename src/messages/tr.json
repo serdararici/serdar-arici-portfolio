@@ -72,6 +72,7 @@
       "card": {
         "viewDemo": "Demoyu Gör",
         "github": "GitHub",
+        "kaggle": "Kaggle profili",
         "ariaLabel": "Detayları gör:"
       },
       "detail": {
@@ -84,6 +85,7 @@
         "live": "Canlı Önizleme",
         "watch": "Demoyu İzle",
         "source": "Kaynak Kodu",
+        "kaggle": "Kaggle profili",
         "document": "Belgeyi Görüntüle",
         "techStack": "Kullanılan Teknolojiler",
       "prevProject": "Önceki Proje",
