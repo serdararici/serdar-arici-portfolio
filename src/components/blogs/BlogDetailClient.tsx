@@ -151,20 +151,6 @@ export default function BlogDetailClient({ blog, prevBlog, nextBlog }: Props) {
           </Link>
         </div>
 
-        {/* Hero cover image — full width, outside the grid */}
-        {blog.cover_image_url && (
-          <div className="mb-8 rounded-2xl overflow-hidden border border-border shadow-2xl relative h-72 sm:h-96 md:h-[500px]">
-            <Image
-              src={blog.cover_image_url}
-              alt={title}
-              fill
-              className="object-cover object-center"
-              priority
-              sizes="(max-width: 1024px) 100vw, 1152px"
-            />
-          </div>
-        )}
-
         {/* Main grid: article (col-span-2) + aside (col-span-1).
             Mobile: aside order-first so links/docs are visible before scrolling.
             Desktop: natural grid order with sticky aside. */}
@@ -180,6 +166,19 @@ export default function BlogDetailClient({ blog, prevBlog, nextBlog }: Props) {
               <p className="text-lg text-muted leading-relaxed border-l-4 border-primary/30 pl-4">
                 {summary}
               </p>
+            )}
+
+            {blog.cover_image_url && (
+              <div className="rounded-2xl overflow-hidden border border-border relative h-80 sm:h-[420px]">
+                <Image
+                  src={blog.cover_image_url}
+                  alt={title}
+                  fill
+                  className="object-cover object-center"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                />
+              </div>
             )}
 
             <hr className="border-border" />
