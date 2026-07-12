@@ -137,12 +137,14 @@
   }
   },
   "common": {
-  "error": {
-    "title": "Bir hata oluştu! 🚨",
-    "retry": "Tekrar Dene"
-  },
-  "loading": {
-    "text": "Sayfa yükleniyor..."
+    "switchToDark": "Koyu temaya geç",
+    "switchToLight": "Açık temaya geç",
+    "error": {
+      "title": "Bir hata oluştu! 🚨",
+      "retry": "Tekrar Dene"
+    },
+    "loading": {
+      "text": "Sayfa yükleniyor..."
+    }
   }
-  } 
 }

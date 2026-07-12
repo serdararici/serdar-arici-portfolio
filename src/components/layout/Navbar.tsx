@@ -31,9 +31,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl font-semibold text-foreground
-            transition-transform transition-colors duration-600
-            hover:scale-103"
+            className="text-xl font-semibold text-foreground transition-transform transition-colors duration-500 hover:scale-103 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-lg"
           >
             Serdar Arıcı
           </Link>
@@ -50,8 +48,9 @@ export default function Navbar() {
                   <Link
                     href={href}
                     className={`
-                      group relative pb-1 text-md font-medium
+                      group relative pb-1 text-base font-medium
                       transition-colors duration-300
+                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-sm
                       ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                     `}
                   >

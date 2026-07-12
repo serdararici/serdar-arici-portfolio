@@ -137,6 +137,8 @@
         }
     },
     "common": {
+        "switchToDark": "Switch to dark mode",
+        "switchToLight": "Switch to light mode",
         "error": {
             "title": "Something went wrong! 🚨",
             "retry": "Try Again"

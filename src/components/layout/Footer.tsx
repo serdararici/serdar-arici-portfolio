@@ -14,13 +14,13 @@ export default function Footer() {
         </p>
 
         <div className="flex gap-4">
-          <a href="https://github.com/serdararici" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/serdararici" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <SiGithub className="h-5 w-5 text-muted hover:text-foreground transition" />
           </a>
-          <a href="https://linkedin.com/in/serdararici" target="_blank" rel="noopener noreferrer">
+          <a href="https://linkedin.com/in/serdararici" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <SiLinkedin className="h-5 w-5 text-muted hover:text-foreground transition" />
           </a>
-          <a href="mailto:serdararici3@gmail.com">
+          <a href="mailto:serdararici3@gmail.com" aria-label="Email">
             <SiGmail className="h-5 w-5 text-muted hover:text-foreground transition" />
           </a>
         </div>
