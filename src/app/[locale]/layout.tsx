@@ -57,6 +57,13 @@ export async function generateMetadata({
       template: '%s | Serdar Arıcı',
     },
     description,
+    alternates: {
+      canonical: `${BASE_URL}/${locale}`,
+      languages: {
+        tr: `${BASE_URL}/tr`,
+        en: `${BASE_URL}/en`,
+      },
+    },
     openGraph: {
       type: 'profile',
       firstName: 'Serdar',

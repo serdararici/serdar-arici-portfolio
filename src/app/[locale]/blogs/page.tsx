@@ -26,6 +26,13 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/blogs`,
+      languages: {
+        tr: `${BASE_URL}/tr/blogs`,
+        en: `${BASE_URL}/en/blogs`,
+      },
+    },
     openGraph: {
       type: 'website',
       title: `${title} | Serdar Arıcı`,
