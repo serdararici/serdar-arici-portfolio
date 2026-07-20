@@ -8,7 +8,7 @@ import { setRequestLocale } from "next-intl/server";
 
 export const dynamic = "force-dynamic";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://serdararici.vercel.app";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://serdararici.com";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;

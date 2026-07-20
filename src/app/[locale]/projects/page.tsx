@@ -9,7 +9,7 @@ import { SiGithub, SiKaggle } from "react-icons/si";
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.com';
 
 export async function generateMetadata({
   params,

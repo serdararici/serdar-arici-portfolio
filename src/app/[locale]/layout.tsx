@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.com';
 
 const JSON_LD = {
   '@context': 'https://schema.org',
@@ -89,7 +89,10 @@ export async function generateMetadata({
       images: ['/profile_ai.png'],
     },
     verification: {
-      google: '9THtHXL8nDvgDMVKtshNlPSHol1c76aKErwYwElfX78',
+      google: [
+        '9THtHXL8nDvgDMVKtshNlPSHol1c76aKErwYwElfX78',
+        'vyE4Xxk9wscZEm8TrOcq6PLcA2Nk2RSd_vyin04yfms',
+      ],
     },
   };
 }

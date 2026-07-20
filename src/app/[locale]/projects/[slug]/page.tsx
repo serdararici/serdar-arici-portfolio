@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import ProjectDetailClient from "@/components/projects/ProjectDetailClient";
 import type { Metadata } from "next";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.com';
 
 type Props = {
   params: Promise<{ slug: string; locale: string }>;

@@ -14,7 +14,7 @@ import SkillsSection from "@/components/about/SkillsSection";
 import CertificationsSection from "@/components/about/CertificationsSection";
 import ProjectCarousel from "@/components/about/ProjectCarousel";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.com';
 
 export async function generateMetadata({
   params,

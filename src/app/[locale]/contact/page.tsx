@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ContactClient from "@/components/contact/ContactClient";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://serdararici.com';
 
 export async function generateMetadata({
   params,
