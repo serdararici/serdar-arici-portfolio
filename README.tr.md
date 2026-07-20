@@ -6,7 +6,7 @@ Next.js (App Router), Supabase ve next-intl ile geliştirilmiş, iki dilli (TR/E
 
 ### Canlı Demo
 
-🔗 [serdararici.vercel.app/tr](https://serdararici.vercel.app/tr)
+🔗 [serdararici.com/tr](https://serdararici.com/tr)
 
 ## Ekran Görüntüleri
 

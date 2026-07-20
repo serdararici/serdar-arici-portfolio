@@ -6,7 +6,7 @@ A bilingual (TR/EN) personal developer portfolio built with Next.js (App Router)
 
 ### Live Demo
 
-🔗 [serdararici.vercel.app/en](https://serdararici.vercel.app/en)
+🔗 [serdararici.com/en](https://serdararici.com/en)
 
 ## Screenshots
 
